@@ -24,6 +24,6 @@
     "05:mcp": "python 05_visual_catalog_sync/canal_mcp/mcp_classic_stdio/mcp_server.py",
     "test": "run_all_tests.bat"
   },
-  "author": "BatiHome / AXESTEEL Engineering Team",
+  "author": "SNORBIK AI (https://github.com/snorbik-ai)",
   "license": "MIT"
 }
