@@ -1,0 +1,107 @@
+{
+  "system_identity": {
+    "tool_id": "01_web_assets_manager",
+    "module_name": "01_web_assets_manager",
+    "product_name": "Moissonneur d'Assets Web & Relieur Local React TSX",
+    "industrial_designation": "Moissonneur d'Assets Web & Relieur Local React TSX",
+    "version": "2.0.0",
+    "architecture": "Clean Architecture (Domain Entities -> Application Use Cases via DI -> Infrastructure Adapters)",
+    "mission": "Scanne les maquettes HTML, télécharge les CDN externes et remplace automatiquement les URLs distantes par des imports locaux dans les composants React TSX.",
+    "standards": "Clean Architecture DIP, Idempotence, Tolérance offline, Zéro régression TypeScript",
+    "titre_accessible": "Récupérateur d Images Web",
+    "description_accessible": "Récupère automatiquement toutes les photos d une page web ou d une maquette pour les afficher dans votre site."
+  },
+  "tool_id": "01_web_assets_manager",
+  "tool_name": "Moissonneur d'Assets Web & Relieur Local React TSX",
+  "version": "2.0.0",
+  "gps_tools_registry": [
+    {
+      "name": "scan_and_download_maquette_assets",
+      "use_case": "ScanAndDownloadMaquetteAssetsUseCase",
+      "cli_command": "node outils_internes/01_web_assets_manager/canal_sdk_cli/cli_extract.mjs",
+      "signature": "source_dir: str, target_dir: str, manifest_path: str",
+      "purpose": "Scanne les maquettes HTML, extrait les balises <img>, télécharge les images distantes dans public/assets et met à jour assets-manifest.json.",
+      "best_practices": "Exécuter lors de l'intégration de nouvelles maquettes HTML ou pages vitrines."
+    },
+    {
+      "name": "replace_remote_urls_in_react",
+      "use_case": "ReplaceRemoteUrlsInReactUseCase",
+      "cli_command": "node outils_internes/01_web_assets_manager/canal_sdk_cli/cli_replace.mjs --dry-run",
+      "signature": "components_dir: str, manifest_path: str, dry_run: bool = True",
+      "purpose": "Remplace les URLs CDN distantes dans les composants React TSX par les chemins relatifs locaux sécurisés.",
+      "best_practices": "Toujours tester en mode --dry-run avant d'appliquer les remplacements sur les fichiers de production."
+    },
+    {
+      "name": "get_web_assets_manifest",
+      "use_case": "GetWebAssetsManifestUseCase",
+      "cli_command": "node -e \"import('./outils_internes/01_web_assets_manager/canal_sdk_cli/sdk.mjs').then(m => m.createWebAssetsSDK().getManifest().then(console.log))\"",
+      "signature": "manifest_path: str",
+      "purpose": "Charge et retourne le catalogue complet des assets web extraits et leur classification.",
+      "best_practices": "Utiliser pour auditer la couverture des assets locaux du frontend."
+    },
+    {
+      "name": "run_quality_and_tests_suite",
+      "use_case": "RunQualityAndTestsSuiteUseCase",
+      "cli_command": "node outils_internes/01_web_assets_manager/tests/run_all_suites.mjs",
+      "signature": "none",
+      "purpose": "Exécute les 4 couches de tests (Unitaires, Intégration, Validation/Performance, Smoke).",
+      "best_practices": "Exécuter systématiquement avant et après toute modification de code."
+    }
+  ],
+  "gps_tools_manifest": [
+    {
+      "name": "scan_and_download_maquette_assets",
+      "cli_equivalent": "node outils_internes/01_web_assets_manager/canal_sdk_cli/cli_extract.mjs",
+      "description": "Scanne les maquettes HTML, télécharge les images CDN localement et met à jour assets-manifest.json."
+    },
+    {
+      "name": "replace_remote_urls_in_react",
+      "cli_equivalent": "node outils_internes/01_web_assets_manager/canal_sdk_cli/cli_replace.mjs --dry-run",
+      "description": "Remplace les URLs distantes dans frontend/src/presentation par leurs chemins locaux."
+    },
+    {
+      "name": "run_quality_and_tests_suite",
+      "cli_equivalent": "node outils_internes/01_web_assets_manager/tests/run_all_suites.mjs",
+      "description": "Exécute les 4 couches de tests (Unit, Integration, Validation/Performance, Smoke)."
+    }
+  ],
+  "agent_turn_lifecycle_rules": {
+    "step_1": "Lire README.md puis ce fichier context_llm.json pour charger le GPS des Use Cases et la mémoire des tours précédents",
+    "step_2": "Exécuter le Use Case requis via le CLI (recommandé pour agent autonome) ou le SDK",
+    "step_3": "Compresser les résultats du tour en un résumé sémantique concis et factuel",
+    "step_4": "Enregistrer le compte-rendu dans history/sessions/YYYY-MM-DD/turn_XX/turn_report.json via ContextHistoryManager",
+    "step_5": "Mettre à jour la fenêtre glissante dynamic_history dans context_llm.json (bornée à 30 tours max)"
+  },
+  "context_history": {
+    "max_retained_turns": 30,
+    "static_history": [
+      {
+        "reference_turn_id": "static_ref_01",
+        "goal": "Ingestion des visuels de maquettes HTML et validation des 4 suites de tests",
+        "actions_performed": [
+          "Exécution de ScanAndDownloadMaquetteAssetsUseCase",
+          "Exécution de ReplaceRemoteUrlsInReactUseCase sur frontend/src/presentation",
+          "Validation 100% des 4 suites de tests (Unit, Integration, Validation/Perf, Smoke)"
+        ],
+        "semantic_summary": "71 assets maquettes référencés et classés en 7 catégories, 4 suites de tests vertes.",
+        "status": "SUCCESS"
+      }
+    ],
+    "dynamic_history": [
+      {
+        "session_date": "2026-10-19",
+        "turn_id": "turn_01",
+        "goal": "Validation dynamique reelle en conditions de production pour 01_web_assets_manager",
+        "semantic_summary": "Cycle de vie valide avec succes sans falsification pour 01_web_assets_manager.",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_01",
+        "goal": "Validation autonome de l'historique Agent Coding 30 tours",
+        "semantic_summary": "Cycle de vie Agent Coding validé en autonomie complète (0 dépendance externe).",
+        "status": "SUCCESS"
+      }
+    ]
+  }
+}

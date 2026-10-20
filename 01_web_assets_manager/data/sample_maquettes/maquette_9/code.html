@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Guide Technique de Métré &amp; Normes Garde-Corps | BatiHome</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#00323f",
+            "on-secondary-fixed": "#00201d",
+            "surface-dim": "#d2daf0",
+            "error": "#ba1a1a",
+            "surface-variant": "#dbe2f9",
+            "tertiary": "#541b00",
+            "border-subtle": "#EAECF0",
+            "tertiary-fixed-dim": "#ffb597",
+            "inverse-surface": "#293041",
+            "outline": "#70787c",
+            "on-tertiary-fixed": "#360f00",
+            "primary-fixed": "#b7eafe",
+            "success-green": "#067647",
+            "text-secondary": "#344054",
+            "surface-container-high": "#e0e8ff",
+            "inverse-primary": "#9bcee1",
+            "on-surface-variant": "#40484b",
+            "primary-container": "#0e4a5a",
+            "on-error": "#ffffff",
+            "on-error-container": "#93000a",
+            "text-muted": "#475467",
+            "on-tertiary-container": "#ff9567",
+            "surface-tint": "#316576",
+            "inverse-on-surface": "#edf0ff",
+            "surface-glass-tint": "#E6F2F5",
+            "on-surface": "#141b2c",
+            "surface": "#f9f9ff",
+            "primary-fixed-dim": "#9bcee1",
+            "on-primary-container": "#86b9cb",
+            "on-tertiary": "#ffffff",
+            "secondary": "#006a62",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed-variant": "#005049",
+            "on-tertiary-fixed-variant": "#7d2d00",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-container": "#782b00",
+            "secondary-fixed-dim": "#66d9cc",
+            "background": "#f9f9ff",
+            "outline-variant": "#c0c8cb",
+            "surface-dark": "#0B2630",
+            "surface-container-highest": "#dbe2f9",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#81f3e5",
+            "surface-container-low": "#f1f3ff",
+            "surface-container": "#e9edff",
+            "on-primary-fixed-variant": "#134d5d",
+            "error-container": "#ffdad6",
+            "surface-canvas": "#F7F8FA",
+            "on-secondary-container": "#006f66",
+            "on-primary-fixed": "#001f28",
+            "surface-bright": "#f9f9ff",
+            "surface-card": "#FFFFFF",
+            "tertiary-fixed": "#ffdbcd",
+            "on-background": "#141b2c",
+            "border-strong": "#D0D5DD",
+            "secondary-fixed": "#84f5e8"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "margin": "2rem",
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "gutter-mobile": "1rem",
+            "space-xl": "2.5rem",
+            "gutter": "1.5rem"
+          },
+          "fontFamily": {
+            "body-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-hero": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-hero-mobile": ["Inter"],
+            "metric-price-md": ["Inter"],
+            "metric-price-lg": ["Inter"],
+            "label-technical": ["Inter"]
+          },
+          "fontSize": {
+            "body-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+            "headline-hero": ["44px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+            "headline-hero-mobile": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+            "metric-price-md": ["20px", {"lineHeight": "26px", "fontWeight": "600"}],
+            "metric-price-lg": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "label-technical": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-surface-canvas text-on-surface antialiased font-body-md text-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TOP NAV BAR (Shared Component JSON Source of Truth) -->
+<header class="bg-surface-card dark:bg-surface-dark docked full-width top-0 z-50 sticky border-b border-border-subtle dark:border-outline-variant shadow-sm">
+<div class="flex justify-between items-center w-full px-6 lg:px-12 max-w-7xl mx-auto h-20">
+<div class="flex items-center space-x-10">
+<a class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight flex items-center space-x-2" href="#">
+<span class="w-8 h-8 rounded-lg bg-primary-container text-white flex items-center justify-center font-bold text-lg shadow-sm">B</span>
+<span>BatiHome</span>
+</a>
+<nav class="hidden md:flex items-center space-x-7">
+<a class="text-text-secondary dark:text-outline-variant font-medium hover:text-primary dark:hover:text-inverse-primary text-label-md font-label-md hover:text-primary dark:hover:text-secondary-fixed hover:bg-surface-container-low dark:hover:bg-primary-container transition-all duration-150 py-1" href="#">Solutions</a>
+<a class="text-text-secondary dark:text-outline-variant font-medium hover:text-primary dark:hover:text-inverse-primary text-label-md font-label-md hover:text-primary dark:hover:text-secondary-fixed hover:bg-surface-container-low dark:hover:bg-primary-container transition-all duration-150 py-1" href="#">Projets</a>
+<a class="text-text-secondary dark:text-outline-variant font-medium hover:text-primary dark:hover:text-inverse-primary text-label-md font-label-md hover:text-primary dark:hover:text-secondary-fixed hover:bg-surface-container-low dark:hover:bg-primary-container transition-all duration-150 py-1" href="#">Configurateur</a>
+<a class="text-text-secondary dark:text-outline-variant font-medium hover:text-primary dark:hover:text-inverse-primary text-label-md font-label-md hover:text-primary dark:hover:text-secondary-fixed hover:bg-surface-container-low dark:hover:bg-primary-container transition-all duration-150 py-1" href="#">Réalisations</a>
+<!-- Active tab mapped accurately to 'Conseils' -->
+<a class="text-primary dark:text-secondary-fixed font-semibold border-b-2 border-primary dark:border-secondary-fixed pb-1 text-label-md font-label-md" href="#">Conseils</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<div class="hidden lg:flex items-center bg-surface-canvas rounded-lg px-3 py-1.5 border border-border-subtle focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-outline text-lg mr-2">search</span>
+<input class="bg-transparent border-0 text-body-sm font-body-sm focus:ring-0 focus:outline-none w-48 text-on-surface" placeholder="Rechercher une norme, profilé..." type="text"/>
+</div>
+<div class="flex items-center space-x-2">
+<button aria-label="Favoris" class="p-2 rounded-lg text-text-secondary hover:text-primary hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<button aria-label="Compte" class="p-2 rounded-lg text-text-secondary hover:text-primary hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button aria-label="Panier" class="p-2 rounded-lg text-text-secondary hover:text-primary hover:bg-surface-container-low transition-colors relative">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+</div>
+<a class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-primary-container text-white text-label-md font-label-md font-semibold hover:bg-primary transition-all duration-150 shadow-sm active:scale-[0.98]" href="#devis">
+          Devis en ligne
+        </a>
+</div>
+</div>
+</header>
+<!-- BREADCRUMBS & HERO INTRO -->
+<section class="border-b border-border-subtle bg-white">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 py-4">
+<div class="flex items-center space-x-2 text-label-technical font-label-technical text-text-muted">
+<a class="hover:text-primary" href="#">Accueil</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<a class="hover:text-primary" href="#">Conseils</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary font-semibold">Guide Technique de Métré &amp; Normes</span>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 lg:px-12 pt-8 pb-14">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<div class="lg:col-span-7 space-y-6">
+<div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-surface-glass-tint border border-primary/20 text-primary text-label-technical font-label-technical uppercase">
+<span class="material-symbols-outlined text-sm">verified</span>
+<span>Conformité CSTB &amp; Normes NF P01-012 / NF P01-013</span>
+</div>
+<h1 class="text-headline-hero md:text-headline-hero text-headline-hero-mobile font-headline-hero text-primary tracking-tight">
+            Guide Technique de Métré &amp; Normes Garde-Corps
+          </h1>
+<p class="text-body-lg font-body-lg text-text-secondary leading-relaxed">
+            Comment mesurer votre terrasse, escalier ou balcon sans erreur avant commande. Normes NF P01-012 et NF P01-013 expliquées simplement pour garantir sécurité absolue et conformité légale.
+          </p>
+<div class="flex flex-wrap gap-4 pt-2">
+<a class="px-5 py-3 rounded-lg bg-primary-container text-white font-semibold text-body-md font-body-md hover:bg-primary transition duration-180 flex items-center space-x-2 shadow-sm" href="#espaces">
+<span class="material-symbols-outlined text-lg">straighten</span>
+<span>Consulter les guides de cotes</span>
+</a>
+<a class="px-5 py-3 rounded-lg border border-border-strong text-on-surface font-semibold text-body-md font-body-md hover:bg-surface-canvas transition duration-180 flex items-center space-x-2" href="#telechargements">
+<span class="material-symbols-outlined text-lg">download</span>
+<span>Télécharger fiches métré 2D</span>
+</a>
+</div>
+</div>
+<div class="lg:col-span-5">
+<div class="bg-surface-canvas rounded-xl p-6 border border-border-subtle shadow-sm relative overflow-hidden">
+<div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-secondary-fixed/20 pointer-events-none blur-2xl"></div>
+<div class="flex items-center justify-between border-b border-border-subtle pb-4 mb-4">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary">rule</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Règles fondamentales</h3>
+</div>
+<span class="text-label-technical font-label-technical bg-primary text-white px-2 py-0.5 rounded">Rappel NF</span>
+</div>
+<ul class="space-y-3.5 text-body-sm font-body-sm text-text-secondary">
+<li class="flex items-start space-x-2.5">
+<span class="material-symbols-outlined text-success-green text-lg mt-0.5">check_circle</span>
+<span><strong>Chute &gt; 1,00 m :</strong> Garde-corps obligatoire avec hauteur min. de 1,00 m (ou 1,10 m si épaisseur acrotère &gt; 0,50 m).</span>
+</li>
+<li class="flex items-start space-x-2.5">
+<span class="material-symbols-outlined text-success-green text-lg mt-0.5">check_circle</span>
+<span><strong>Zone de sécurité 450 mm :</strong> Barreaudage ou verre sans aspérité franchissable depuis le sol fini.</span>
+</li>
+<li class="flex items-start space-x-2.5">
+<span class="material-symbols-outlined text-success-green text-lg mt-0.5">check_circle</span>
+<span><strong>Garde au sol max :</strong> Espacement dalle-verre inférieur à 110 mm pour prévenir tout glissement d'enfant.</span>
+</li>
+</ul>
+<div class="mt-5 pt-4 border-t border-border-subtle flex items-center justify-between text-label-md font-label-md text-primary">
+<span class="flex items-center"><span class="material-symbols-outlined text-sm mr-1">timer</span> Tolérance d'usine : ±2 mm</span>
+<a class="font-semibold underline hover:text-secondary" href="#normes-coupe">Détails coupes →</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MAIN VIEWPORT WITH SIDEBAR SUMMARY + INTERACTIVE CONTENT -->
+<main class="max-w-7xl mx-auto px-6 lg:px-12 py-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- STICKY SOMMAIRE / NAV RAIL (3 cols) -->
+<aside class="lg:col-span-3 sticky top-28 space-y-4">
+<div class="bg-white rounded-xl border border-border-subtle p-5 shadow-sm">
+<p class="text-label-technical font-label-technical text-text-muted uppercase mb-3 tracking-wider flex items-center">
+<span class="material-symbols-outlined text-sm mr-1.5">toc</span>
+            Sommaire du Guide
+          </p>
+<nav class="space-y-1 text-body-sm font-body-sm font-medium">
+<a class="flex items-center px-3 py-2 rounded-lg text-primary bg-surface-glass-tint font-semibold border-l-2 border-primary" href="#espaces">
+              1. Cotes par type d'espace
+            </a>
+<a class="flex items-center pl-7 pr-3 py-1.5 rounded-lg text-text-secondary hover:text-primary hover:bg-surface-canvas" href="#terrasse">
+              • Terrasse dalle béton
+            </a>
+<a class="flex items-center pl-7 pr-3 py-1.5 rounded-lg text-text-secondary hover:text-primary hover:bg-surface-canvas" href="#escalier">
+              • Escalier &amp; Pente
+            </a>
+<a class="flex items-center pl-7 pr-3 py-1.5 rounded-lg text-text-secondary hover:text-primary hover:bg-surface-canvas" href="#balcon">
+              • Balcon &amp; Acrotère
+            </a>
+<a class="flex items-center px-3 py-2 rounded-lg text-text-secondary hover:text-primary hover:bg-surface-canvas mt-2" href="#normes-coupe">
+              2. Coupes techniques &amp; Verres
+            </a>
+<a class="flex items-center px-3 py-2 rounded-lg text-text-secondary hover:text-primary hover:bg-surface-canvas" href="#videos">
+              3. Tutoriels vidéo pas-à-pas
+            </a>
+<a class="flex items-center px-3 py-2 rounded-lg text-text-secondary hover:text-primary hover:bg-surface-canvas" href="#telechargements">
+              4. Gabarits &amp; Fiches 2D
+            </a>
+<a class="flex items-center px-3 py-2 rounded-lg text-text-secondary hover:text-primary hover:bg-surface-canvas" href="#validation-bureau">
+              5. Validation Bureau d'Études
+            </a>
+</nav>
+</div>
+<!-- QUICK ASSISTANCE AI CALLOUT -->
+<div class="bg-surface-dark text-white rounded-xl p-5 border border-primary-container shadow-sm space-y-3">
+<div class="flex items-center space-x-2 text-secondary-fixed">
+<span class="material-symbols-outlined text-lg">auto_awesome</span>
+<span class="text-label-technical font-label-technical tracking-wide uppercase">Assistant Métrique</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline-variant">
+            Besoin d'un calcul d'empattement direct ? Saisissez les dimensions globales de votre terrasse.
+          </p>
+<div class="relative">
+<input class="w-full bg-primary-container text-white placeholder-outline-variant text-body-sm font-body-sm rounded-lg px-3 py-2 border border-outline/30 focus:border-secondary-fixed focus:outline-none" placeholder="Ex: Terrasse L 5,20m x 3,10m" type="text"/>
+<button aria-label="Calculer" class="absolute right-1.5 top-1.5 p-1 text-secondary-fixed hover:text-white transition">
+<span class="material-symbols-outlined text-lg">send</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- MAIN CONTENT DOSSIER (9 cols) -->
+<div class="lg:col-span-9 space-y-14">
+<!-- SECTION 1: PRISE DE COTES PAR TYPE D'ESPACE -->
+<section class="scroll-mt-28 space-y-8" id="espaces">
+<div class="border-b border-border-subtle pb-4">
+<span class="text-label-technical font-label-technical uppercase text-secondary font-bold">Partie 01</span>
+<h2 class="text-headline-lg font-headline-lg text-primary tracking-tight">Prise de cotes par type d'espace</h2>
+<p class="text-body-md font-body-md text-text-secondary mt-1">Prenez des mesures réelles sur support fini. N'anticipez pas l'épaisseur d'un carrelage non posé.</p>
+</div>
+<!-- CARD A: TERRASSE DALLE BÉTON -->
+<div class="bg-white rounded-xl border border-border-subtle p-6 lg:p-8 shadow-sm space-y-6" id="terrasse">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border-subtle pb-4">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-lg bg-surface-glass-tint flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">deck</span>
+</div>
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary">1.1 Terrasse en dalle béton extérieure</h3>
+<p class="text-body-sm font-body-sm text-text-muted">Pose sur dalle finie, carrelée ou étanchée</p>
+</div>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded text-label-technical font-label-technical bg-amber-50 text-amber-800 border border-amber-200">
+<span class="material-symbols-outlined text-sm mr-1">warning</span> Tolérance d'exécution : ±5 mm
+              </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+<div class="relative rounded-lg overflow-hidden border border-border-subtle h-64 bg-surface-canvas">
+<img class="w-full h-full object-cover" data-alt="Une terrasse moderne avec dalle béton finie et carrelage extérieur épuré surplombant un jardin, éclairée par une lumière naturelle douce mettant en valeur la ligne de retrait technique de cinquante millimètres pour l'installation d'un garde-corps en aluminium et verre de BatiHome, netteté architecturale impeccable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYv7an7Lz7uDaB01zuSTAyEVQRtwQ-dy9duMnCPW7HmKcCKmUM5tnx50uWcPsmsF5J8iWXhCIrySY2Tqfntu1VA0CSf3gAtotLRFq6kgGsdC-Q9J9p1rOvAxSB441hSitINZFAzVfdVJxEQRtYEn9n1at46P5U0AXsZzX_yH0t-MY6xoJrGG-11dAit4Yy8n0mxET3yxwY4HZaXATGhEWMP8MChURUql4aTY9iXEk"/>
+<div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/80 to-transparent p-4 text-white">
+<span class="text-label-technical font-label-technical uppercase tracking-wider text-secondary-fixed">Retrait réglementaire</span>
+<p class="text-body-sm font-body-sm font-semibold">50 mm minimum du nez de dalle pour éviter l'épaufrure du béton</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="p-3.5 bg-surface-canvas rounded-lg border border-border-subtle">
+<h4 class="font-semibold text-primary text-body-md font-body-md flex items-center mb-1">
+<span class="material-symbols-outlined text-secondary text-base mr-1.5">square_foot</span>
+                    Mesure d'angle à angle
+                  </h4>
+<p class="text-body-sm font-body-sm text-text-secondary">
+                    Mesurez la longueur totale extérieure brute de mur à mur ou d'angle à angle à la fois au sol et à 1,00 m de hauteur pour identifier d'éventuels faux aplombs de façade.
+                  </p>
+</div>
+<div class="p-3.5 bg-surface-canvas rounded-lg border border-border-subtle">
+<h4 class="font-semibold text-primary text-body-md font-body-md flex items-center mb-1">
+<span class="material-symbols-outlined text-secondary text-base mr-1.5">space_dashboard</span>
+                    Garde au nez de dalle (50 mm)
+                  </h4>
+<p class="text-body-sm font-body-sm text-text-secondary">
+                    Les chevilles chimiques ou goujons d'ancrage M10/M12 doivent impérativement être implantés à plus de 50 mm du bord fini pour préserver la résistance mécanique du béton.
+                  </p>
+</div>
+<div class="p-3.5 bg-surface-canvas rounded-lg border border-border-subtle">
+<h4 class="font-semibold text-primary text-body-md font-body-md flex items-center mb-1">
+<span class="material-symbols-outlined text-secondary text-base mr-1.5">water_drop</span>
+                    Évacuation des eaux pluviales
+                  </h4>
+<p class="text-body-sm font-body-sm text-text-secondary">
+                    Prévoyez des cales de drainage sous rail aluminium pour respecter l'écoulement des eaux et la pente de 1,5%.
+                  </p>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD B: ESCALIER -->
+<div class="bg-white rounded-xl border border-border-subtle p-6 lg:p-8 shadow-sm space-y-6" id="escalier">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border-subtle pb-4">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-lg bg-surface-glass-tint flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">stairs</span>
+</div>
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary">1.2 Escalier intérieur &amp; extérieur</h3>
+<p class="text-body-sm font-body-sm text-text-muted">Calcul de la ligne de foulée, pente, giron et emmarchement</p>
+</div>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded text-label-technical font-label-technical bg-primary-fixed text-primary font-semibold">
+                Formule de Blondel : 2H + G = 60 à 64 cm
+              </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+<div class="space-y-4">
+<p class="text-body-md font-body-md text-text-secondary">
+                  Pour un garde-corps rampant, l'angle exact du limon ou des nez de marches dicte la coupe d'onglet des verres trapézoïdaux :
+                </p>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-canvas border border-border-subtle">
+<span class="font-medium text-body-sm font-body-sm">Hauteur de marche (H)</span>
+<span class="font-bold text-primary font-mono text-body-md font-body-md">160 à 180 mm</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-canvas border border-border-subtle">
+<span class="font-medium text-body-sm font-body-sm">Giron (G - profondeur de marche)</span>
+<span class="font-bold text-primary font-mono text-body-md font-body-md">240 à 300 mm</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-canvas border border-border-subtle">
+<span class="font-medium text-body-sm font-body-sm">Hauteur sur nez de marche</span>
+<span class="font-bold text-primary font-mono text-body-md font-body-md">Min. 900 mm</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-surface-canvas border border-border-subtle">
+<span class="font-medium text-body-sm font-body-sm">Emmarchement utile</span>
+<span class="font-bold text-primary font-mono text-body-md font-body-md">800 à 1 000 mm</span>
+</div>
+</div>
+</div>
+<div class="relative rounded-lg overflow-hidden border border-border-subtle h-64 bg-surface-canvas">
+<img class="w-full h-full object-cover" data-alt="Gros plan architectural technique d'un escalier intérieur contemporain en béton ciré et marches en chêne clair, équipé d'un garde-corps vitré BatiHome avec fixations invisibles au limon, éclairage zénithal mettant en évidence les lignes de cote et de giron millimétrées." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS2Ju2ykrhRvroncQhHaDjC8Aj2M-dWIDmKXSHo7Ws0C6uxQNYkJ3OUeNGl2NltxpOyuLTDH2RoIgJlvEiN23nujnr5wah79AAG1Z_lgDeuCbwdp3vpB0Y8Q6UTCTvYS4XhMYy_pnKOsIpxtZkluyxAirxzn2-QZZPZgB0sT4K23KWCc-1aKsStRgMrbhu4aT-wKbpvNoy7BLTvM6ii1lOoU8LYsyfjKgE13lH5QM"/>
+<div class="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-sm p-3 rounded-lg border border-border-subtle flex items-center justify-between">
+<span class="text-body-sm font-body-sm font-semibold text-primary">Gabarit cartonné d'angle fourni</span>
+<a class="text-label-technical font-label-technical text-secondary font-bold hover:underline" href="#telechargements">Télécharger →</a>
+</div>
+</div>
+</div>
+</div>
+<!-- CARD C: BALCON ET ACROTÈRE -->
+<div class="bg-white rounded-xl border border-border-subtle p-6 lg:p-8 shadow-sm space-y-6" id="balcon">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border-subtle pb-4">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-lg bg-surface-glass-tint flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">balcony</span>
+</div>
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary">1.3 Balcon &amp; Muret Acrotère</h3>
+<p class="text-body-sm font-body-sm text-text-muted">Norme NF P01-012 : hauteurs strictes selon l'épaisseur d'appui</p>
+</div>
+</div>
+<span class="inline-flex items-center px-2.5 py-1 rounded text-label-technical font-label-technical bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="material-symbols-outlined text-sm mr-1">security</span> Hauteur de chute &gt; 1,00 m
+              </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-4 rounded-xl bg-surface-canvas border border-border-subtle space-y-2">
+<div class="w-8 h-8 rounded bg-primary text-white flex items-center justify-center font-bold text-sm">A</div>
+<h4 class="font-semibold text-primary text-body-md font-body-md">Muret &lt; 50 cm d'épaisseur</h4>
+<p class="text-body-sm font-body-sm text-text-secondary">
+                  La hauteur totale de protection (muret béton + garde-corps vitré additionnel) doit atteindre au moins <strong>1,00 m (1 000 mm)</strong> depuis le nu du sol.
+                </p>
+</div>
+<div class="p-4 rounded-xl bg-surface-canvas border border-border-subtle space-y-2">
+<div class="w-8 h-8 rounded bg-primary text-white flex items-center justify-center font-bold text-sm">B</div>
+<h4 class="font-semibold text-primary text-body-md font-body-md">Muret &gt; 50 cm d'épaisseur</h4>
+<p class="text-body-sm font-body-sm text-text-secondary">
+                  Si le muret offre un appui large ou une tablette franchissable, la hauteur de sécurité minimale requise est portée à <strong>1,10 m</strong> pour prévenir le basculement.
+                </p>
+</div>
+<div class="p-4 rounded-xl bg-surface-canvas border border-border-subtle space-y-2">
+<div class="w-8 h-8 rounded bg-primary text-white flex items-center justify-center font-bold text-sm">C</div>
+<h4 class="font-semibold text-primary text-body-md font-body-md">Zone de stationnement normal (ZSN)</h4>
+<p class="text-body-sm font-body-sm text-text-secondary">
+                  Toute surface horizontale à moins de 450 mm de haut et de profondeur supérieure à 300 mm est considérée comme ZSN : le vitrage doit démarrer au nu intérieur.
+                </p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: SCHÉMAS TECHNIQUES & COUPES EN COUPE -->
+<section class="scroll-mt-28 space-y-8" id="normes-coupe">
+<div class="border-b border-border-subtle pb-4">
+<span class="text-label-technical font-label-technical uppercase text-secondary font-bold">Partie 02</span>
+<h2 class="text-headline-lg font-headline-lg text-primary tracking-tight">Schémas techniques explicatifs &amp; Coupes</h2>
+<p class="text-body-md font-body-md text-text-secondary mt-1">Comparatif des types d'implantation et préconisations de vitrage feuilleté trempé de sécurité.</p>
+</div>
+<!-- COMPARATIF POSE FRANÇAISE VS ANGLAISE -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- POSE À LA FRANÇAISE -->
+<div class="bg-white rounded-xl border border-border-subtle p-6 shadow-sm flex flex-col justify-between">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-label-technical font-label-technical uppercase tracking-wider text-text-muted">Profil Sabot Sol</span>
+<span class="px-2 py-0.5 rounded text-label-technical font-label-technical bg-surface-glass-tint text-primary font-bold">Sur dalle</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Pose à la française</h3>
+<p class="text-body-sm font-body-sm text-text-secondary">
+                  Fixation directement au-dessus de la dalle béton par perçage vertical. Idéale pour les terrasses larges ne nécessitant pas de gain d'espace au sol.
+                </p>
+<!-- Technical Cutout Wireframe -->
+<div class="border border-dashed border-border-strong rounded-lg p-5 bg-surface-canvas text-center space-y-3">
+<div class="mx-auto w-24 h-32 border-2 border-primary rounded-t-sm bg-white relative flex flex-col items-center justify-end shadow-inner">
+<span class="absolute top-2 text-label-technical font-label-technical text-outline">Verre Feuilleté</span>
+<div class="w-full h-8 bg-primary/20 border-t-2 border-primary flex items-center justify-center">
+<span class="text-label-technical font-label-technical font-bold text-primary">Sabot Sol</span>
+</div>
+</div>
+<div class="w-full h-3 bg-border-strong rounded-sm relative">
+<div class="absolute -bottom-4 left-1/2 -translate-x-1/2 text-label-technical font-label-technical text-text-muted">Dalle béton (retrait 50 mm)</div>
+</div>
+</div>
+<ul class="text-body-sm font-body-sm text-text-secondary space-y-2 pt-2">
+<li class="flex items-center space-x-2"><span class="material-symbols-outlined text-success-green text-sm">check</span><span>Installation rapide par scellement mécanique ou chimique M10</span></li>
+<li class="flex items-center space-x-2"><span class="material-symbols-outlined text-success-green text-sm">check</span><span>Possibilité de profilé continu invisible encastré dans chape</span></li>
+<li class="flex items-center space-x-2"><span class="material-symbols-outlined text-outline text-sm">close</span><span>Empattement au sol de 60 à 80 mm</span></li>
+</ul>
+</div>
+<div class="mt-6 pt-4 border-t border-border-subtle flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-text-muted">Prix indicatif profilé :</span>
+<span class="font-bold text-primary font-mono text-metric-price-md font-metric-price-md">dès 289 €/ml TTC</span>
+</div>
+</div>
+<!-- POSE À L'ANGLAISE -->
+<div class="bg-white rounded-xl border border-border-subtle p-6 shadow-sm flex flex-col justify-between">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-label-technical font-label-technical uppercase tracking-wider text-text-muted">Profil Nez de Dalle</span>
+<span class="px-2 py-0.5 rounded text-label-technical font-label-technical bg-surface-glass-tint text-primary font-bold">En applique latérale</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Pose à l'anglaise</h3>
+<p class="text-body-sm font-body-sm text-text-secondary">
+                  Fixation latérale en applique sur le chant du balcon ou de la trémie. Préserve 100% de la surface utile circulable de votre terrasse.
+                </p>
+<!-- Technical Cutout Wireframe -->
+<div class="border border-dashed border-border-strong rounded-lg p-5 bg-surface-canvas text-center space-y-3">
+<div class="mx-auto w-32 h-32 relative flex items-end justify-start">
+<div class="w-16 h-20 bg-border-strong rounded-l-sm relative flex items-center justify-center">
+<span class="text-label-technical font-label-technical text-text-muted">Nez Dalle</span>
+</div>
+<div class="w-6 h-16 bg-primary/20 border-2 border-primary ml-1 rounded-sm flex items-center justify-center">
+<span class="text-label-technical font-label-technical -rotate-90 text-primary font-bold">Sabot</span>
+</div>
+<div class="w-3 h-28 bg-white border-2 border-primary -ml-4 mb-2 shadow-inner"></div>
+</div>
+<div class="text-label-technical font-label-technical text-text-muted">Hauteur de dalle min. requise : 140 mm</div>
+</div>
+<ul class="text-body-sm font-body-sm text-text-secondary space-y-2 pt-2">
+<li class="flex items-center space-x-2"><span class="material-symbols-outlined text-success-green text-sm">check</span><span>Gain d'espace total : aucun encombrement sur le plancher</span></li>
+<li class="flex items-center space-x-2"><span class="material-symbols-outlined text-success-green text-sm">check</span><span>Esthétique aérienne et pureté visuelle sans rupture de dalle</span></li>
+<li class="flex items-center space-x-2"><span class="material-symbols-outlined text-outline text-sm">info</span><span>Nécessite une hauteur de nez de dalle supérieure à 140 mm</span></li>
+</ul>
+</div>
+<div class="mt-6 pt-4 border-t border-border-subtle flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-text-muted">Prix indicatif profilé :</span>
+<span class="font-bold text-primary font-mono text-metric-price-md font-metric-price-md">dès 339 €/ml TTC</span>
+</div>
+</div>
+</div>
+<!-- ÉPAISSEURS DE VITRAGE HOMOLOGUÉS -->
+<div class="bg-white rounded-xl border border-border-subtle p-6 lg:p-8 shadow-sm space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Épaisseurs de vitrages homologués (Norme NF P01-013)</h3>
+<p class="text-body-sm font-body-sm text-text-muted">Résistance aux chocs pendulaires et charges dynamiques de vent</p>
+</div>
+<span class="text-label-technical font-label-technical text-secondary uppercase font-bold tracking-wider hidden sm:block">Verres feuilletés trempés EVA / PVB</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- VERRE 44.2 -->
+<div class="p-5 rounded-xl border border-border-subtle hover:border-primary transition space-y-3 bg-surface-canvas">
+<div class="flex items-center justify-between">
+<span class="font-mono text-headline-sm font-headline-sm text-primary font-bold">44.2 (8.76 mm)</span>
+<span class="px-2 py-0.5 rounded text-label-technical font-label-technical bg-white border border-border-subtle">Résidentiel bas</span>
+</div>
+<div class="h-2 w-full bg-primary/20 rounded-full overflow-hidden">
+<div class="w-1/3 h-full bg-primary"></div>
+</div>
+<p class="text-body-sm font-body-sm text-text-secondary">
+                  2 feuilles de verre de 4 mm assemblées par 2 films de butyral de polyvinyle (PVB 0,76 mm).
+                </p>
+<div class="text-label-technical font-label-technical text-text-muted pt-2 border-t border-border-subtle">
+                  Usage : Hauteur de chute &lt; 1,00 m, séparatifs intérieurs ou mezzanines faibles contraintes.
+                </div>
+</div>
+<!-- VERRE 66.2 -->
+<div class="p-5 rounded-xl border-2 border-primary bg-surface-glass-tint/30 space-y-3 relative">
+<span class="absolute -top-3 right-4 bg-primary text-white text-label-technical font-label-technical px-2 py-0.5 rounded uppercase font-bold tracking-wider">Standard BatiHome</span>
+<div class="flex items-center justify-between">
+<span class="font-mono text-headline-sm font-headline-sm text-primary font-bold">66.2 (12.76 mm)</span>
+<span class="px-2 py-0.5 rounded text-label-technical font-label-technical bg-primary-fixed text-primary font-bold">Terrasses &amp; Balcons</span>
+</div>
+<div class="h-2 w-full bg-primary/20 rounded-full overflow-hidden">
+<div class="w-2/3 h-full bg-primary"></div>
+</div>
+<p class="text-body-sm font-body-sm text-text-secondary">
+                  2 feuilles trempées de 6 mm + 2 intercalaires PVB (12,76 mm). Résistance éprouvée à 1 000 Joules.
+                </p>
+<div class="text-label-technical font-label-technical text-primary font-medium pt-2 border-t border-primary/20">
+                  Usage universel : Hauteur de chute &gt; 1 m, terrasses privatives et balcons exposés.
+                </div>
+</div>
+<!-- VERRE 88.2 / 88.4 -->
+<div class="p-5 rounded-xl border border-border-subtle hover:border-primary transition space-y-3 bg-surface-canvas">
+<div class="flex items-center justify-between">
+<span class="font-mono text-headline-sm font-headline-sm text-primary font-bold">88.2 (16.76 mm)</span>
+<span class="px-2 py-0.5 rounded text-label-technical font-label-technical bg-white border border-border-subtle">Hautes charges</span>
+</div>
+<div class="h-2 w-full bg-primary/20 rounded-full overflow-hidden">
+<div class="w-full h-full bg-primary"></div>
+</div>
+<p class="text-body-sm font-body-sm text-text-secondary">
+                  2 verres extra-trempés de 8 mm + 4 films de polyvinyle ou SentryGlas pour zones venteuses extrêmes.
+                </p>
+<div class="text-label-technical font-label-technical text-text-muted pt-2 border-t border-border-subtle">
+                  Usage : Toitures terrasses, zones côtières classe 4 et Établissements Recevant du Public (ERP).
+                </div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: VIDÉOS ET TUTORIELS PAS-À-PAS -->
+<section class="scroll-mt-28 space-y-8" id="videos">
+<div class="border-b border-border-subtle pb-4">
+<span class="text-label-technical font-label-technical uppercase text-secondary font-bold">Partie 03</span>
+<h2 class="text-headline-lg font-headline-lg text-primary tracking-tight">Vidéos &amp; Tutoriels pas-à-pas</h2>
+<p class="text-body-md font-body-md text-text-secondary mt-1">Nos experts métreurs vous guident avec les outils professionnels de précision.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- TUTORIEL 1: TRACER AU LASER -->
+<div class="bg-white rounded-xl border border-border-subtle overflow-hidden shadow-sm flex flex-col justify-between group">
+<div class="relative h-56 bg-surface-dark overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Vue rapprochée d'un professionnel en atelier de chantier ajustant un niveau laser rotatif projetant une ligne verte éclatante sur une dalle en béton brut, précision millimétrique, cadrage cinématique élégant dans les tons vert émeraude et bleu marine profond." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP3W7zPyGgrVge_Bs2Fb9WbfQiSoloeh4RSC_SaT486xrBtK7x84tTm84QMR2IyOMVyx1LtLn7mqihW3psgo5IH5bDt2JKagYMuoGcpyty2tX6_HtaefB8EWt6ds-DXZcE4Qj4wZMHRNh4S3qcsGJY-9GXT5yfYvH6k0VmLXZUtBNPeTiqrtspCTu8rd0Mdyvt6xsuqsweF4i0CpPhzhOF655g2gfLbNJP6WkhdQc"/>
+<div class="absolute inset-0 bg-primary/30 flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-white/90 text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl ml-0.5">play_arrow</span>
+</div>
+</div>
+<span class="absolute bottom-3 right-3 bg-primary/90 text-white text-label-technical font-label-technical px-2 py-1 rounded flex items-center space-x-1">
+<span class="material-symbols-outlined text-xs">schedule</span>
+<span>3 min 12</span>
+</span>
+</div>
+<div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+<div>
+<span class="text-label-technical font-label-technical text-secondary font-bold uppercase tracking-wider">Tutoriel #01</span>
+<h3 class="text-headline-sm font-headline-sm text-primary mt-1">Comment tracer l'axe de perçage au laser</h3>
+<p class="text-body-sm font-body-sm text-text-secondary mt-1">
+                    Alignez vos repères au cordeau ou niveau laser à ligne continue pour garantir une rectitude parfaite sur 15 mètres sans flèche visuelle.
+                  </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-body-sm font-body-sm text-text-muted">
+<span class="flex items-center"><span class="material-symbols-outlined text-sm mr-1">hardware</span> Outil : Laser croix vert</span>
+<button class="font-semibold text-primary hover:text-secondary flex items-center">Visionner <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span></button>
+</div>
+</div>
+</div>
+<!-- TUTORIEL 2: PLANÉITÉ ET NIVEAU -->
+<div class="bg-white rounded-xl border border-border-subtle overflow-hidden shadow-sm flex flex-col justify-between group">
+<div class="relative h-56 bg-surface-dark overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Plan en contre-plongée montrant une règle de maçon en aluminium de deux mètres et un niveau à bulle reposant sur une surface de balcon en pierre naturelle, révélant la planéité rigoureuse du support, ambiance lumineuse zénithale épurée et professionnelle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFR7KDQOk1yn_QQmKeaqwGGpB2DpE_M0JL8b46fLuoslO83dKbQH_qdkqFv1XvmY6Atvr8vtbHC2zXmiuTt2TeBkuJS8_oFVHUULnoUuteQP_xEpuLtzYQ46Rh_6BEzdEyPgCRskMwABXOqXgCG-EElFo1bOI6N8wwuxyu17iPxZSVxLveigNXO9pIXBjvMKadB3obga2_-7uWyZctX2kEOhPB7QLQC7sEHgTkaaA"/>
+<div class="absolute inset-0 bg-primary/30 flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-white/90 text-primary flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl ml-0.5">play_arrow</span>
+</div>
+</div>
+<span class="absolute bottom-3 right-3 bg-primary/90 text-white text-label-technical font-label-technical px-2 py-1 rounded flex items-center space-x-1">
+<span class="material-symbols-outlined text-xs">schedule</span>
+<span>2 min 05</span>
+</span>
+</div>
+<div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
+<div>
+<span class="text-label-technical font-label-technical text-secondary font-bold uppercase tracking-wider">Tutoriel #02</span>
+<h3 class="text-headline-sm font-headline-sm text-primary mt-1">Vérifier la planéité et le niveau de votre support</h3>
+<p class="text-body-sm font-body-sm text-text-secondary mt-1">
+                    Apprenez à déceler les creux supérieurs à 3 mm sous la règle de 2 m et comment compenser les pentes avec nos cales aluminium brevetées.
+                  </p>
+</div>
+<div class="pt-3 border-t border-border-subtle flex items-center justify-between text-body-sm font-body-sm text-text-muted">
+<span class="flex items-center"><span class="material-symbols-outlined text-sm mr-1">straighten</span> Outil : Règle 2 m + cales</span>
+<button class="font-semibold text-primary hover:text-secondary flex items-center">Visionner <span class="material-symbols-outlined text-sm ml-1">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: OUTILS DE TÉLÉCHARGEMENT GABARITS PDF -->
+<section class="scroll-mt-28 space-y-8" id="telechargements">
+<div class="border-b border-border-subtle pb-4">
+<span class="text-label-technical font-label-technical uppercase text-secondary font-bold">Partie 04</span>
+<h2 class="text-headline-lg font-headline-lg text-primary tracking-tight">Outil de téléchargement de gabarits PDF</h2>
+<p class="text-body-md font-body-md text-text-secondary mt-1">Imprimez à échelle 1:1 vos documents de relevé officiel pour simplifier votre commande.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- GABARIT A -->
+<div class="bg-white rounded-xl border border-border-subtle p-6 shadow-sm flex items-start space-x-4">
+<div class="w-12 h-12 rounded-lg bg-surface-glass-tint text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">picture_as_pdf</span>
+</div>
+<div class="space-y-2 flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-semibold text-primary text-body-lg font-body-lg">Fiche de Métré 2D Vierge</h4>
+<span class="text-label-technical font-label-technical text-text-muted">PDF 1.4 Mo</span>
+</div>
+<p class="text-body-sm font-body-sm text-text-secondary">
+                  Grille quadrillée millimétrée avec légendes de cotations d'angles, retraits d'acrotère et tableau de nomenclature des quincailleries.
+                </p>
+<div class="pt-2">
+<a class="inline-flex items-center space-x-2 text-primary font-semibold text-body-sm font-body-sm hover:text-secondary" href="#">
+<span class="material-symbols-outlined text-base">download</span>
+<span>Télécharger la fiche (.PDF)</span>
+</a>
+</div>
+</div>
+</div>
+<!-- GABARIT B -->
+<div class="bg-white rounded-xl border border-border-subtle p-6 shadow-sm flex items-start space-x-4">
+<div class="w-12 h-12 rounded-lg bg-surface-glass-tint text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">design_services</span>
+</div>
+<div class="space-y-2 flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-semibold text-primary text-body-lg font-body-lg">Gabarit d'Angle d'Escalier 1:1</h4>
+<span class="text-label-technical font-label-technical text-text-muted">PDF 850 Ko</span>
+</div>
+<p class="text-body-sm font-body-sm text-text-secondary">
+                  Rapporteur d'angle à imprimer et découper sur papier épais pour mesurer directement la pente du limon et l'inclinaison des marches.
+                </p>
+<div class="pt-2">
+<a class="inline-flex items-center space-x-2 text-primary font-semibold text-body-sm font-body-sm hover:text-secondary" href="#">
+<span class="material-symbols-outlined text-base">download</span>
+<span>Télécharger le gabarit (.PDF)</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: BUREAU D'ÉTUDES & VALIDATION GRATUITE -->
+<section class="scroll-mt-28" id="validation-bureau">
+<div class="bg-gradient-to-br from-primary via-primary-container to-surface-dark text-white rounded-2xl p-8 lg:p-12 shadow-md relative overflow-hidden">
+<div class="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-secondary-fixed/10 pointer-events-none blur-3xl"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+<div class="lg:col-span-8 space-y-4">
+<div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-secondary-fixed text-label-technical font-label-technical uppercase">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+<span>Service d'Ingénierie BatiHome</span>
+</div>
+<h2 class="text-headline-lg font-headline-lg tracking-tight text-white">
+                  Un doute sur vos mesures ?
+                </h2>
+<p class="text-body-lg font-body-lg text-outline-variant max-w-2xl leading-relaxed">
+                  Envoyez vos photos de chantier au smartphone ou vos plans d'architecte DWG/PDF à notre bureau d'études. Nos ingénieurs vérifient gratuitement vos cotes et la conformité sous 24h ouvrées.
+                </p>
+<div class="flex flex-wrap gap-4 pt-2 text-body-sm font-body-sm text-inverse-on-surface">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-secondary-fixed text-base">check</span>
+<span>Validation des entraxes de perçage</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-secondary-fixed text-base">check</span>
+<span>Modélisation 3D de contrôle fournie</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-secondary-fixed text-base">check</span>
+<span>Garantie décennale engagée</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 text-center space-y-4">
+<div class="w-14 h-14 rounded-full bg-secondary-fixed text-on-secondary-fixed mx-auto flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-2xl font-bold">add_photo_alternate</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-white">Dépôt Express</h3>
+<p class="text-body-sm font-body-sm text-outline-variant mt-1">Glissez vos photos (PNG, JPG, PDF)</p>
+</div>
+<button class="w-full py-3 px-4 rounded-lg bg-secondary-fixed hover:bg-secondary-fixed-dim text-on-secondary-fixed font-semibold text-body-md font-body-md transition-all duration-180 shadow-md flex items-center justify-center space-x-2">
+<span class="material-symbols-outlined">upload_file</span>
+<span>Envoyer mes photos</span>
+</button>
+<span class="block text-label-technical font-label-technical text-outline-variant">Réponse par nos ingénieurs sous 24h</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- FOOTER (Shared Component JSON Source of Truth) -->
+<footer class="bg-surface-dark text-inverse-on-surface w-full pt-16 pb-12 border-t border-primary-container">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col space-y-12">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+<!-- Brand column -->
+<div class="lg:col-span-2 space-y-4">
+<div class="flex items-center space-x-2">
+<span class="w-8 h-8 rounded-lg bg-secondary-fixed text-primary font-bold text-lg flex items-center justify-center shadow-sm">B</span>
+<span class="text-headline-md font-headline-md font-bold text-inverse-on-surface tracking-tight">BatiHome</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline-variant max-w-sm">
+            Concepteur et fabricant français de systèmes de garde-corps vitrés et aluminium haut de gamme. Sécurité certifiée NF P01-012 et P01-013 avec expédition directe d'usine.
+          </p>
+<div class="flex items-center space-x-3 text-secondary-fixed text-label-technical font-label-technical pt-2">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<span>Garantie 10 ans fabricant • Bureau d'études intégré</span>
+</div>
+</div>
+<!-- Links column 1 -->
+<div class="space-y-3">
+<h4 class="text-headline-sm font-headline-sm text-white">Navigation</h4>
+<ul class="space-y-2 text-body-sm font-body-sm">
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Solutions garde-corps</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Projets &amp; Réalisations</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Configurateur 3D</a></li>
+<li><a class="text-secondary-fixed font-semibold" href="#">Guides techniques &amp; FAQ</a></li>
+</ul>
+</div>
+<!-- Links column 2 -->
+<div class="space-y-3">
+<h4 class="text-headline-sm font-headline-sm text-white">Documentation</h4>
+<ul class="space-y-2 text-body-sm font-body-sm">
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#normes-coupe">Normes NF P01-012 / 013</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#telechargements">Fiches métré 2D</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Cahiers des charges CSTB</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Garanties &amp; Certifications</a></li>
+</ul>
+</div>
+<!-- Links column 3 -->
+<div class="space-y-3">
+<h4 class="text-headline-sm font-headline-sm text-white">Légal &amp; Contact</h4>
+<ul class="space-y-2 text-body-sm font-body-sm">
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Mentions légales &amp; CGV</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Gestion des cookies</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Support technique : 01 84 74 20 00</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">contact@batihome.fr</a></li>
+</ul>
+</div>
+</div>
+<!-- Footer Bottom Copyright -->
+<div class="pt-8 border-t border-primary-container flex flex-col md:flex-row justify-between items-center text-label-technical font-label-technical text-outline-variant space-y-4 md:space-y-0">
+<p>© 2026 BatiHome. Tous droits réservés. Normes NF P01-012/013 garanties.</p>
+<div class="flex items-center space-x-6">
+<span>Fabriqué en France</span>
+<span>•</span>
+<span>Verre feuilleté Saint-Gobain</span>
+<span>•</span>
+<span>Aluminium anodisé Qualanod</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

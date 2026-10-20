@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-slate-100" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>BatiHome - Configurateur Étape 3/8</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#0a6358',
+              hover: '#085047',
+              light: '#f0f9f8',
+              subtle: '#e2f1ef',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-scrollbars">
+    /* Masquage de la scrollbar native pour les éléments horizontaux sur iOS */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style data-purpose="range-slider">
+    /* Personnalisation du slider natif */
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #0a6358;
+      cursor: pointer;
+      border: 3px solid #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    }
+    input[type=range]::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #0a6358;
+      cursor: pointer;
+      border: 3px solid #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+<body class="min-h-full flex items-center justify-center p-0 sm:p-4 bg-slate-100 antialiased font-sans text-slate-800">
+<!-- BEGIN: MobileFrameContainer -->
+<!-- Container simulant l'écran mobile iOS fidèle à la capture écran -->
+<div class="w-full max-w-[420px] bg-white min-h-[100dvh] sm:min-h-[844px] sm:max-h-[890px] sm:rounded-[36px] shadow-2xl flex flex-col justify-between overflow-hidden border border-slate-200/80">
+<!-- BEGIN: iOSStatusBar -->
+<header class="pt-3 px-6 flex justify-between items-center text-xs font-semibold text-slate-900 select-none bg-white">
+<span>9:41</span>
+<div class="flex items-center space-x-1.5">
+<!-- Signal icon -->
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z" opacity="0.3"></path><path d="M12 3a9 9 0 0 0-9 9c0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39A8.96 8.96 0 0 0 21 12a9 9 0 0 0-9-9z"></path></svg>
+<!-- Wifi icon -->
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A16.88 16.88 0 0 0 12 4z"></path></svg>
+<!-- Battery icon -->
+<div class="w-5 h-2.5 border border-slate-900 rounded-sm p-0.5 flex items-center">
+<div class="w-full h-full bg-slate-900 rounded-2xs"></div>
+</div>
+</div>
+</header>
+<!-- END: iOSStatusBar -->
+<!-- BEGIN: AppHeader -->
+<!-- Barre de titre de navigation avec bouton retour et fermeture -->
+<div class="px-5 pt-3 pb-2 flex items-center justify-between border-b border-slate-100">
+<button aria-label="Retour" class="p-1 -ml-1 text-slate-600 hover:text-slate-900 transition-colors" type="button">
+<svg class="w-5 h-5 stroke-[2.2] stroke-current fill-none" viewbox="0 0 24 24">
+<path d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<h1 class="text-sm font-semibold tracking-tight text-slate-900">
+        Configurateur – Étape 3/8
+      </h1>
+<button aria-label="Fermer" class="p-1 -mr-1 text-slate-500 hover:text-slate-900 transition-colors" type="button">
+<svg class="w-5 h-5 stroke-[2] stroke-current fill-none" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- END: AppHeader -->
+<!-- BEGIN: StepperBar -->
+<!-- Stepper horizontal montrant les étapes avec jauge de progression -->
+<nav aria-label="Progression du configurateur" class="px-4 py-3 bg-slate-50/60 border-b border-slate-100 overflow-x-auto no-scrollbar">
+<div class="min-w-[420px] px-2">
+<div class="relative flex items-center justify-between">
+<!-- Ligne de fond inactive -->
+<div class="absolute left-2 right-2 top-1.5 h-0.5 bg-slate-200 -z-0"></div>
+<!-- Ligne de progression active jusqu'à l'étape 3 -->
+<div class="absolute left-2 w-[30%] top-1.5 h-0.5 bg-brand -z-0"></div>
+<!-- Étape 1 : Projet -->
+<div class="flex flex-col items-center z-10">
+<span class="w-3 h-3 rounded-full bg-brand ring-4 ring-white"></span>
+<span class="text-[9px] mt-1 font-medium text-slate-500">Projet</span>
+</div>
+<!-- Étape 2 : Solution -->
+<div class="flex flex-col items-center z-10">
+<span class="w-3 h-3 rounded-full bg-brand ring-4 ring-white"></span>
+<span class="text-[9px] mt-1 font-medium text-slate-500">Solution</span>
+</div>
+<!-- Étape 3 : Forme (Actif) -->
+<div class="flex flex-col items-center z-10">
+<span class="w-3.5 h-3.5 rounded-full bg-white border-2 border-brand ring-2 ring-brand/20"></span>
+<span class="text-[9px] mt-1 font-bold text-brand">Forme</span>
+</div>
+<!-- Étape 4 : Fixation -->
+<div class="flex flex-col items-center z-10">
+<span class="w-2.5 h-2.5 rounded-full bg-slate-300 ring-4 ring-white"></span>
+<span class="text-[9px] mt-1 text-slate-400">Fixation</span>
+</div>
+<!-- Étape 5 : Verre -->
+<div class="flex flex-col items-center z-10">
+<span class="w-2.5 h-2.5 rounded-full bg-slate-300 ring-4 ring-white"></span>
+<span class="text-[9px] mt-1 text-slate-400">Verre</span>
+</div>
+<!-- Étape 6 : Dimensions -->
+<div class="flex flex-col items-center z-10">
+<span class="w-2.5 h-2.5 rounded-full bg-slate-300 ring-4 ring-white"></span>
+<span class="text-[9px] mt-1 text-slate-400">Dimensions</span>
+</div>
+<!-- Étape 7 : Options -->
+<div class="flex flex-col items-center z-10">
+<span class="w-2.5 h-2.5 rounded-full bg-slate-300 ring-4 ring-white"></span>
+<span class="text-[9px] mt-1 text-slate-400">Options</span>
+</div>
+<!-- Étape 8 : Récapitulatif -->
+<div class="flex flex-col items-center z-10">
+<span class="w-2.5 h-2.5 rounded-full bg-slate-300 ring-4 ring-white"></span>
+<span class="text-[9px] mt-1 text-slate-400">Récap</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- END: StepperBar -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 overflow-y-auto px-5 py-4 space-y-5">
+<!-- En-tête de section -->
+<section class="space-y-0.5" data-purpose="screen-title">
+<h2 class="text-xl font-bold tracking-tight text-slate-900">
+          Quelle forme ?
+        </h2>
+<p class="text-xs text-slate-500">
+          Choisissez la forme de votre garde-corps.
+        </p>
+</section>
+<!-- Grille 2x3 de choix de géométrie -->
+<section class="grid grid-cols-3 gap-2.5" data-purpose="shape-selector">
+<!-- Option 1: Droit (Sélectionné) -->
+<button class="group relative flex flex-col items-center justify-between p-2 rounded-xl border-2 border-brand bg-brand/5 shadow-xs transition-all text-center" type="button">
+<div class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-brand text-white flex items-center justify-center">
+<svg class="w-2.5 h-2.5 stroke-[3] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="w-full h-16 flex items-center justify-center my-1">
+<!-- Schéma isométrique Droit -->
+<svg class="w-16 h-12 stroke-brand fill-brand/10 stroke-[1.5]" viewbox="0 0 70 50">
+<polygon fill="#a7f3d0" fill-opacity="0.25" points="12,18 52,10 58,26 18,34" stroke="#0a6358"></polygon>
+<line stroke="#0a6358" stroke-width="2" x1="12" x2="18" y1="18" y2="34"></line>
+<line stroke="#0a6358" stroke-width="2" x1="52" x2="58" y1="10" y2="26"></line>
+<line stroke="#0a6358" stroke-width="2" x1="18" x2="58" y1="34" y2="26"></line>
+<line stroke="#0a6358" stroke-width="2" x1="12" x2="52" y1="18" y2="10"></line>
+</svg>
+</div>
+<span class="text-xs font-semibold text-brand pb-0.5">Droit</span>
+</button>
+<!-- Option 2: En L -->
+<button class="group flex flex-col items-center justify-between p-2 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition-all text-center" type="button">
+<div class="w-full h-16 flex items-center justify-center my-1">
+<!-- Schéma isométrique En L -->
+<svg class="w-16 h-12 stroke-slate-600 fill-slate-100 stroke-[1.4]" viewbox="0 0 70 50">
+<path d="M12,14 L36,9 L40,24 L28,27 L32,38 L18,41 Z" fill="#e2e8f0" stroke="#475569" stroke-linejoin="round"></path>
+<line stroke="#94a3b8" stroke-dasharray="2 2" x1="28" x2="16" y1="27" y2="24"></line>
+</svg>
+</div>
+<span class="text-xs font-medium text-slate-700 pb-0.5">En L</span>
+</button>
+<!-- Option 3: En U -->
+<button class="group flex flex-col items-center justify-between p-2 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition-all text-center" type="button">
+<div class="w-full h-16 flex items-center justify-center my-1">
+<!-- Schéma isométrique En U -->
+<svg class="w-16 h-12 stroke-slate-600 fill-slate-100 stroke-[1.4]" viewbox="0 0 70 50">
+<path d="M14,12 L24,10 L30,22 L44,19 L48,31 L38,33 L34,25 L22,27 Z" fill="#e2e8f0" stroke="#475569" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-xs font-medium text-slate-700 pb-0.5">En U</span>
+</button>
+<!-- Option 4: Avec angle -->
+<button class="group flex flex-col items-center justify-between p-2 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition-all text-center" type="button">
+<div class="w-full h-16 flex items-center justify-center my-1">
+<!-- Schéma isométrique Avec angle -->
+<svg class="w-16 h-12 stroke-slate-600 fill-slate-100 stroke-[1.4]" viewbox="0 0 70 50">
+<polygon fill="#e2e8f0" points="12,24 32,15 48,22 56,33 42,37 28,30" stroke="#475569"></polygon>
+</svg>
+</div>
+<span class="text-xs font-medium text-slate-700 pb-0.5">Avec angle</span>
+</button>
+<!-- Option 5: En V -->
+<button class="group flex flex-col items-center justify-between p-2 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition-all text-center" type="button">
+<div class="w-full h-16 flex items-center justify-center my-1">
+<!-- Schéma isométrique En V -->
+<svg class="w-16 h-12 stroke-slate-600 fill-slate-100 stroke-[1.4]" viewbox="0 0 70 50">
+<path d="M15,14 L35,26 L55,14 L58,26 L35,38 L12,26 Z" fill="#e2e8f0" stroke="#475569" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-xs font-medium text-slate-700 pb-0.5">En V</span>
+</button>
+<!-- Option 6: Forme complexe -->
+<button class="group flex flex-col items-center justify-between p-2 rounded-xl border border-slate-200 bg-white hover:border-slate-300 transition-all text-center" type="button">
+<div class="w-full h-16 flex items-center justify-center my-1">
+<!-- Schéma isométrique Forme complexe -->
+<svg class="w-16 h-12 stroke-slate-600 fill-slate-100 stroke-[1.4]" viewbox="0 0 70 50">
+<path d="M10,18 L24,14 L30,22 L45,18 L52,28 L38,32 L32,26 L20,30 Z" fill="#e2e8f0" stroke="#475569" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-xs font-medium text-slate-700 pb-0.5 leading-tight">Forme complexe</span>
+</button>
+</section>
+<!-- Aperçu architectural avec dimensions -->
+<section class="border border-slate-200 rounded-2xl p-4 bg-slate-50/50 flex flex-col items-center justify-center" data-purpose="geometry-preview">
+<div class="w-full h-24 flex items-center justify-center relative">
+<!-- Dessin technique linéaire du garde-corps droit sélectionné -->
+<svg class="w-full max-w-[260px] h-20" fill="none" viewbox="0 0 240 70">
+<!-- Sol / terrasse -->
+<line stroke="#cbd5e1" stroke-dasharray="3 3" stroke-width="1.5" x1="10" x2="230" y1="58" y2="58"></line>
+<!-- Vitrage du garde corps -->
+<rect fill="#0a6358" fill-opacity="0.08" height="38" rx="2" stroke="#0a6358" stroke-width="1.5" width="190" x="25" y="16"></rect>
+<!-- Main courante supérieure -->
+<line stroke="#0a6358" stroke-linecap="round" stroke-width="3" x1="23" x2="217" y1="16" y2="16"></line>
+<!-- Profil bas / Fixation -->
+<rect fill="#334155" height="6" rx="1" width="194" x="23" y="52"></rect>
+<!-- Lignes de cote de longueur -->
+<line stroke="#64748b" stroke-width="1" x1="25" x2="215" y1="65" y2="65"></line>
+<line stroke="#64748b" stroke-width="1" x1="25" x2="25" y1="62" y2="68"></line>
+<line stroke="#64748b" stroke-width="1" x1="215" x2="215" y1="62" y2="68"></line>
+</svg>
+</div>
+</section>
+<!-- Contrôleur de réglage : Longueur principale -->
+<section class="space-y-3 pt-1" data-purpose="dimension-slider">
+<div class="flex items-center justify-between">
+<label class="text-xs font-semibold text-slate-700" for="length-range">
+            Longueur principale
+          </label>
+<span class="px-2.5 py-1 text-xs font-bold text-brand bg-brand-light rounded-md border border-brand/20" id="slider-value">
+            7,20 m
+          </span>
+</div>
+<!-- Slider personnalisé -->
+<div class="space-y-1">
+<input class="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand" id="length-range" max="20" min="0.5" oninput="document.getElementById('slider-value').innerText = parseFloat(this.value).toFixed(2).replace('.', ',') + ' m'" step="0.1" type="range" value="7.2"/>
+<div class="flex justify-between text-[11px] font-medium text-slate-400">
+<span>0,5 m</span>
+<span>20 m</span>
+</div>
+</div>
+</section>
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: BottomStickyNavigation -->
+<!-- Pied de page avec actions 'Précédent' et 'Suivant' -->
+<footer class="p-4 bg-white border-t border-slate-100 flex items-center justify-between gap-3">
+<button class="flex-1 py-3 px-4 rounded-xl border border-slate-300 text-slate-700 text-xs font-semibold flex items-center justify-center space-x-1.5 hover:bg-slate-50 transition-colors active:scale-[0.99]" type="button">
+<svg class="w-4 h-4 stroke-[2.2] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>Précédent</span>
+</button>
+<button class="flex-1 py-3 px-4 rounded-xl bg-brand text-white text-xs font-semibold flex items-center justify-center space-x-1.5 hover:bg-brand-hover shadow-sm transition-all active:scale-[0.99]" type="button">
+<span>Suivant</span>
+<svg class="w-4 h-4 stroke-[2.2] stroke-current" fill="none" viewbox="0 0 24 24">
+<path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</footer>
+<!-- END: BottomStickyNavigation -->
+</div>
+<!-- END: MobileFrameContainer -->
+</body></html>

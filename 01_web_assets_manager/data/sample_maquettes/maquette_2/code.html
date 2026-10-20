@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BatiHome — Garde-corps sur profil continu tout verre</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "background": "#f9f9ff",
+            "on-tertiary": "#ffffff",
+            "surface-dim": "#d2daf0",
+            "on-primary-fixed": "#001f28",
+            "text-secondary": "#344054",
+            "on-secondary": "#ffffff",
+            "border-subtle": "#EAECF0",
+            "on-surface-variant": "#40484b",
+            "success-green": "#067647",
+            "secondary": "#006a62",
+            "surface-container-high": "#e0e8ff",
+            "tertiary-fixed": "#ffdbcd",
+            "secondary-fixed": "#84f5e8",
+            "on-secondary-fixed": "#00201d",
+            "on-tertiary-fixed": "#360f00",
+            "on-surface": "#141b2c",
+            "on-secondary-container": "#006f66",
+            "on-background": "#141b2c",
+            "surface-variant": "#dbe2f9",
+            "on-secondary-fixed-variant": "#005049",
+            "on-tertiary-container": "#ff9567",
+            "tertiary": "#541b00",
+            "primary-container": "#0e4a5a",
+            "outline-variant": "#c0c8cb",
+            "on-error": "#ffffff",
+            "surface-dark": "#0B2630",
+            "on-primary-fixed-variant": "#134d5d",
+            "surface-card": "#FFFFFF",
+            "surface-canvas": "#F7F8FA",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#b7eafe",
+            "outline": "#70787c",
+            "secondary-container": "#81f3e5",
+            "primary-fixed-dim": "#9bcee1",
+            "surface-container-lowest": "#ffffff",
+            "error-container": "#ffdad6",
+            "text-muted": "#475467",
+            "on-tertiary-fixed-variant": "#7d2d00",
+            "surface-glass-tint": "#E6F2F5",
+            "on-primary-container": "#86b9cb",
+            "surface-container-low": "#f1f3ff",
+            "tertiary-fixed-dim": "#ffb597",
+            "primary": "#00323f",
+            "tertiary-container": "#782b00",
+            "border-strong": "#D0D5DD",
+            "surface": "#f9f9ff",
+            "inverse-primary": "#9bcee1",
+            "secondary-fixed-dim": "#66d9cc",
+            "on-error-container": "#93000a",
+            "surface-container": "#e9edff",
+            "error": "#ba1a1a",
+            "inverse-surface": "#293041",
+            "surface-container-highest": "#dbe2f9",
+            "inverse-on-surface": "#edf0ff",
+            "surface-bright": "#f9f9ff",
+            "surface-tint": "#316576"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-technical": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-hero-mobile": ["Inter"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-hero": ["Inter"],
+            "metric-price-md": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "metric-price-lg": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-technical": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "metric-price-md": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "metric-price-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tnum { font-feature-settings: 'tnum' 1; }
+    .glass-sticky {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background-color: rgba(255, 255, 255, 0.94);
+    }
+  </style>
+</head>
+<body class="bg-surface-canvas text-on-surface antialiased font-body-md selection:bg-primary-container selection:text-white">
+<!-- ================= TOPNAVBAR (Shared Component) ================= -->
+<header class="docked full-width top-0 z-50 bg-surface-card border-b border-border-subtle shadow-sm sticky">
+<div class="flex justify-between items-center w-full px-6 lg:px-12 max-w-7xl mx-auto h-20">
+<!-- Brand Logo Anchor -->
+<div class="flex items-center gap-8">
+<a class="text-headline-md font-headline-md font-bold text-primary tracking-tight flex items-center gap-2" href="#">
+<span class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-white text-base">
+<span class="material-symbols-outlined text-[20px]" data-icon="balcony">balcony</span>
+</span>
+<span>BatiHome</span>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center space-x-6">
+<a class="text-primary font-semibold border-b-2 border-primary pb-1 text-label-md font-label-md transition-all duration-150" href="#">Solutions</a>
+<a class="text-text-secondary font-medium hover:text-primary pb-1 text-label-md font-label-md transition-all duration-150" href="#">Projets</a>
+<a class="text-text-secondary font-medium hover:text-primary pb-1 text-label-md font-label-md transition-all duration-150" href="#">Configurateur</a>
+<a class="text-text-secondary font-medium hover:text-primary pb-1 text-label-md font-label-md transition-all duration-150" href="#">Réalisations</a>
+<a class="text-text-secondary font-medium hover:text-primary pb-1 text-label-md font-label-md transition-all duration-150" href="#">Conseils</a>
+</nav>
+</div>
+<!-- Right Nav Cluster: Search + Trailing Actions + CTA -->
+<div class="flex items-center gap-4">
+<!-- Search bar on right -->
+<div class="hidden lg:flex items-center bg-surface-canvas rounded-lg px-3 py-1.5 border border-border-subtle w-64 focus-within:border-primary-container transition-all">
+<span class="material-symbols-outlined text-outline text-[18px] mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-0 p-0 text-body-sm font-body-sm text-on-surface focus:ring-0 w-full placeholder:text-outline" placeholder="Rechercher profil, verre..." type="text"/>
+</div>
+<!-- Trailing Icon Actions -->
+<div class="flex items-center gap-1 text-text-secondary">
+<button aria-label="Favoris" class="p-2 rounded-lg hover:text-primary hover:bg-surface-container-low transition-all duration-150">
+<span class="material-symbols-outlined text-[22px]" data-icon="favorite">favorite</span>
+</button>
+<button aria-label="Compte client" class="p-2 rounded-lg hover:text-primary hover:bg-surface-container-low transition-all duration-150">
+<span class="material-symbols-outlined text-[22px]" data-icon="person">person</span>
+</button>
+<button aria-label="Panier" class="p-2 rounded-lg hover:text-primary hover:bg-surface-container-low transition-all duration-150 relative">
+<span class="material-symbols-outlined text-[22px]" data-icon="shopping_bag">shopping_bag</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-primary-container rounded-full"></span>
+</button>
+</div>
+<!-- Trailing Primary Action -->
+<a class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-primary-container text-white text-label-md font-label-md font-semibold hover:bg-primary transition-all duration-150 active:scale-[0.98]" href="#simulateur">
+          Devis en ligne
+        </a>
+</div>
+</div>
+</header>
+<!-- ================= BREADCRUMB & CONTEXT ================= -->
+<div class="bg-surface-card border-b border-border-subtle py-3">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between text-body-sm font-body-sm text-text-muted">
+<nav class="flex items-center space-x-2">
+<a class="hover:text-primary transition-colors" href="#">Accueil</a>
+<span class="text-outline-variant">/</span>
+<a class="hover:text-primary transition-colors" href="#">Solutions</a>
+<span class="text-outline-variant">/</span>
+<span class="text-primary font-semibold">Garde-corps sur profil continu tout verre</span>
+</nav>
+<!-- Standard badge conformity -->
+<div class="hidden sm:flex items-center gap-2 text-label-technical font-label-technical text-success-green uppercase bg-surface-container-low px-2.5 py-1 rounded border border-border-subtle">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified">verified</span>
+<span>Conforme Normes NF P01-012 &amp; P01-013</span>
+</div>
+</div>
+</div>
+<main class="max-w-7xl mx-auto px-6 lg:px-12 py-8 space-y-12">
+<!-- ================= PRODUCT HERO SECTION (60/40 Ratio) ================= -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- 60% VISUAL STORYTELLING (Desktop 7 cols) -->
+<div class="lg:col-span-7 space-y-4">
+<div class="relative rounded-xl overflow-hidden border border-border-subtle bg-surface-card shadow-sm group">
+<img class="w-full h-[460px] object-cover group-hover:scale-[1.015] transition-transform duration-500 ease-out" data-alt="Modern architectural coastal residence terrace featuring an ultra-clear invisible glass railing clamped into a flush floor-mounted aluminium continuous profile. The panoramic viewpoint overlooks a deep turquoise Mediterranean sea during warm architectural afternoon daylight. The atmosphere is crisp, minimal, and high-end with pristine stone pavers and spotless structural glass transparency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRcx6d1XLKKO8ZbxGq62-PEuEZ0jxs7R2awYjT8QviNRCVfTvFm-m-aRiaatVNs2pzEWLDXKr-5V23HzbnYRhtAWj-E4b5pms_SIca1pUB35nbmp0H8hPTenUUMc1i__tePPj5lE6GbyeNzUV4Z3uv2cmNuxbOksLa5zBfIIvmT663n0g6x3xRn2ZCCr6xEcVZp4GdKzaAz4xYPb94oLXb5IGtMJm0U3LvLwzFoFs"/>
+<!-- In-photo floating tags -->
+<div class="absolute top-4 left-4 flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-label-technical font-label-technical bg-surface-dark/85 text-inverse-on-surface backdrop-blur-md shadow-md">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span>
+              Rendu posé en extérieur
+            </span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-label-technical font-label-technical bg-white/90 text-primary backdrop-blur-md shadow-sm border border-white/40">
+<span class="material-symbols-outlined text-[14px]" data-icon="water_drop">water_drop</span>
+              Traitement Anticalcaire EnduroShield
+            </span>
+</div>
+<div class="absolute bottom-4 right-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-body-sm font-semibold bg-white/95 text-primary shadow-md border border-border-subtle hover:bg-white cursor-pointer transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="zoom_in">zoom_in</span>
+              Vue panoramique 360°
+            </span>
+</div>
+</div>
+<!-- Thumbnails & Angle Gallery -->
+<div class="grid grid-cols-4 gap-3">
+<div class="relative rounded-lg overflow-hidden border-2 border-primary cursor-pointer h-24 bg-surface-card">
+<img class="w-full h-full object-cover" data-alt="High precision close-up architectural detail of the anodized aluminium ground base shoe profile showing seamless invisible wedge fixation and pure optical clear laminated glass edge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjoS1IGpTeanZZkQxoYWyKsPL5t1C7oSI0DWgzH_i-VAe9T8x04O57IQ3hpD760-mXWASqestTjKVwHk5DpsjIdHG20JOhQCkS_Lb0Mzof6CIP4m0c9LM6NS3MXgFrBl7yDwekybmp0pLuuHmeNz9rGAyuFiJsEP6Rmg9kAAYYI8s1sXVk7C70mUPdZ7TXXjeNKTyL2X0uXdwoQ5N-tHQziEvje9_O6qkq8BjafKQ"/>
+<span class="absolute bottom-1 right-1 bg-surface-dark/80 text-white text-[10px] px-1 rounded font-medium">Pose sol</span>
+</div>
+<div class="relative rounded-lg overflow-hidden border border-border-subtle hover:border-border-strong cursor-pointer h-24 bg-surface-card">
+<img class="w-full h-full object-cover" data-alt="Architectural photograph of a cantilevered concrete balcony with lateral side fascia mounted aluminium glass railing profile facing a clean sky background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvSSg4Tz5MJX8FxOgUlQ-jkCv8LQu_3LKvlN22ov7PW7u9gSaB85vYiyT9aqb1fqda779QueyqpN1ifPIaAILtLfRu0Dc5FpdON8jKg5bp-B-jz6Ca2ipQs0j5xz7laW14p27h0YZzSHvIhHGmBSlU26vK23z6vbC8_CqwozsYVIgZo-Asgb-kc3PRtIwl5Eo0nfBQgOSlS1G3HxjtaOtP4zK_52nPVOzAGzAa5N4"/>
+<span class="absolute bottom-1 right-1 bg-surface-dark/80 text-white text-[10px] px-1 rounded font-medium">Nez de dalle</span>
+</div>
+<div class="relative rounded-lg overflow-hidden border border-border-subtle hover:border-border-strong cursor-pointer h-24 bg-surface-card">
+<img class="w-full h-full object-cover" data-alt="Architectural detail of an ultra-flush recessed floor shoe where floor tiles cleanly meet the bottom of the glass railing without visible metal casing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7asg-wH380hr_ZIe1FwJI_J4cnMv1Jv8gmhGq5lPg5rVBfWYmAZLuxGkRrfIVePiOSoRV7_dModqUfPq5zmhVlEgJE0qeR6E6ni_0giFT3cnXRkNTplj2vaDIpkq_UKyO9xBAOWwE4BHHlRbqw7G2Pc7G-wumUbqlVrkJLwODjYIlCrClpD8r7ca6yeKT-vpwiGpw6ZfCJTqeIUb1Wn2sL_sJMDSHaG43_pTSCtA"/>
+<span class="absolute bottom-1 right-1 bg-surface-dark/80 text-white text-[10px] px-1 rounded font-medium">Encastré</span>
+</div>
+<div class="relative rounded-lg overflow-hidden border border-border-subtle hover:border-border-strong cursor-pointer h-24 bg-surface-card flex flex-col items-center justify-center bg-surface-glass-tint text-primary hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[24px]" data-icon="photo_library">photo_library</span>
+<span class="text-label-technical font-label-technical mt-1">+18 photos</span>
+</div>
+</div>
+</div>
+<!-- 40% TECHNICAL CLARITY & CONVERSIONS (Desktop 5 cols) -->
+<div class="lg:col-span-5 bg-surface-card p-6 lg:p-8 rounded-xl border border-border-subtle shadow-sm flex flex-col justify-between space-y-6">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-label-technical font-label-technical tracking-wider text-secondary uppercase bg-surface-glass-tint px-2 py-0.5 rounded">Système Architecturaldal</span>
+<span class="text-label-technical font-label-technical text-text-muted">Réf: BTH-PRF-100</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-primary tracking-tight mb-2">
+            Garde-corps sur profil continu tout verre
+          </h1>
+<p class="text-body-md font-body-md text-text-secondary leading-relaxed mb-4">
+            Ligne épurée, aucun poteau apparent. Une transparence totale pour terrasses, balcons et mezzanines avec une rigidité certifiée pour les zones côtières et privées exposées au vent.
+          </p>
+<!-- Price Highlight & Availability -->
+<div class="bg-surface-canvas p-4 rounded-lg border border-border-subtle flex items-baseline justify-between mb-6">
+<div>
+<span class="text-label-technical font-label-technical text-text-muted uppercase block">Tarif estimatif fabricant</span>
+<div class="flex items-baseline gap-1">
+<span class="text-body-sm font-body-sm text-text-muted">dès</span>
+<span class="text-metric-price-lg font-metric-price-lg text-tertiary-container tnum font-bold">339 €</span>
+<span class="text-body-sm font-body-sm text-text-muted">/ mètre linéaire TTC</span>
+</div>
+</div>
+<div class="text-right">
+<span class="inline-flex items-center text-label-technical font-label-technical text-success-green">
+<span class="w-2 h-2 rounded-full bg-success-green mr-1.5 animate-pulse"></span>
+                En stock usine
+              </span>
+<span class="block text-body-sm font-body-sm text-text-muted">Livraison en 10-15 jours</span>
+</div>
+</div>
+<!-- Feature key points -->
+<ul class="space-y-2.5 text-body-md font-body-md text-text-secondary mb-6 border-b border-border-subtle pb-6">
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5" data-icon="check_circle">check_circle</span>
+<span><strong>Zéro montant vertical :</strong> Vue panoramique ininterrompue.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5" data-icon="check_circle">check_circle</span>
+<span><strong>Résistance 1200 Joules :</strong> Verres trempés feuilletés certifiés CE.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5" data-icon="check_circle">check_circle</span>
+<span><strong>Clavetage rapide :</strong> Cales excentriques brevetées ajustables.</span>
+</li>
+</ul>
+<!-- CTAs Area -->
+<div class="space-y-3">
+<a class="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-primary-container text-white text-body-md font-body-md font-semibold hover:bg-primary transition-all duration-180 shadow-sm active:scale-[0.98]" href="#configurateur-express">
+<span>Configurer ce système</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<a class="w-full flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg border border-border-strong text-on-surface text-body-md font-body-md font-medium hover:bg-surface-container-low transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-text-muted text-[20px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span>Télécharger le dossier technique PDF (3.2 Mo)</span>
+</a>
+</div>
+</div>
+<!-- Trust micro-bar -->
+<div class="pt-2 flex items-center justify-between text-body-sm font-body-sm text-text-muted border-t border-border-subtle">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="verified_user">verified_user</span>
+            Garantie 10 ans
+          </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="factory">factory</span>
+            Fabrication France
+          </span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="handyman">handyman</span>
+            Notice pas-à-pas
+          </span>
+</div>
+</div>
+</section>
+<!-- ================= TECHNICAL SPECIFICATIONS & VARIANTS TABS ================= -->
+<section class="bg-surface-card rounded-xl border border-border-subtle shadow-sm p-6 lg:p-8">
+<!-- Nav Tabs -->
+<div class="border-b border-border-subtle mb-8 flex space-x-8 overflow-x-auto">
+<button class="text-primary font-semibold border-b-2 border-primary pb-3 text-headline-sm font-headline-sm flex items-center gap-2 whitespace-nowrap">
+<span class="material-symbols-outlined text-[20px]" data-icon="tune">tune</span>
+          4 Types de pose &amp; Coupes
+        </button>
+<button class="text-text-muted hover:text-primary font-medium pb-3 text-headline-sm font-headline-sm flex items-center gap-2 whitespace-nowrap transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="layers">layers</span>
+          Verres &amp; Finitions
+        </button>
+<button class="text-text-muted hover:text-primary font-medium pb-3 text-headline-sm font-headline-sm flex items-center gap-2 whitespace-nowrap transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="gavel">gavel</span>
+          Normes &amp; PV CSTB
+        </button>
+<button class="text-text-muted hover:text-primary font-medium pb-3 text-headline-sm font-headline-sm flex items-center gap-2 whitespace-nowrap transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+          Plans CAD / BIM
+        </button>
+</div>
+<!-- 4 Variantes de pose cards (Bento style) -->
+<div>
+<div class="flex items-center justify-between mb-6">
+<div>
+<h2 class="text-headline-md font-headline-md text-primary font-bold">Variantes d'ancrage et profils techniques</h2>
+<p class="text-body-md font-body-md text-text-secondary">Chaque profil est conçu en aluminium extrudé 6063 T6 anodisé 20 microns ou laqué Qualicoat Marine.</p>
+</div>
+<span class="hidden md:inline-flex items-center text-label-technical font-label-technical text-primary-container bg-surface-container-low px-3 py-1.5 rounded-lg border border-border-subtle">
+            Calculateur d'entraxe chevilles inclus
+          </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Variant 1: Pose au sol (Dalle) -->
+<div class="rounded-xl border border-primary bg-surface-glass-tint/30 p-4 flex flex-col justify-between transition-all hover:shadow-md">
+<div>
+<div class="h-44 rounded-lg bg-surface-card border border-border-subtle p-3 mb-4 flex items-center justify-center relative overflow-hidden">
+<img class="w-full h-full object-contain" data-alt="Technical architectural vector cross section drawing showing a top floor mount aluminium base shoe anchored onto concrete slab with adjustable leveling wedges holding a glass panel vertically." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj1eK1HIcx4NY8Q6_HCY1Ss9JilDLSPY6avfsL6GMPZAZVbLSimrpCtbQZDw1DsCdEI0eI_a_m34GvenIPMKGFgLwG7eWNyo7gSWxO1JZ06rQ3O59oxsLSWGvcZcG0jyk6G_H-L9ExK2lDxyFGLcj-zAnnImkdiVG6UiFXnfUjN6-z5xvMNhvNq6liwcgL0MO9YlUX6Dizguf0UatPTSwE-U0sIiSzVhh0jwvrsJg"/>
+<span class="absolute top-2 left-2 bg-primary text-white text-[11px] font-semibold px-2 py-0.5 rounded">Standard n°1</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1">Pose sur dalle au sol</h3>
+<p class="text-body-sm font-body-sm text-text-secondary mb-3">Fixation par le dessus sur béton sain, carrelage ou dalle bois renforcée. Drainage périphérique intégré.</p>
+<div class="space-y-1 text-label-technical font-label-technical text-text-muted border-t border-border-subtle pt-3">
+<div class="flex justify-between"><span>Encombrement profil :</span> <strong class="text-on-surface">55 × 120 mm</strong></div>
+<div class="flex justify-between"><span>Entraxe vis :</span> <strong class="text-on-surface">Tous les 200 mm</strong></div>
+<div class="flex justify-between"><span>Effort certifié :</span> <strong class="text-success-green">1.0 kN / ml</strong></div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border-subtle flex items-center justify-between">
+<span class="text-metric-price-md font-metric-price-md text-tertiary-container font-semibold">339 € <span class="text-body-sm font-normal text-text-muted">/ml</span></span>
+<button class="text-label-md font-label-md text-primary font-semibold hover:underline flex items-center gap-0.5">
+                Choisir <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Variant 2: Nez de dalle (Pose latérale) -->
+<div class="rounded-xl border border-border-subtle bg-surface-card p-4 flex flex-col justify-between hover:border-border-strong hover:shadow-md transition-all">
+<div>
+<div class="h-44 rounded-lg bg-surface-canvas border border-border-subtle p-3 mb-4 flex items-center justify-center relative overflow-hidden">
+<img class="w-full h-full object-contain" data-alt="Technical cross section diagram illustrating lateral fascia mount side clamping profile bolted to the vertical face of a concrete balcony edge preserving floor surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZvqf7m3qO75_SxaiBhfZ3IzWP1QdEbJx9HDlzxfSh9q3xBCGBRAtPWpdE6ZfZn7LrGiaWNaBhnn4A3g_yreDzzSJgmLhbCs0v_YCOoA0gBLq3NtrsmBd4j0Xt6xCUGZqp4t4OXALWVwS7qmy6VLRzCN4ELlHbhvjp5CsSeFM9wEfoRYdIraTq0_Gu460KJXEJqHQksw2bXU9-PFKZq3UcuKi-iBLBGLaa1Zktjp8"/>
+<span class="absolute top-2 left-2 bg-surface-card text-on-surface border border-border-subtle text-[11px] font-semibold px-2 py-0.5 rounded">Gain d'espace</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1">Pose latérale en nez de dalle</h3>
+<p class="text-body-sm font-body-sm text-text-secondary mb-3">Fixation à l'anglaise sur le flanc extérieur. Libère 100% de la surface utile de votre terrasse ou balcon.</p>
+<div class="space-y-1 text-label-technical font-label-technical text-text-muted border-t border-border-subtle pt-3">
+<div class="flex justify-between"><span>Encombrement profil :</span> <strong class="text-on-surface">50 × 145 mm</strong></div>
+<div class="flex justify-between"><span>Option cache nez :</span> <strong class="text-on-surface">Inclus RAL</strong></div>
+<div class="flex justify-between"><span>Effort certifié :</span> <strong class="text-success-green">1.0 kN / ml</strong></div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border-subtle flex items-center justify-between">
+<span class="text-metric-price-md font-metric-price-md text-tertiary-container font-semibold">379 € <span class="text-body-sm font-normal text-text-muted">/ml</span></span>
+<button class="text-label-md font-label-md text-primary font-semibold hover:underline flex items-center gap-0.5">
+                Choisir <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Variant 3: Sur muret / Suracrotère -->
+<div class="rounded-xl border border-border-subtle bg-surface-card p-4 flex flex-col justify-between hover:border-border-strong hover:shadow-md transition-all">
+<div>
+<div class="h-44 rounded-lg bg-surface-canvas border border-border-subtle p-3 mb-4 flex items-center justify-center relative overflow-hidden">
+<img class="w-full h-full object-contain" data-alt="Technical architectural drawing of low wall parapet mount glass railing profile anchored on reinforced masonry with protective metal flashings." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4cBadsSkjg_trbpKrCXmPcgtnBbkm3Zipqu_Bpzg7TEWs3_AfztSLcbLWzrgpKFCWHinFfmGpH-mvYH-7ztAyViWJgtv9fTkCrCVdr1sHePvEKlKDNYWTMjxQ-X7LySQ0ZaAWv2966OSzXu_Ccee3niEbm0Aq99ph5SDlHmEWqx5i07o67UW2jZxpUXwELeQzoV5Vu6DxTFQG7FyaLPUwdk6D_eUdlt1rwBAWq-g"/>
+<span class="absolute top-2 left-2 bg-surface-card text-on-surface border border-border-subtle text-[11px] font-semibold px-2 py-0.5 rounded">Rénovation</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1">Pose sur muret acrotère</h3>
+<p class="text-body-sm font-body-sm text-text-secondary mb-3">Rehausse vitrée élégante sur mur maçonné existant (hauteur 300 à 600 mm) pour atteindre la hauteur légale 1,02 m.</p>
+<div class="space-y-1 text-label-technical font-label-technical text-text-muted border-t border-border-subtle pt-3">
+<div class="flex justify-between"><span>Encombrement profil :</span> <strong class="text-on-surface">55 × 85 mm</strong></div>
+<div class="flex justify-between"><span>Hauteur verre :</span> <strong class="text-on-surface">450 à 750 mm</strong></div>
+<div class="flex justify-between"><span>Effort certifié :</span> <strong class="text-success-green">0.6 kN / ml</strong></div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border-subtle flex items-center justify-between">
+<span class="text-metric-price-md font-metric-price-md text-tertiary-container font-semibold">299 € <span class="text-body-sm font-normal text-text-muted">/ml</span></span>
+<button class="text-label-md font-label-md text-primary font-semibold hover:underline flex items-center gap-0.5">
+                Choisir <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Variant 4: Profil encastré chape -->
+<div class="rounded-xl border border-border-subtle bg-surface-card p-4 flex flex-col justify-between hover:border-border-strong hover:shadow-md transition-all">
+<div>
+<div class="h-44 rounded-lg bg-surface-canvas border border-border-subtle p-3 mb-4 flex items-center justify-center relative overflow-hidden">
+<img class="w-full h-full object-contain" data-alt="Technical section illustration of a recessed glass floor channel totally concealed beneath the flooring tile level with only structural glass emerging from the floor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-WvSPCMELXDyuy26NARq6ZZaInSArnZ7FnGo0jB616Dnjyp9zr1sw80qJyQoualkzaBROkVP8BI0pz5-CmOiXCzsehMnJjSL2aLIhxjCHOYSRrrKK8Mk7GUQeH7NeoHOjoo5FUtCS5htbg_EV1QsPSUECqGzrRKIrAVkHvPvPmHCukvX9pozWodqiVYEGfYoD8seq2ojq9xgo7XFJYQeMZP5j58ZpM_E1KUhbEpI"/>
+<span class="absolute top-2 left-2 bg-surface-card text-on-surface border border-border-subtle text-[11px] font-semibold px-2 py-0.5 rounded">Invisible</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1">Profil encastré dans la chape</h3>
+<p class="text-body-sm font-body-sm text-text-secondary mb-3">Intégration absolue avant coulage de chape ou pose de terrasse bois sur plots. Le verre émerge directement du sol.</p>
+<div class="space-y-1 text-label-technical font-label-technical text-text-muted border-t border-border-subtle pt-3">
+<div class="flex justify-between"><span>Profil réservation :</span> <strong class="text-on-surface">62 × 130 mm</strong></div>
+<div class="flex justify-between"><span>Finition sol :</span> <strong class="text-on-surface">Profilé d'arase alu</strong></div>
+<div class="flex justify-between"><span>Effort certifié :</span> <strong class="text-success-green">1.0 kN / ml</strong></div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-border-subtle flex items-center justify-between">
+<span class="text-metric-price-md font-metric-price-md text-tertiary-container font-semibold">395 € <span class="text-body-sm font-normal text-text-muted">/ml</span></span>
+<button class="text-label-md font-label-md text-primary font-semibold hover:underline flex items-center gap-0.5">
+                Choisir <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= SIMULATEUR EXPRESS / CHIFFRAGE DIRECT (Split Bento) ================= -->
+<section class="bg-gradient-to-r from-surface-dark to-primary rounded-2xl text-inverse-on-surface p-8 lg:p-10 shadow-lg relative overflow-hidden" id="configurateur-express">
+<!-- Background subtle technical grid -->
+<div class="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+<div class="lg:col-span-7 space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/30 text-secondary-fixed text-label-technical font-label-technical border border-secondary-fixed/20">
+<span class="material-symbols-outlined text-[16px]" data-icon="calculate">calculate</span>
+            Calcul instantané d'ingénierie
+          </div>
+<h2 class="text-headline-lg font-headline-lg font-bold tracking-tight text-white">
+            Estimez votre projet en 2 clics
+          </h2>
+<p class="text-body-lg font-body-lg text-outline-variant max-w-xl">
+            Ajustez la longueur totale de votre garde-corps pour obtenir immédiatement une estimation du profil, des vitrages feuilletés et de la visserie d'ancrage structurelle.
+          </p>
+<!-- Interactive Sliders / Configuration inputs -->
+<div class="space-y-5 bg-white/5 p-6 rounded-xl border border-white/10 backdrop-blur-sm">
+<!-- Type de pose radio chips -->
+<div>
+<label class="block text-label-md font-label-md text-white mb-2 font-medium">Type d'implantation</label>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+<button class="px-3 py-2 rounded-lg text-body-sm font-body-sm font-semibold bg-primary-container text-white border border-secondary-fixed/40">Pose au sol</button>
+<button class="px-3 py-2 rounded-lg text-body-sm font-body-sm font-medium bg-white/5 hover:bg-white/10 text-outline-variant hover:text-white border border-white/10 transition-colors">Nez de dalle</button>
+<button class="px-3 py-2 rounded-lg text-body-sm font-body-sm font-medium bg-white/5 hover:bg-white/10 text-outline-variant hover:text-white border border-white/10 transition-colors">Sur muret</button>
+<button class="px-3 py-2 rounded-lg text-body-sm font-body-sm font-medium bg-white/5 hover:bg-white/10 text-outline-variant hover:text-white border border-white/10 transition-colors">Encastré</button>
+</div>
+</div>
+<!-- Length slider -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="text-label-md font-label-md text-white font-medium">Longueur totale linéaire</label>
+<div class="flex items-center gap-1 bg-surface-dark px-3 py-1 rounded border border-white/20">
+<span class="text-headline-sm font-headline-sm text-secondary-fixed tnum font-bold" id="slider-val-display">8.00</span>
+<span class="text-body-sm text-outline-variant">mètres</span>
+</div>
+</div>
+<input class="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-secondary-fixed" id="sim-slider" max="25" min="1" step="0.5" type="range" value="8"/>
+<div class="flex justify-between text-label-technical font-label-technical text-outline-variant mt-1">
+<span>1.00 m</span>
+<span>Courant : 8.00 m</span>
+<span>25.00 m</span>
+</div>
+</div>
+<!-- Glass Type Selector -->
+<div>
+<label class="block text-label-md font-label-md text-white mb-2 font-medium">Type de verre homologué</label>
+<select class="w-full bg-surface-dark border border-white/20 rounded-lg px-3 py-2 text-body-sm text-white focus:ring-secondary-fixed focus:border-secondary-fixed">
+<option selected="">Verre Trempé Feuilleté 88.2 (17,52 mm) — Standard résidentiel</option>
+<option>Verre Trempé Feuilleté 1010.2 (21,52 mm) — ERP &amp; Fortes charges au vent</option>
+<option>Verre Extra-Clair Diamant 88.2 (17,52 mm) — Zéro reflet vert</option>
+<option>Verre Feuilleté Opale Dépoli 88.2 — Préservation d'intimité</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Sticky live calculation card -->
+<div class="lg:col-span-5 bg-surface-card rounded-xl p-6 lg:p-8 text-on-surface shadow-2xl border border-border-subtle">
+<div class="flex items-center justify-between pb-4 border-b border-border-subtle">
+<span class="text-label-technical font-label-technical text-text-muted uppercase">Estimation détaillée</span>
+<span class="text-label-technical font-label-technical text-success-green font-semibold bg-surface-container-low px-2 py-0.5 rounded">TVA 10% ou 20%</span>
+</div>
+<div class="py-4 space-y-3 text-body-sm font-body-sm border-b border-border-subtle">
+<div class="flex justify-between">
+<span class="text-text-secondary">Profil aluminium continu (8.00 m) :</span>
+<span class="font-medium text-on-surface">1 180 €</span>
+</div>
+<div class="flex justify-between">
+<span class="text-text-secondary">Verres trempés 88.2 (8 panneaux 1m) :</span>
+<span class="font-medium text-on-surface">1 350 €</span>
+</div>
+<div class="flex justify-between">
+<span class="text-text-secondary">Kits de calage &amp; joints EPDM :</span>
+<span class="font-medium text-on-surface">182 €</span>
+</div>
+<div class="flex justify-between">
+<span class="text-text-secondary">Chevilles d'ancrage homologuées :</span>
+<span class="text-success-green font-medium">Offertes</span>
+</div>
+</div>
+<div class="py-4">
+<span class="text-label-technical font-label-technical text-text-muted uppercase block">Montant indicatif TTC</span>
+<div class="flex items-baseline gap-2">
+<span class="text-metric-price-lg font-metric-price-lg text-tertiary-container font-bold tnum" id="price-total-display">2 712 €</span>
+<span class="text-body-sm text-text-muted">(soit ~339 € / ml)</span>
+</div>
+<p class="text-[11px] text-text-muted mt-1 leading-normal">Prix exact calculé selon calepinage précis, chutes optimisées et accessoires d'embout.</p>
+</div>
+<div class="space-y-3 pt-2">
+<a class="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-primary-container text-white text-label-md font-label-md font-semibold hover:bg-primary transition-all duration-150 active:scale-[0.98]" href="#">
+<span>Personnaliser dans le configurateur 8 étapes</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+</a>
+<button class="w-full flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-border-strong text-text-secondary hover:text-primary hover:bg-surface-container-low text-body-sm font-body-sm font-medium transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="mail">mail</span>
+<span>Recevoir ce devis par email</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= RÉALISATIONS CLIENTS ASSOCIÉES ================= -->
+<section class="space-y-6">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<div>
+<span class="text-label-technical font-label-technical text-secondary uppercase font-semibold">Inspirations chantiers</span>
+<h2 class="text-headline-lg font-headline-lg text-primary font-bold">Réalisations récentes en profil continu</h2>
+</div>
+<a class="text-primary font-semibold hover:underline flex items-center gap-1 text-label-md font-label-md" href="#">
+<span>Voir toutes les 140 réalisations</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Project 1 -->
+<div class="bg-surface-card rounded-xl border border-border-subtle overflow-hidden shadow-sm hover:shadow-md transition-all group">
+<div class="h-60 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern seaside villa terrace with flush clear glass railing overlooking the sea in Cannes with pristine white outdoor furniture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAPAZ4hexIQB1OfET0kBXDQ5LSoCs65gVpg7puTqVGWf5sV09j9lcc3c2lBIWd2K4MsKKIrmrKzpIMFoZJLYJMX8s3NqBLwlhjifB1KMK8lVtSOD6W08-U1TjbgNBsgpBEI33Pw6_AqIGjygyENCU7Wmq39aLXEXs-s_5r-Z-N6h9UT4eu4Xi7_f_FeW-FxHFjXnXLE0qW6BGldpt-ec1-AAXmh1PQ1eOltRGvCRk"/>
+<span class="absolute top-3 left-3 bg-surface-dark/80 text-white text-[11px] px-2.5 py-1 rounded backdrop-blur-sm font-medium">Cannes (06)</span>
+<span class="absolute bottom-3 right-3 bg-white text-primary text-[11px] font-bold px-2 py-0.5 rounded shadow">14,2 mètres</span>
+</div>
+<div class="p-5">
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1">Villa panoramique Mer</h3>
+<p class="text-body-sm font-body-sm text-text-secondary mb-3">Pose sur dalle au sol avec profil gris anthracite RAL 7016 sablé et verre 88.2 clair.</p>
+<div class="flex justify-between items-center border-t border-border-subtle pt-3 text-label-technical font-label-technical">
+<span class="text-text-muted">Coût constaté du projet :</span>
+<strong class="text-tertiary-container text-body-md font-semibold">4 880 € TTC</strong>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="bg-surface-card rounded-xl border border-border-subtle overflow-hidden shadow-sm hover:shadow-md transition-all group">
+<div class="h-60 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Contemporary duplex penthouse balcony with side mounted glass railing profile overlooking green park trees in Annecy with anodised natural aluminium finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXkXsZEFbrWxdqnImReXQ8Ya2IgfVW8ejmyAyfWkKEzVJqvxVYVcXZNROrEE7b57_0nE-NXWMBiUFZy-XnQ-IyKP7FOb0uynS7U6G_Ol-3xFMJKua9K6zW_sNNa_nCoCUQN32hQqJ37Hlsq4OuNXS3UyWeCJVVTnX1A-pVsQnP64limOi6q5RfPKZv1JKurB-B8oJKMKGY2zkvntJawFMq4vzUAqnbU2vWxMdmr8o"/>
+<span class="absolute top-3 left-3 bg-surface-dark/80 text-white text-[11px] px-2.5 py-1 rounded backdrop-blur-sm font-medium">Annecy (74)</span>
+<span class="absolute bottom-3 right-3 bg-white text-primary text-[11px] font-bold px-2 py-0.5 rounded shadow">8,5 mètres</span>
+</div>
+<div class="p-5">
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1">Rénovation Balcon Attique</h3>
+<p class="text-body-sm font-body-sm text-text-secondary mb-3">Fixation latérale à l'anglaise avec habillage aluminium assorti pour préserver la largeur de passage.</p>
+<div class="flex justify-between items-center border-t border-border-subtle pt-3 text-label-technical font-label-technical">
+<span class="text-text-muted">Coût constaté du projet :</span>
+<strong class="text-tertiary-container text-body-md font-semibold">3 220 € TTC</strong>
+</div>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="bg-surface-card rounded-xl border border-border-subtle overflow-hidden shadow-sm hover:shadow-md transition-all group">
+<div class="h-60 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Minimalist luxury interior loft mezzanine featuring sunken recessed glass railing embedded seamlessly into light oak timber flooring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXpLPmLmStDU33iEUWtNKyYP3d1XqiI3tFfVlFfCgQAGqY8Jxd0csWHPmkJG5F0p4CV4hPKZ9u2ZhJvOAQxNhIFRLr697ZCKwsGAzDdiLQ7MxjwpYEecOtDqXa05DVdqluFqJ2xHRgqk7YZqwbzAlawLdLUZtwPnt71ZwxMturNL691KcI3yYF1GkDzezaUDSKbHCdhPeWhNvJTXbVYHtlray6AT_jZs3tk6h1y-A"/>
+<span class="absolute top-3 left-3 bg-surface-dark/80 text-white text-[11px] px-2.5 py-1 rounded backdrop-blur-sm font-medium">Bordeaux (33)</span>
+<span class="absolute bottom-3 right-3 bg-white text-primary text-[11px] font-bold px-2 py-0.5 rounded shadow">6,0 mètres</span>
+</div>
+<div class="p-5">
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1">Mezzanine Épure Parquet Chêne</h3>
+<p class="text-body-sm font-body-sm text-text-secondary mb-3">Profil intégralement encastré dans le plancher bois avec vitrage extra-clair anti-reflet.</p>
+<div class="flex justify-between items-center border-t border-border-subtle pt-3 text-label-technical font-label-technical">
+<span class="text-text-muted">Coût constaté du projet :</span>
+<strong class="text-tertiary-container text-body-md font-semibold">2 370 € TTC</strong>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= RÉASSURANCE D'INGÉNIERIE & CERTIFICATIONS ================= -->
+<section class="bg-surface-card border border-border-subtle rounded-xl p-8 shadow-sm">
+<div class="text-center max-w-2xl mx-auto mb-8">
+<span class="text-label-technical font-label-technical text-secondary uppercase font-semibold">Qualité industrielle &amp; Sécurité</span>
+<h2 class="text-headline-md font-headline-md text-primary font-bold">Un engagement sans compromis sur la résistance</h2>
+<p class="text-body-sm font-body-sm text-text-secondary mt-1">Tous nos systèmes font l'objet de cahiers des charges certifiés et d'essais d'impacts dynamiques en laboratoire agréé.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+<div class="p-4 rounded-lg bg-surface-canvas border border-border-subtle flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-low text-primary flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[24px]" data-icon="sports_martial_arts">sports_martial_arts</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1">Essais 1200 Joules</h3>
+<p class="text-body-sm font-body-sm text-text-muted">Test au sac de 50 kg validé CSTB, garantissant la retenue corporelle en cas de chute accidentelle.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-canvas border border-border-subtle flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-low text-primary flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[24px]" data-icon="verified_user">verified_user</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1">Garantie Décennale</h3>
+<p class="text-body-sm font-body-sm text-text-muted">Profilés et fixations couverts 10 ans contre la corrosion marine, le délaminage et l'oxydation.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-canvas border border-border-subtle flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-low text-primary flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[24px]" data-icon="flag">flag</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1">Fabrication Usine France</h3>
+<p class="text-body-sm font-body-sm text-text-muted">Extrusion aluminium et découpe de verre sur mesure réalisées dans notre atelier en Auvergne-Rhône-Alpes.</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-canvas border border-border-subtle flex flex-col items-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-low text-primary flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-[24px]" data-icon="local_shipping">local_shipping</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-1">Livraison Chevalet Assurée</h3>
+<p class="text-body-sm font-body-sm text-text-muted">Transport spécialisé avec camion grue et assurance zéro casse incluse jusqu'au déchargement.</p>
+</div>
+</div>
+</section>
+<!-- ================= FLOATING AI ASSISTANT PROMPT BAR (Style Guidance) ================= -->
+<section class="bg-surface-glass-tint rounded-xl border border-secondary-container p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="smart_toy">smart_toy</span>
+</div>
+<div>
+<h4 class="text-label-md font-label-md font-bold text-primary">Un doute sur la faisabilité technique de votre projet ?</h4>
+<p class="text-body-sm font-body-sm text-text-secondary">L'Assistant IA BatiHome analyse vos cotes, photos de terrasse ou plans d'architecte en temps réel.</p>
+</div>
+</div>
+<div class="flex items-center gap-2 w-full md:w-auto">
+<button class="flex-1 md:flex-initial px-4 py-2 rounded-lg bg-primary-container text-white text-label-md font-label-md font-semibold hover:bg-primary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="chat">chat</span>
+<span>Interroger l'Assistant IA</span>
+</button>
+<button class="px-3 py-2 rounded-lg border border-border-strong text-text-secondary hover:text-primary hover:bg-white text-label-md transition-colors" title="Planifier un rappel téléphonique avec un technicien">
+<span class="material-symbols-outlined text-[18px]" data-icon="phone_in_talk">phone_in_talk</span>
+</button>
+</div>
+</section>
+</main>
+<!-- ================= FOOTER (Shared Component) ================= -->
+<footer class="w-full pt-16 pb-12 bg-surface-dark text-inverse-on-surface border-t border-primary-container flat no shadows mt-16">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col space-y-12">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+<!-- Col 1: Brand & Identity -->
+<div class="lg:col-span-2 space-y-4">
+<a class="text-headline-md font-headline-md font-bold text-inverse-on-surface tracking-tight flex items-center gap-2" href="#">
+<span class="w-8 h-8 rounded-lg bg-secondary-fixed text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="balcony">balcony</span>
+</span>
+<span>BatiHome</span>
+</a>
+<p class="text-body-sm font-body-sm text-outline-variant max-w-sm">
+            Concepteur et fabricant français de garde-corps en verre haute précision et systèmes d'architecture extérieure contemporaine.
+          </p>
+<div class="flex items-center space-x-3 text-secondary-fixed">
+<a aria-label="LinkedIn" class="p-2 rounded bg-surface-dark border border-outline-variant/20 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="public">public</span>
+</a>
+<a aria-label="Support" class="p-2 rounded bg-surface-dark border border-outline-variant/20 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="contact_support">contact_support</span>
+</a>
+<a aria-label="Email" class="p-2 rounded bg-surface-dark border border-outline-variant/20 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="alternate_email">alternate_email</span>
+</a>
+</div>
+</div>
+<!-- Col 2: Solutions -->
+<div class="space-y-3">
+<h4 class="text-headline-sm font-headline-sm text-white">Solutions</h4>
+<ul class="space-y-2 text-body-sm font-body-sm">
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Solutions garde-corps</a></li>
+<li><a class="text-secondary-fixed font-semibold" href="#">Garde-corps sur profil</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Fixations ponctuelles</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Potelets inox &amp; verre</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Mains courantes alu</a></li>
+</ul>
+</div>
+<!-- Col 3: Outils & Projets -->
+<div class="space-y-3">
+<h4 class="text-headline-sm font-headline-sm text-white">Outils &amp; Projets</h4>
+<ul class="space-y-2 text-body-sm font-body-sm">
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Projets &amp; Réalisations</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Configurateur 3D</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Demande d'échantillons</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Espace Architectes &amp; Pros</a></li>
+</ul>
+</div>
+<!-- Col 4: Support & Légal -->
+<div class="space-y-3">
+<h4 class="text-headline-sm font-headline-sm text-white">Technique &amp; Légal</h4>
+<ul class="space-y-2 text-body-sm font-body-sm">
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Guides techniques &amp; FAQ</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Cahiers d'essais CSTB</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Mentions légales &amp; CGV</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Gestion des cookies</a></li>
+</ul>
+</div>
+</div>
+<!-- Bottom Bar & Copyright -->
+<div class="pt-8 border-t border-outline-variant/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-body-sm font-body-sm text-outline-variant">
+<p>© 2026 BatiHome. Tous droits réservés. Normes NF P01-012/013 garanties.</p>
+<div class="flex items-center space-x-6 text-label-technical font-label-technical">
+<span class="inline-flex items-center gap-1 text-secondary-fixed">
+<span class="material-symbols-outlined text-[14px]" data-icon="security">security</span>
+            Paiement 3D Secure &amp; Virement
+          </span>
+<span class="inline-flex items-center gap-1 text-secondary-fixed">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+            Données cryptées SSL 256-bit
+          </span>
+</div>
+</div>
+</div>
+</footer>
+<!-- ================= MICRO-INTERACTION SCRIPT ================= -->
+<script>
+    // Live update of linear length simulator slider
+    const slider = document.getElementById('sim-slider');
+    const displayVal = document.getElementById('slider-val-display');
+    const displayTotal = document.getElementById('price-total-display');
+
+    if (slider && displayVal && displayTotal) {
+      slider.addEventListener('input', function(e) {
+        const val = parseFloat(e.target.value);
+        displayVal.textContent = val.toFixed(2);
+        
+        // Base rate ~339 € per linear meter
+        const total = Math.round(val * 339);
+        displayTotal.textContent = total.toLocaleString('fr-FR') + ' €';
+      });
+    }
+  </script>
+</body></html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AXESTEEL Internal Tool #04 — Scanneur E-Commerce Universel (Multi-CMS Sans API)</title>
+  <style>
+    :root {
+      --primary: #00323f;
+      --accent: #00a896;
+      --cyan: #00c2cb;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --amber: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, var(--primary) 100%);
+      color: #fff;
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid var(--cyan);
+    }
+    .brand-badge {
+      display: inline-block;
+      background: rgba(0, 194, 203, 0.2);
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+    .container { max-width: 1360px; margin: 24px auto; padding: 0 24px; }
+    
+    /* Carte de Scan Universel */
+    .universal-banner {
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
+      border: 2px solid var(--accent);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0, 168, 150, 0.08);
+    }
+    .universal-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .universal-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .scan-form {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .url-input {
+      flex: 1;
+      min-width: 320px;
+      padding: 12px 16px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .url-input:focus { border-color: var(--accent); }
+    .btn-scan {
+      padding: 12px 24px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-scan:hover { background: #008f80; transform: translateY(-1px); }
+    .btn-scan:disabled { opacity: 0.6; cursor: not-allowed; }
+    .presets-row {
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .btn-preset {
+      padding: 5px 12px;
+      background: #e2e8f0;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-preset:hover { background: #cbd5e1; color: var(--primary); }
+    .btn-default-catalog {
+      background: #f1f5f9;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      font-weight: 700;
+    }
+
+    /* Indicateur de statut */
+    .scan-status-box {
+      margin-top: 14px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      display: none;
+    }
+    .scan-status-box.active { display: flex; align-items: center; justify-content: space-between; }
+    .scan-status-box.loading { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .scan-status-box.success { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+    .scan-status-box.error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      box-shadow: 0 1px 2px rgba(15,23,42,0.04);
+    }
+    .kpi-label { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted); }
+    .kpi-val { font-size: 26px; font-weight: 800; color: var(--primary); margin-top: 4px; font-family: monospace; }
+    
+    .toolbar {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tab-btn {
+      padding: 8px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #f1f5f9;
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .search-input {
+      padding: 9px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      width: 300px;
+      font-size: 13px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 16px;
+    }
+    .prod-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 2px 4px rgba(15,23,42,0.03);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .prod-card:hover { transform: translateY(-3px); box-shadow: 0 6px 14px rgba(15,23,42,0.06); }
+    .img-box {
+      height: 160px;
+      background: #f8fafc;
+      border: 1px solid #f1f5f9;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      overflow: hidden;
+    }
+    .img-box img { max-height: 100%; max-width: 100%; object-fit: contain; }
+    .sku-badge {
+      font-family: monospace;
+      font-size: 11px;
+      font-weight: 700;
+      background: #f1f5f9;
+      padding: 2px 8px;
+      border-radius: 6px;
+      color: var(--primary);
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .price-ttc { font-size: 16px; font-weight: 800; color: var(--primary); font-family: monospace; }
+    .price-ht { font-size: 11px; color: var(--muted); font-family: monospace; }
+    .spinner {
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 3px solid #fff;
+      width: 16px;
+      height: 16px;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <span class="brand-badge">AXESTEEL • Outil Interne #04 • Moteur Universel</span>
+      <h1 style="font-size: 22px; font-weight: 800;">Scanneur DOM E-Commerce Sans API & Moissonneur Tarifaire</h1>
+    </div>
+    <div style="text-align: right; font-size: 12px; color: #cbd5e1;">
+      <div>Moteur Universel : <strong>PrestaShop, Shopify, WooCommerce, Magento</strong></div>
+      <div>Accès : <strong>Canal 2 (Web UI Port 5183)</strong></div>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Barre de Scan Universel à Chaud -->
+    <div class="universal-banner">
+      <div class="universal-title">
+        <span>🌐</span>
+        <span>Scanneur Universel : Donnez n'importe quelle URL de site ou de catégorie</span>
+      </div>
+      <div class="universal-desc">
+        Le moteur analyse automatiquement le DOM sans API, résout les URLs relatives, extrait les cartes produits (titre, prix TTC/HT, images HD thickbox/large) et génère instantanément le catalogue JSON + rapport visuel.
+      </div>
+      <div class="scan-form">
+        <input
+          type="url"
+          id="liveUrlInput"
+          class="url-input"
+          placeholder="Ex: https://www.railingsdesign.com/12-garde-corps-verre"
+          value="https://www.railingsdesign.com/12-garde-corps-verre"
+        />
+        <button id="btnScanUrl" class="btn-scan">
+          <span id="btnScanIcon">⚡</span>
+          <span id="btnScanText">Scanner ce Site Universel</span>
+        </button>
+      </div>
+
+      <div class="presets-row">
+        <span>Suggestions d'exemples réels :</span>
+        <button class="btn-preset" data-url="https://www.railingsdesign.com/12-garde-corps-verre">
+          🏢 RailingsDesign (PrestaShop) : 12-garde-corps-verre
+        </button>
+        <button class="btn-preset" data-url="https://www.railingsdesign.com/16-garde-corps-verre-exterieur">
+          🌳 RailingsDesign : 16-garde-corps-verre-exterieur
+        </button>
+        <button class="btn-preset" data-url="https://www.inoxdesign.fr/systemes-profil-paroi-de-verre.html">
+          🌐 InoxDesign (Magento) : Systèmes profil
+        </button>
+        <button class="btn-preset btn-default-catalog" id="btnLoadDefault">
+          📦 Recharger Catalogue de Référence (133 réf. InoxDesign)
+        </button>
+      </div>
+
+      <div id="scanStatusBox" class="scan-status-box"></div>
+    </div>
+
+    <!-- Indicateurs KPI -->
+    <div class="kpi-grid" id="kpiGrid"></div>
+
+    <!-- Barre d'outils et de filtrage -->
+    <div class="toolbar">
+      <div class="tabs" id="catTabs"></div>
+      <input type="text" id="searchInput" class="search-input" placeholder="Filtrer SKU, titre ou prix..." />
+    </div>
+
+    <!-- Grille des cartes produits -->
+    <div class="grid" id="productGrid"></div>
+  </div>
+
+  <script>
+    let activeCatalogData = null;
+    let currentCat = 'all';
+    let currentSearch = '';
+    let isLiveCustomMode = false;
+
+    // Éléments du DOM
+    const liveUrlInput = document.getElementById('liveUrlInput');
+    const btnScanUrl = document.getElementById('btnScanUrl');
+    const btnScanIcon = document.getElementById('btnScanIcon');
+    const btnScanText = document.getElementById('btnScanText');
+    const scanStatusBox = document.getElementById('scanStatusBox');
+    const btnLoadDefault = document.getElementById('btnLoadDefault');
+    const catTabs = document.getElementById('catTabs');
+    const searchInput = document.getElementById('searchInput');
+
+    // Clics sur les presets
+    document.querySelectorAll('.btn-preset[data-url]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        liveUrlInput.value = btn.getAttribute('data-url');
+        triggerScan();
+      });
+    });
+
+    btnScanUrl.addEventListener('click', triggerScan);
+    btnLoadDefault.addEventListener('click', loadDefaultCatalog);
+
+    async function triggerScan() {
+      const targetUrl = liveUrlInput.value.trim();
+      if (!targetUrl) return;
+
+      btnScanUrl.disabled = true;
+      btnScanIcon.innerHTML = '<div class="spinner"></div>';
+      btnScanText.textContent = 'Scan DOM en direct...';
+      showStatus('loading', `⏳ Exploration et extraction DOM en cours sur <strong>${escapeHtml(targetUrl)}</strong>...`);
+
+      try {
+        const resp = await fetch('/api/scan_url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url: targetUrl })
+        });
+        const data = await resp.json();
+
+        if (data.status === 'success' || (data.products && data.products.length > 0)) {
+          isLiveCustomMode = true;
+          activeCatalogData = data;
+          showStatus('success', `
+            <div>
+              ✅ <strong>Scan Universel Réussi !</strong> ${data.total_products} produits et ${data.total_vignettes} vignettes extraits depuis <em>${escapeHtml(data.base_domain)}</em>.
+              ${data.html_report_url ? `<a href="${data.html_report_url}" target="_blank" style="margin-left:12px; font-weight:700; color:#065f46; text-decoration:underline;">Visualiser le rapport HTML complet ↗</a>` : ''}
+            </div>
+          `);
+          renderCatalog(data);
+        } else {
+          showStatus('error', `❌ Échec ou zéro produit trouvé : ${data.errors ? data.errors.join(', ') : 'Vérifiez la connectivité ou la structure DOM'}`);
+        }
+      } catch (err) {
+        showStatus('error', `❌ Erreur réseau ou serveur : ${err.message}`);
+      } finally {
+        btnScanUrl.disabled = false;
+        btnScanIcon.textContent = '⚡';
+        btnScanText.textContent = 'Scanner ce Site Universel';
+      }
+    }
+
+    async function loadDefaultCatalog() {
+      isLiveCustomMode = false;
+      showStatus('loading', 'Chargement du catalogue de référence InoxDesign...');
+      try {
+        const res = await fetch(`/api/catalog?category=all`);
+        const data = await res.json();
+        activeCatalogData = data;
+        hideStatus();
+        renderCatalog(data);
+      } catch (err) {
+        showStatus('error', `Erreur chargement catalogue : ${err.message}`);
+      }
+    }
+
+    function showStatus(type, html) {
+      scanStatusBox.className = `scan-status-box active ${type}`;
+      scanStatusBox.innerHTML = html;
+    }
+
+    function hideStatus() {
+      scanStatusBox.className = 'scan-status-box';
+      scanStatusBox.innerHTML = '';
+    }
+
+    function renderCatalog(data) {
+      const products = data.products || [];
+      const totalCount = products.length;
+      const vignettesCount = data.total_vignettes || 0;
+
+      // Calcul catégories dynamiques
+      const catCounts = {};
+      products.forEach(p => {
+        const f = p.category_folder || 'default';
+        catCounts[f] = (catCounts[f] || 0) + 1;
+      });
+
+      // Construction des onglets dynamiques
+      let tabsHtml = `<button class="tab-btn ${currentCat === 'all' ? 'active' : ''}" data-cat="all">Toutes (${totalCount})</button>`;
+      Object.keys(catCounts).forEach(catKey => {
+        const count = catCounts[catKey];
+        const label = catKey.replace(/^[0-9]+_/, '').replace(/_/g, ' ');
+        tabsHtml += `<button class="tab-btn ${currentCat === catKey ? 'active' : ''}" data-cat="${catKey}">${label} (${count})</button>`;
+      });
+      catTabs.innerHTML = tabsHtml;
+
+      // Listeners onglets
+      catTabs.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          catTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentCat = btn.getAttribute('data-cat');
+          applyFiltersAndRenderGrid();
+        });
+      });
+
+      // Filtrer et afficher la grille
+      applyFiltersAndRenderGrid();
+    }
+
+    function applyFiltersAndRenderGrid() {
+      if (!activeCatalogData) return;
+      const allProds = activeCatalogData.products || [];
+      const query = currentSearch.toLowerCase().trim();
+
+      const filtered = allProds.filter(p => {
+        const matchCat = (currentCat === 'all') || (p.category_folder === currentCat);
+        const matchSearch = !query || 
+          (p.title && p.title.toLowerCase().includes(query)) ||
+          (p.sku && p.sku.toLowerCase().includes(query)) ||
+          (p.price_raw && p.price_raw.toLowerCase().includes(query));
+        return matchCat && matchSearch;
+      });
+
+      // Rendu des KPIs
+      const kpiGrid = document.getElementById('kpiGrid');
+      const prices = filtered.map(p => p.price_ttc_eur).filter(v => v !== null && v !== undefined);
+      const minP = prices.length ? Math.min(...prices).toFixed(2) + ' €' : 'Sur devis';
+      const maxP = prices.length ? Math.max(...prices).toFixed(2) + ' €' : 'Sur devis';
+
+      kpiGrid.innerHTML = `
+        <div class="kpi-card">
+          <div class="kpi-label">Total Références</div>
+          <div class="kpi-val">${allProds.length}</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Sélection Affichée</div>
+          <div class="kpi-val" style="color:#00a896;">${filtered.length}</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Prix Minimum TTC</div>
+          <div class="kpi-val">${minP}</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Prix Maximum TTC</div>
+          <div class="kpi-val">${maxP}</div>
+        </div>
+      `;
+
+      // Rendu de la grille de produits
+      const grid = document.getElementById('productGrid');
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; padding: 40px; text-align: center; color: #64748b; background:#fff; border-radius:12px;">Aucun produit ne correspond à votre filtre.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => {
+        const imgSrc = item.image_url || item.frontend_public_image || '';
+        const ttcText = item.price_ttc_eur ? item.price_ttc_eur.toFixed(2) + ' € TTC' : (item.price_raw || 'Sur devis');
+        const htText = item.price_ht_eur ? item.price_ht_eur.toFixed(2) + ' € HT' : '';
+
+        return `
+          <div class="prod-card">
+            <div>
+              <div class="img-box">
+                ${imgSrc ? `<img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(item.title)}" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/240x160?text=Visuel+Produit';" />` : `<div style="color:#94a3b8; font-size:12px;">Sans visuel</div>`}
+              </div>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin:10px 0 6px;">
+                <span class="sku-badge" title="${escapeHtml(item.sku)}">${escapeHtml(item.sku)}</span>
+                <span style="font-size:10px; color:#00a896; font-weight:700;">${escapeHtml(item.category_folder || 'général')}</span>
+              </div>
+              <div style="font-size:13px; font-weight:700; color:#0f172a; line-height:1.3; min-height:34px;">${escapeHtml(item.title)}</div>
+            </div>
+            <div style="border-top:1px solid #f1f5f9; padding-top:10px; display:flex; justify-content:space-between; align-items:flex-end;">
+              <div>
+                <div class="price-ttc">${ttcText}</div>
+                <div class="price-ht">${htText ? htText + ' / ' + (item.unit || 'unité') : (item.unit || 'unité')}</div>
+              </div>
+              ${item.source_url ? `
+                <a href="${escapeHtml(item.source_url)}" target="_blank" rel="noopener noreferrer" style="font-size:11px; color:#00a896; font-weight:700; text-decoration:none;">
+                  Fiche ↗
+                </a>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      currentSearch = e.target.value;
+      applyFiltersAndRenderGrid();
+    });
+
+    // Au chargement initial : charger le catalogue par défaut
+    loadDefaultCatalog();
+  </script>
+</body>
+</html>

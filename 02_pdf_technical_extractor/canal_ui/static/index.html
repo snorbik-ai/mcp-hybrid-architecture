@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BatiHome — Studio d'Ingestion PDF Multi-Canal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B0F17;
+      --card-bg: rgba(22, 30, 46, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --amber: #F59E0B;
+      --amber-hover: #D97706;
+      --amber-glow: rgba(245, 158, 11, 0.2);
+      --text: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --primary: #3B82F6;
+      --success: #10B981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      line-height: 1.5;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(245, 158, 11, 0.08) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.06) 0px, transparent 50%);
+    }
+    header {
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--card-border);
+      background: rgba(11, 15, 23, 0.8);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .badge {
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-amber { background: var(--amber-glow); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .channels-bar {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+    }
+    .channel-chip {
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .channel-chip.active {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--amber);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+      margin-bottom: 1.5rem;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--text-muted);
+    }
+    input, select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, select:focus {
+      border-color: var(--amber);
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--amber);
+      color: #000;
+    }
+    .btn-primary:hover {
+      background: var(--amber-hover);
+      box-shadow: 0 0 15px var(--amber-glow);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .stat-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+    }
+    .stat-val {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--amber);
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+    }
+    .tab {
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .tab:hover { color: var(--text); }
+    .tab.active {
+      color: var(--amber);
+      border-bottom-color: var(--amber);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .gallery-item {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .gallery-item:hover {
+      transform: translateY(-3px);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+    .gallery-thumb {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      background: #000;
+      cursor: pointer;
+    }
+    .gallery-info {
+      padding: 0.75rem;
+      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .gallery-name {
+      font-weight: 600;
+      color: var(--text);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .gallery-meta {
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+    pre.code-block {
+      background: #06090e;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      max-height: 450px;
+      overflow: auto;
+      color: #93c5fd;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-badge">
+      <h2 style="font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em;">BatiHome <span style="color: var(--amber);">PDF Studio</span></h2>
+      <span class="badge badge-amber">Canal 2 : UI Graphique</span>
+    </div>
+
+    <div class="channels-bar">
+      <span class="channel-chip active">🖥️ Canal UI (Humain)</span>
+      <span class="channel-chip" title="Accessible via FastMCP">🤖 Canal MCP (IA)</span>
+      <span class="channel-chip" title="Accessible en Python/CLI">⚙️ Canal SDK / CLI</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Panneau de contrôle -->
+    <div class="card">
+      <h3 style="margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;">
+        <span>📄 Ingestion et Découpage de Catalogue PDF</span>
+      </h3>
+      <div class="grid-2">
+        <div>
+          <label>Chemin ou nom du fichier PDF :</label>
+          <input type="text" id="pdfPathInput" value="documents/04_catalogue_fournisseur_vi_tree/GARDE CORPS VI_TREE.pdf" />
+          <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.35rem;">
+            Catalogue fournisseur par défaut inclus dans le projet BatiHome.
+          </p>
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <div style="flex: 1;">
+            <label>Résolution des pages (DPI) :</label>
+            <select id="dpiSelect">
+              <option value="120">120 DPI (Aperçu ultra rapide)</option>
+              <option value="150" selected>150 DPI (Recommandé - Équilibré)</option>
+              <option value="300">300 DPI (Haute Définition BE)</option>
+            </select>
+          </div>
+          <div style="padding-top: 1.5rem;">
+            <button class="btn btn-primary" id="processBtn" onclick="runProcessing()">
+              <span>⚡ Lancer l'Ingestion</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats dynamiques -->
+      <div class="stats-row" id="statsRow" style="display: none;">
+        <div class="stat-box">
+          <div class="stat-val" id="statPages">0</div>
+          <div class="stat-label">Pages découpées & rendues</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="statPhotos">0</div>
+          <div class="stat-label">Photos Produits extraites</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="statSchemas">0</div>
+          <div class="stat-label">Plans & Schémas techniques</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" id="statLogos">0</div>
+          <div class="stat-label">Logos & Pictogrammes</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Onglets de consultation des résultats -->
+    <div class="card" id="resultsCard">
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab('photos')">📷 Photos Produits (<span id="countPhotos">0</span>)</div>
+        <div class="tab" onclick="switchTab('pages')">📑 Rendu des Pages HD (<span id="countPages">0</span>)</div>
+        <div class="tab" onclick="switchTab('schemas')">📐 Plans & Schémas (<span id="countSchemas">0</span>)</div>
+        <div class="tab" onclick="switchTab('logos')">🏷️ Logos & Icônes (<span id="countLogos">0</span>)</div>
+        <div class="tab" onclick="switchTab('text')">🧠 Texte OCR & RAG IA</div>
+      </div>
+
+      <div id="tabContent">
+        <!-- Rempli dynamiquement -->
+        <div class="gallery-grid" id="itemsGrid"></div>
+        <pre class="code-block" id="textBlock" style="display: none;"></pre>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let currentManifest = null;
+    let currentSlug = "garde_corps_vi_tree";
+    let activeTab = "photos";
+
+    async function loadInitial() {
+      try {
+        const res = await fetch('/api/document/garde_corps_vi_tree');
+        if (res.ok) {
+          currentManifest = await res.json();
+          renderManifest();
+        }
+      } catch (e) {
+        console.log("Catalogue par défaut non encore traité.");
+      }
+    }
+
+    async function runProcessing() {
+      const btn = document.getElementById('processBtn');
+      const input = document.getElementById('pdfPathInput').value.trim();
+      const dpi = document.getElementById('dpiSelect').value;
+
+      if (!input) return alert("Veuillez renseigner un chemin PDF.");
+
+      btn.disabled = true;
+      btn.innerHTML = "<span>⏳ Traitement en cours...</span>";
+
+      try {
+        const res = await fetch('/api/process', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pdf_path: input, dpi: dpi })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          // Recharger le manifeste
+          const docRes = await fetch(`/api/document/${data.document_dir.split(/[\\\\/]/).pop()}`);
+          currentManifest = await docRes.json();
+          renderManifest();
+          alert("✅ Traitement réussi ! " + data.total_pages + " pages et " + data.total_images_extracted + " images extraites.");
+        } else {
+          alert("❌ Erreur : " + data.message);
+        }
+      } catch (err) {
+        alert("Erreur de connexion au serveur : " + err);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = "<span>⚡ Lancer l'Ingestion</span>";
+      }
+    }
+
+    function renderManifest() {
+      if (!currentManifest) return;
+
+      document.getElementById('statsRow').style.display = 'grid';
+      document.getElementById('statPages').innerText = currentManifest.total_pages || 0;
+      
+      const classified = currentManifest.classified_assets || {};
+      const photos = classified.photos_produits || [];
+      const schemas = classified.plans_et_schemas || [];
+      const logos = classified.logos_et_icones || [];
+
+      document.getElementById('statPhotos').innerText = photos.length;
+      document.getElementById('statSchemas').innerText = schemas.length;
+      document.getElementById('statLogos').innerText = logos.length;
+
+      document.getElementById('countPhotos').innerText = photos.length;
+      document.getElementById('countPages').innerText = currentManifest.pages ? currentManifest.pages.length : 0;
+      document.getElementById('countSchemas').innerText = schemas.length;
+      document.getElementById('countLogos').innerText = logos.length;
+
+      renderCurrentTab();
+    }
+
+    function switchTab(tabKey) {
+      activeTab = tabKey;
+      document.querySelectorAll('.tab').forEach((t, i) => {
+        t.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      renderCurrentTab();
+    }
+
+    function renderCurrentTab() {
+      const grid = document.getElementById('itemsGrid');
+      const textBlock = document.getElementById('textBlock');
+      grid.innerHTML = "";
+      
+      if (!currentManifest) return;
+      const slug = currentManifest.source_file.split(/[\\\\/]/).pop().replace(/\.[^/.]+$/, "").toLowerCase().replace(/[- ]/g, "_");
+
+      if (activeTab === 'text') {
+        grid.style.display = 'none';
+        textBlock.style.display = 'block';
+        let fullText = "";
+        (currentManifest.pages || []).forEach(p => {
+          fullText += `=== PAGE ${p.page_number} ===\n`;
+          p.images.forEach(img => {
+            fullText += `  [Image ${img.category} : ${img.width}x${img.height} (${img.format})]\n`;
+          });
+          fullText += "\n";
+        });
+        textBlock.innerText = fullText;
+        return;
+      }
+
+      grid.style.display = 'grid';
+      textBlock.style.display = 'none';
+
+      let items = [];
+      if (activeTab === 'photos') items = (currentManifest.classified_assets || {}).photos_produits || [];
+      else if (activeTab === 'schemas') items = (currentManifest.classified_assets || {}).plans_et_schemas || [];
+      else if (activeTab === 'logos') items = (currentManifest.classified_assets || {}).logos_et_icones || [];
+      else if (activeTab === 'pages') {
+        items = (currentManifest.pages || []).map(p => ({
+          filename: `page_${String(p.page_number).padStart(3, '0')}.png`,
+          classified_relative_path: p.render_relative_path,
+          width: Math.round(p.width),
+          height: Math.round(p.height),
+          page: p.page_number
+        }));
+      }
+
+      if (items.length === 0) {
+        grid.innerHTML = `<p style="color: var(--text-muted); grid-column: 1/-1; padding: 2rem; text-align: center;">Aucun élément dans cette catégorie.</p>`;
+        return;
+      }
+
+      items.forEach(item => {
+        const itemEl = document.createElement('div');
+        itemEl.className = 'gallery-item';
+        const imgUrl = `/output/${slug}/${item.classified_relative_path || item.raw_relative_path}`;
+        itemEl.innerHTML = `
+          <img src="${imgUrl}" class="gallery-thumb" loading="lazy" onclick="window.open('${imgUrl}', '_blank')" />
+          <div class="gallery-info">
+            <span class="gallery-name" title="${item.filename}">${item.filename}</span>
+            <div class="gallery-meta">
+              <span>Page ${item.page || '?'}</span>
+              <span>${item.width} × ${item.height} px</span>
+            </div>
+          </div>
+        `;
+        grid.appendChild(itemEl);
+      });
+    }
+
+    loadInitial();
+  </script>
+</body>
+</html>

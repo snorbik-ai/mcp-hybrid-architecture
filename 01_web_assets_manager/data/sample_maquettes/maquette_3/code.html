@@ -1,0 +1,488 @@
+<!DOCTYPE html><html class="h-full bg-surface-canvas text-on-surface antialiased" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>BatiHome - Configurateur &amp; Assistant IA Pilot</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-card": "#FFFFFF",
+            "surface-bright": "#f9f9ff",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#40484b",
+            "on-surface": "#141b2c",
+            "border-subtle": "#EAECF0",
+            "on-error-container": "#93000a",
+            "surface-container-low": "#f1f3ff",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#9bcee1",
+            "secondary-container": "#81f3e5",
+            "primary-fixed": "#b7eafe",
+            "surface-tint": "#316576",
+            "tertiary-fixed-dim": "#ffb597",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#005049",
+            "surface-container-highest": "#dbe2f9",
+            "primary": "#00323f",
+            "inverse-surface": "#293041",
+            "tertiary-container": "#782b00",
+            "secondary": "#006a62",
+            "error": "#ba1a1a",
+            "success-green": "#067647",
+            "tertiary-fixed": "#ffdbcd",
+            "inverse-primary": "#9bcee1",
+            "border-strong": "#D0D5DD",
+            "on-primary-container": "#86b9cb",
+            "text-secondary": "#344054",
+            "surface-variant": "#dbe2f9",
+            "on-tertiary-fixed-variant": "#7d2d00",
+            "on-tertiary-fixed": "#360f00",
+            "surface-container-high": "#e0e8ff",
+            "on-primary": "#ffffff",
+            "secondary-fixed": "#84f5e8",
+            "inverse-on-surface": "#edf0ff",
+            "text-muted": "#475467",
+            "on-secondary-fixed": "#00201d",
+            "surface-dark": "#0B2630",
+            "surface-container": "#e9edff",
+            "secondary-fixed-dim": "#66d9cc",
+            "error-container": "#ffdad6",
+            "on-secondary-container": "#006f66",
+            "surface-dim": "#d2daf0",
+            "on-primary-fixed": "#001f28",
+            "on-primary-fixed-variant": "#134d5d",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-container": "#ff9567",
+            "outline": "#70787c",
+            "surface-canvas": "#F7F8FA",
+            "background": "#f9f9ff",
+            "outline-variant": "#c0c8cb",
+            "surface": "#f9f9ff",
+            "primary-container": "#0e4a5a",
+            "on-background": "#141b2c",
+            "surface-glass-tint": "#E6F2F5",
+            "tertiary": "#541b00"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "1rem",
+            "gutter-mobile": "1rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "2rem",
+            "space-xl": "2.5rem",
+            "gutter": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "metric-price-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-technical": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-hero": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "metric-price-lg": ["Inter"],
+            "headline-hero-mobile": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"]
+          },
+          "fontSize": {
+            "metric-price-md": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-technical": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "metric-price-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #D0D5DD;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-full flex flex-col bg-surface-canvas font-body-md text-on-surface">
+<!-- 1. HEADER (TopNavBar Shared Component) -->
+<header class="bg-surface-card border-b border-border-subtle shadow-sm sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-6 lg:px-12 max-w-7xl mx-auto h-20">
+<!-- Brand & Left Navigation -->
+<div class="flex items-center space-x-8">
+<a class="flex items-center space-x-2" href="#">
+<!-- Geometric Railing Icon -->
+<div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined text-xl" data-icon="grid_view">grid_view</span>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight leading-none">BatiHome</span>
+<span class="text-[10px] uppercase font-bold tracking-widest text-text-muted mt-0.5">Garde-corps sur mesure</span>
+</div>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center space-x-6 text-label-md font-label-md">
+<a class="text-text-secondary font-medium hover:text-primary transition-colors py-1" href="#">Solutions</a>
+<a class="text-text-secondary font-medium hover:text-primary transition-colors py-1" href="#">Projets</a>
+<!-- Active: Configurateur -->
+<a class="text-primary font-semibold border-b-2 border-primary pb-1" href="#">Configurateur</a>
+<a class="text-text-secondary font-medium hover:text-primary transition-colors py-1" href="#">Réalisations</a>
+<a class="text-text-secondary font-medium hover:text-primary transition-colors py-1" href="#">Conseils</a>
+</nav>
+</div>
+<!-- Search & Trailing Actions -->
+<div class="flex items-center space-x-5">
+<!-- Search bar on right -->
+<div class="relative hidden xl:block w-72">
+<input class="w-full pl-9 pr-4 py-2 bg-surface-canvas border border-border-subtle rounded-lg text-body-sm font-body-sm text-on-surface focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all" placeholder="Rechercher un produit, une solution..." type="text">
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-outline text-lg" data-icon="search">search</span>
+</div>
+<!-- Phone support -->
+<div class="hidden 2xl:flex items-center space-x-1.5 text-label-md font-label-md text-text-secondary border-r border-border-subtle pr-4">
+<span class="text-text-muted">Besoin d'aide ?</span>
+<span class="material-symbols-outlined text-base text-primary" data-icon="call">call</span>
+<span class="font-semibold text-primary">01 76 38 00 00</span>
+</div>
+<!-- Action Icons -->
+<div class="flex items-center space-x-3 text-text-secondary">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors relative" title="Favoris">
+<span class="material-symbols-outlined text-xl" data-icon="favorite">favorite</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors relative" title="Mon Compte">
+<span class="material-symbols-outlined text-xl" data-icon="person">person</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors relative" title="Panier devis">
+<span class="material-symbols-outlined text-xl" data-icon="shopping_bag">shopping_bag</span>
+<span class="absolute top-1 right-1 w-4 h-4 bg-tertiary-container text-white text-[10px] font-bold rounded-full flex items-center justify-center">0</span>
+</button>
+</div>
+<!-- Trailing Primary Action -->
+<button class="hidden sm:inline-flex items-center justify-center px-4 py-2 bg-primary-container text-white rounded-lg text-label-md font-label-md hover:bg-primary transition-all duration-180 shadow-sm">
+          Devis en ligne
+        </button>
+</div>
+</div>
+</header>
+<!-- 2. MAIN WORKSPACE WITH INTEGRATED SPLIT PILOT IA PANEL -->
+<main class="flex-1 max-w-[1536px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<div class="flex flex-col lg:flex-row gap-6 items-start">
+<!-- ========================================== -->
+<!-- A. VOLET GAUCHE : WORKSPACE CONFIGURATEUR  -->
+<!-- ========================================== -->
+<section class="w-full lg:w-7/12 xl:w-8/12 bg-surface-card rounded-xl border border-border-subtle shadow-sm overflow-hidden flex flex-col">
+<!-- Breadcrumb & Top Bar -->
+<div class="px-6 sm:px-8 pt-5 pb-4 border-b border-border-subtle flex flex-wrap items-center justify-between gap-4"><nav class="flex items-center space-x-2 text-body-sm font-body-sm text-text-muted"><a class="hover:text-primary transition-colors" href="#">Accueil</a><span class="material-symbols-outlined text-xs text-outline-variant" data-icon="chevron_right">chevron_right</span><a class="hover:text-primary transition-colors" href="#">Configurateur</a><span class="material-symbols-outlined text-xs text-outline-variant" data-icon="chevron_right">chevron_right</span><span class="font-medium text-primary">Étape 1/8 : Projet</span></nav><div class="flex items-center gap-3"><span class="inline-flex items-center gap-1.5 px-3 py-1 bg-surface-container-high/60 border border-primary-container/20 rounded-full text-primary text-[11px] font-label-technical"><span class="w-2 h-2 rounded-full bg-secondary"></span>Fixtures de test DEMO/TEST - Règles CSTB actives</span><div class="flex items-center gap-2 px-3 py-1.5 bg-surface-glass-tint/70 border border-secondary-container rounded-full text-primary"><span class="material-symbols-outlined text-secondary text-base" data-icon="support_agent">support_agent</span><div class="flex items-center space-x-1.5"><span class="text-label-technical font-label-technical uppercase tracking-wider text-secondary">Un projet spécifique ?</span><span class="text-body-sm font-body-sm font-medium text-primary">Pilot IA connecté</span></div></div></div></div>
+<div class="p-6 sm:p-8 space-y-8">
+<!-- Hero Section Header -->
+<div class="space-y-1">
+<h1 class="text-headline-lg font-headline-lg text-primary tracking-tight">
+              Configurez votre garde-corps
+            </h1>
+<p class="text-body-lg font-body-lg text-text-muted">
+              En quelques étapes, définissez votre projet et obtenez une estimation en temps réel.
+            </p>
+</div>
+<!-- Stepper 8 Etapes -->
+<div class="w-full py-3 overflow-x-auto custom-scrollbar">
+<div class="min-w-[680px] flex items-center justify-between relative">
+<div class="absolute top-4 left-6 right-6 h-[2px] bg-border-subtle -z-0"></div>
+<!-- 01 Projet (Actif Vert / Émeraude) -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-label-technical text-xs shadow-sm ring-4 ring-secondary-container/50">
+                  01
+                </div>
+<span class="mt-2 text-label-technical font-label-technical text-secondary font-bold">Projet</span>
+</div>
+<!-- 02 Solution -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-card border-2 border-border-subtle text-text-muted flex items-center justify-center font-label-technical text-xs">
+                  02
+                </div>
+<span class="mt-2 text-label-technical font-label-technical text-text-muted">Solution</span>
+</div>
+<!-- 03 Forme -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-card border-2 border-border-subtle text-text-muted flex items-center justify-center font-label-technical text-xs">
+                  03
+                </div>
+<span class="mt-2 text-label-technical font-label-technical text-text-muted">Forme</span>
+</div>
+<!-- 04 Fixation -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-card border-2 border-border-subtle text-text-muted flex items-center justify-center font-label-technical text-xs">
+                  04
+                </div>
+<span class="mt-2 text-label-technical font-label-technical text-text-muted">Fixation</span>
+</div>
+<!-- 05 Verre -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-card border-2 border-border-subtle text-text-muted flex items-center justify-center font-label-technical text-xs">
+                  05
+                </div>
+<span class="mt-2 text-label-technical font-label-technical text-text-muted">Verre</span>
+</div>
+<!-- 06 Dimensions -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-card border-2 border-border-subtle text-text-muted flex items-center justify-center font-label-technical text-xs">
+                  06
+                </div>
+<span class="mt-2 text-label-technical font-label-technical text-text-muted">Dimensions</span>
+</div>
+<!-- 07 Options -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-card border-2 border-border-subtle text-text-muted flex items-center justify-center font-label-technical text-xs">
+                  07
+                </div>
+<span class="mt-2 text-label-technical font-label-technical text-text-muted">Options</span>
+</div>
+<!-- 08 Récapitulatif -->
+<div class="flex flex-col items-center relative z-10">
+<div class="w-8 h-8 rounded-full bg-surface-card border-2 border-border-subtle text-text-muted flex items-center justify-center font-label-technical text-xs">
+                  08
+                </div>
+<span class="mt-2 text-label-technical font-label-technical text-text-muted">Récapitulatif</span>
+</div>
+</div>
+</div>
+<!-- Section Titre Étape -->
+<div class="space-y-1 pt-2">
+<h2 class="text-headline-md font-headline-md text-primary font-bold">
+              Quel est votre projet ?
+            </h2>
+<p class="text-body-md font-body-md text-text-muted">
+              Sélectionnez le type d'installation pour afficher les solutions adaptées.
+            </p>
+</div>
+<!-- Grille des 4 espaces d'installation -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+<!-- Carte 1: Terrasse (Active / Selected) -->
+<div class="group relative rounded-xl border-2 border-secondary bg-surface-glass-tint/30 p-3 flex flex-col justify-between transition-all duration-200 shadow-sm cursor-pointer ring-2 ring-secondary/20"><div class="absolute top-3 right-3 z-10 flex items-center gap-1.5 bg-secondary text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm"><span class="material-symbols-outlined text-xs font-bold" data-icon="check">check</span><span class="">Validé backend ✓ 8,00 m</span></div><div class="aspect-[4/3] w-full rounded-lg overflow-hidden mb-3 bg-surface-canvas"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Modern luxury villa terrace featuring an elegant frameless glass railing with dark anodized aluminium floor profile. Crystal clear tempered glass overlooks a scenic azure coastal sea under bright midday Mediterranean sunlight. The architectural scene emphasizes precision construction, clean geometric lines, safety, and an unobstructed panoramic view with neutral stone pavers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpyBd_iIwFNCaDaKdunKjuRUJePlQ2R0D4uNGeJRJoEMT76DjWl0tW-Ha2k00GilLk1gImnSdOi6Yb__7zlPKNGqqkpGIQe2DhUPGLldCHlR2i7hwZurTS8pux8-L4Qzo3b0aBdOG89l8vv7qScUCTSUuGtxDLYMG7eHiwhtah97PXL325bdD0M87jwSSJVYdWV7a00e4VfvKQZ14ogs7yInGOt4bC2ZIWMHIpCLY"></div><div class="flex items-center justify-between mt-1"><div><h3 class="text-headline-sm font-headline-sm text-primary font-bold">Terrasse</h3><p class="text-body-sm font-body-sm text-text-muted">Cote validée : 8,00 m linéaire</p></div><div class="w-7 h-7 rounded-full bg-secondary text-white flex items-center justify-center shadow-xs"><span class="material-symbols-outlined text-base" data-icon="check">check</span></div></div></div>
+<!-- Carte 2: Escalier -->
+<div class="group relative rounded-xl border border-border-subtle bg-surface-card hover:border-primary-container p-3 flex flex-col justify-between transition-all duration-200 hover:shadow-md cursor-pointer">
+<div class="aspect-[4/3] w-full rounded-lg overflow-hidden mb-3 bg-surface-canvas">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Interior architectural contemporary floating wooden staircase with a sleek glass balustrade and stainless steel point fixings. Warm natural illumination bounces off smooth oak treads and white minimalist gallery walls. High precision structural glass clamps demonstrate safe residential craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNa3kKGJ853qoI9P6mkt7OiukHuEPsocC9RCwHxGGz6e8CTs_FvuPDdG5HdAX8oQ7SCp9xk12zkU_X4WBrmmGPYVWSmCe9Q46hTSCslGZB2uqKDwO_bpVAuz7A9uQqqNz9yHS4V0jE0EncIaCwVSgeRVhQMGYLHdTBrJyCEvrTLj5rB6TrsnTVCoaw8KwnfmFoZucR8qwRttkL9qO9YVcgBbRDc2FRBJ_scbTUkGU">
+</div>
+<div class="flex items-center justify-between mt-1">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface font-semibold">Escalier</h3>
+<p class="text-body-sm font-body-sm text-text-muted">Droit, en L, en U ou sur mesure.</p>
+</div>
+<div class="w-7 h-7 rounded-full bg-surface-canvas border border-border-subtle flex items-center justify-center text-text-muted group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Carte 3: Balcon -->
+<div class="group relative rounded-xl border border-border-subtle bg-surface-card hover:border-primary-container p-3 flex flex-col justify-between transition-all duration-200 hover:shadow-md cursor-pointer">
+<div class="aspect-[4/3] w-full rounded-lg overflow-hidden mb-3 bg-surface-canvas">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Sleek urban apartment exterior balcony equipped with opaque frosted privacy glass balustrades framed in matte graphite aluminium channels. Modern urban residential facade in soft daylight displaying secure structural compliance and contemporary architectural elegance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm5-CPRlMlB6Wll2QPruheQ9CjIuatBYmkb5BHFGFXo8zcIX92WiPnWfoOhQug_SUEMMoHReqDkU-5rmyqbBY9MxDcdDbW1XiQBQ8wsKAE4i0fZG38FILgNyU3nQYS9obew4paP-1dPaDI8sPlu9879Qt0EVApgHAXR4s_NitK7a6crQhrrAXPbH0doA9kZtiZH6i-qO_SWCEvMWloGFZ769xMpodmwGetXlKMZg0">
+</div>
+<div class="flex items-center justify-between mt-1">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface font-semibold">Balcon</h3>
+<p class="text-body-sm font-body-sm text-text-muted">Appartement, façade.</p>
+</div>
+<div class="w-7 h-7 rounded-full bg-surface-canvas border border-border-subtle flex items-center justify-center text-text-muted group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Carte 4: Mezzanine -->
+<div class="group relative rounded-xl border border-border-subtle bg-surface-card hover:border-primary-container p-3 flex flex-col justify-between transition-all duration-200 hover:shadow-md cursor-pointer">
+<div class="aspect-[4/3] w-full rounded-lg overflow-hidden mb-3 bg-surface-canvas">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="High ceiling modern loft apartment mezzanine overlooking open living space featuring seamless tempered glass railing with flush recessed floor shoe. Bright ambient daylight filters through double-height windows onto polished concrete and warm wooden fixtures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNSHl1m8Gig4zwK7gpOX_EojnxyFh-m5oW3TIt8ymOOM2LSwRC90EUvlFS6JClOI2pT-bZ5BrWGs6FNWfKJjBxMGKz9zlMhv11qzeT0fHUqwXkyQpP_6WFg0KcrS5tWv4D0Nsp_4aVJG15GKro04hRKJEe1L-weJa72dUw-Mt08KWpzRrDlHRjpFtYdieoSrZ9g5l2zYL0Yp89TGCr-ss895-f7fP12-IqidExp3o">
+</div>
+<div class="flex items-center justify-between mt-1">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface font-semibold">Mezzanine</h3>
+<p class="text-body-sm font-body-sm text-text-muted">Espace intérieur.</p>
+</div>
+<div class="w-7 h-7 rounded-full bg-surface-canvas border border-border-subtle flex items-center justify-center text-text-muted group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Double bloc : Exemple d'application + Informations du projet synchronisées -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-6 pt-2">
+<!-- Carrousel Visuel Exemple d'application (7 colonnes) -->
+<div class="xl:col-span-7 bg-surface-canvas border border-border-subtle rounded-xl p-4 flex flex-col space-y-3"><div class="absolute top-3 right-3 z-10 flex items-center gap-1.5 bg-secondary text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm"><span class="material-symbols-outlined text-xs font-bold" data-icon="check">check</span><span class="">Validé backend ✓ 8,00 m</span></div><div class="aspect-[4/3] w-full rounded-lg overflow-hidden mb-3 bg-surface-canvas"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Modern luxury villa terrace featuring an elegant frameless glass railing with dark anodized aluminium floor profile. Crystal clear tempered glass overlooks a scenic azure coastal sea under bright midday Mediterranean sunlight. The architectural scene emphasizes precision construction, clean geometric lines, safety, and an unobstructed panoramic view with neutral stone pavers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpyBd_iIwFNCaDaKdunKjuRUJePlQ2R0D4uNGeJRJoEMT76DjWl0tW-Ha2k00GilLk1gImnSdOi6Yb__7zlPKNGqqkpGIQe2DhUPGLldCHlR2i7hwZurTS8pux8-L4Qzo3b0aBdOG89l8vv7qScUCTSUuGtxDLYMG7eHiwhtah97PXL325bdD0M87jwSSJVYdWV7a00e4VfvKQZ14ogs7yInGOt4bC2ZIWMHIpCLY"></div><div class="flex items-center justify-between mt-1"><div><h3 class="text-headline-sm font-headline-sm text-primary font-bold">Terrasse</h3><p class="text-body-sm font-body-sm text-text-muted">Cote validée : 8,00 m linéaire</p></div><div class="w-7 h-7 rounded-full bg-secondary text-white flex items-center justify-center shadow-xs"><span class="material-symbols-outlined text-base" data-icon="check">check</span></div></div></div>
+<!-- Fiche technique & Validation synchronisée (5 colonnes) -->
+<div class="xl:col-span-5 bg-surface-canvas border border-border-subtle rounded-xl p-5 flex flex-col justify-between space-y-4"><div class="space-y-4"><div class="flex items-center justify-between border-b border-border-subtle pb-3"><div class="flex items-center space-x-2"><span class="material-symbols-outlined text-primary text-xl" data-icon="architecture">architecture</span><h3 class="text-headline-sm font-headline-sm text-primary font-bold">Informations du projet</h3></div><span class="px-2 py-0.5 bg-surface-glass-tint text-secondary font-label-technical text-[10px] font-bold rounded">Config #A4F2</span></div><div class="space-y-2.5 text-body-md font-body-md"><div class="flex items-center justify-between py-1 border-b border-border-subtle/60"><span class="flex items-center text-text-muted gap-2"><span class="material-symbols-outlined text-sm text-outline" data-icon="category">category</span>Type</span><span class="font-semibold text-primary">Terrasse</span></div><div class="flex items-center justify-between py-1 border-b border-border-subtle/60"><span class="flex items-center text-text-muted gap-2"><span class="material-symbols-outlined text-sm text-outline" data-icon="straighten">straighten</span>Longueur</span><span class="font-bold text-secondary font-metric-price-md">8,00 m</span></div><div class="flex items-center justify-between py-1 border-b border-border-subtle/60"><span class="flex items-center text-text-muted gap-2"><span class="material-symbols-outlined text-sm text-outline" data-icon="height">height</span>Hauteur</span><span class="font-semibold text-primary">1,00 m (standard)</span></div><div class="flex items-center justify-between py-1 border-b border-border-subtle/60"><span class="flex items-center text-text-muted gap-2"><span class="material-symbols-outlined text-sm text-outline" data-icon="opacity">opacity</span>Verre</span><span class="font-semibold text-primary">Opale feuilleté</span></div><div class="flex items-center justify-between py-1"><span class="flex items-center text-text-muted gap-2"><span class="material-symbols-outlined text-sm text-outline" data-icon="sync">sync</span>Statut</span><span class="inline-flex items-center gap-1 font-semibold text-success-green text-body-sm"><span class="w-2 h-2 rounded-full bg-success-green"></span>Synchronisé IA (12:04:31)</span></div></div></div><!-- CTA Etape suivante --><button class="w-full py-3.5 px-6 bg-primary-container text-white rounded-lg font-label-md text-label-md font-semibold hover:bg-primary transition-all duration-180 flex items-center justify-center space-x-2 shadow-sm"><span class="">Étape suivante : Choix de la solution</span><span class="material-symbols-outlined text-base" data-icon="arrow_forward">arrow_forward</span></button></div>
+</div>
+<!-- Cartouches de réassurance en bas de formulaire -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-border-subtle">
+<div class="flex items-center space-x-3 p-2">
+<span class="material-symbols-outlined text-2xl text-secondary" data-icon="square_foot">square_foot</span>
+<div>
+<p class="text-label-md font-label-md font-semibold text-primary">Sur mesure</p>
+<p class="text-body-sm font-body-sm text-text-muted">Adapté à vos dimensions</p>
+</div>
+</div>
+<div class="flex items-center space-x-3 p-2">
+<span class="material-symbols-outlined text-2xl text-secondary" data-icon="assignment">assignment</span>
+<div>
+<p class="text-label-md font-label-md font-semibold text-primary">Devis personnalisé</p>
+<p class="text-body-sm font-body-sm text-text-muted">Selon votre projet</p>
+</div>
+</div>
+<div class="flex items-center space-x-3 p-2">
+<span class="material-symbols-outlined text-2xl text-secondary" data-icon="support_agent">support_agent</span>
+<div>
+<p class="text-label-md font-label-md font-semibold text-primary">Accompagnement</p>
+<p class="text-body-sm font-body-sm text-text-muted">Du conseil à la pose</p>
+</div>
+</div>
+<div class="flex items-center space-x-3 p-2">
+<span class="material-symbols-outlined text-2xl text-secondary" data-icon="local_shipping">local_shipping</span>
+<div>
+<p class="text-label-md font-label-md font-semibold text-primary">Livraison en France</p>
+<p class="text-body-sm font-body-sm text-text-muted">Direct atelier certifié</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- B. VOLET DROIT : PILOT IA CONTEXTUEL       -->
+<!-- ========================================== -->
+<aside class="w-full lg:w-5/12 xl:w-4/12 bg-surface-card rounded-xl border border-border-subtle shadow-sm flex flex-col h-auto lg:sticky lg:top-24 max-h-[calc(100vh-7rem)] overflow-hidden">
+<!-- Header du panneau Pilot IA -->
+<div class="px-5 py-3.5 bg-surface-card border-b border-border-subtle flex items-center justify-between"><div class="flex items-center space-x-3"><div class="w-8 h-8 rounded-lg bg-surface-glass-tint flex items-center justify-center text-secondary"><span class="material-symbols-outlined text-xl" data-icon="auto_awesome">auto_awesome</span></div><div><div class="flex items-center space-x-2"><span class="font-headline-sm text-headline-sm font-bold text-primary">Assistant IA</span><span class="px-2 py-0.5 bg-primary text-white rounded text-[11px] font-semibold">Devis</span><span class="inline-flex items-center gap-1 px-2 py-0.5 bg-secondary-container text-on-secondary-fixed text-[10px] font-bold rounded-full"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Prêt ✓</span></div><p class="text-[11px] font-label-technical text-text-muted mt-0.5">Config #A4F2 · Brouillon · Validé 12:04:31</p></div></div><div class="flex items-center space-x-1 text-outline"><button class="p-1.5 hover:text-primary hover:bg-surface-container-low rounded-md transition-colors" title="Historique conversationnel"><span class="material-symbols-outlined text-lg" data-icon="history">history</span></button><button class="p-1.5 hover:text-primary hover:bg-surface-container-low rounded-md transition-colors" title="Agrandir"><span class="material-symbols-outlined text-lg" data-icon="open_in_full">open_in_full</span></button><button class="p-1.5 hover:text-primary hover:bg-surface-container-low rounded-md transition-colors" title="Fermer"><span class="material-symbols-outlined text-lg" data-icon="close">close</span></button></div></div>
+<!-- Conversation Scrollable Canvas -->
+<div class="p-5 overflow-y-auto space-y-4 flex-1 custom-scrollbar bg-surface-canvas/40"><!-- 1. User Message (JD) --><div class="flex items-start justify-end space-x-3"><div class="bg-surface-container-high/60 border border-primary-container/20 rounded-2xl rounded-tr-none p-3.5 text-body-md font-body-md text-primary font-medium shadow-xs max-w-[85%]">J'ai une terrasse de 8 mètres avec du verre opale.</div><div class="w-8 h-8 rounded-full bg-primary text-white flex-shrink-0 flex items-center justify-center font-bold text-xs shadow-xs">JD</div></div><!-- 2. Assistant Immediate Ack --><div class="flex items-start space-x-3"><div class="w-8 h-8 rounded-full bg-primary-container text-white flex-shrink-0 flex items-center justify-center shadow-xs"><span class="material-symbols-outlined text-sm" data-icon="smart_toy">smart_toy</span></div><div class="bg-surface-card border border-border-subtle rounded-2xl rounded-tl-none p-3.5 text-body-md font-body-md text-on-surface shadow-xs max-w-[88%]"><p class="">Compris : terrasse 8,00 m, verre opale. Je lance la vérification technique...</p></div></div><!-- 3. Pipeline Checks Card (CSTB & NF P01-012) --><div class="bg-surface-card border border-border-subtle rounded-xl p-4 shadow-xs space-y-2.5"><div class="flex items-center justify-between text-primary font-semibold text-body-md"><div class="flex items-center space-x-2"><span class="material-symbols-outlined text-secondary text-base" data-icon="verified">verified</span><span class="">Vérification de votre configuration en cours...</span></div><span class="text-[11px] font-label-technical text-success-green font-bold bg-surface-glass-tint px-2 py-0.5 rounded-full">Validé 3/3</span></div><div class="space-y-1.5 pl-2 text-body-sm font-body-sm text-text-secondary"><div class="flex items-center space-x-2"><span class="material-symbols-outlined text-success-green text-sm" data-icon="check_circle">check_circle</span><span class="">Compatibilité des profilés CSTB ✓</span></div><div class="flex items-center space-x-2"><span class="material-symbols-outlined text-success-green text-sm" data-icon="check_circle">check_circle</span><span class="">Dimensions et flèche maximale ✓</span></div><div class="flex items-center space-x-2"><span class="material-symbols-outlined text-success-green text-sm" data-icon="check_circle">check_circle</span><span class="">Recommandations norme NF P01-012 ✓</span></div></div></div><!-- 4. Configuration mise à jour Card (Backend 12:04:31 + Actions Voir / Annuler) --><div class="bg-surface-card border-2 border-secondary/40 rounded-xl p-4 shadow-sm space-y-3"><div class="flex items-center justify-between"><div class="flex items-center space-x-2 text-secondary font-semibold text-headline-sm font-headline-sm"><div class="w-5 h-5 rounded-full bg-secondary text-white flex items-center justify-center"><span class="material-symbols-outlined text-xs font-bold" data-icon="check">check</span></div><span class="text-primary font-bold">Configuration mise à jour</span></div><span class="text-[11px] font-label-technical text-text-muted">Backend 12:04:31</span></div><div class="space-y-2 text-body-sm bg-surface-canvas rounded-lg p-3"><div class="flex items-center justify-between"><span class="text-text-muted flex items-center gap-1.5"><span class="material-symbols-outlined text-xs text-outline" data-icon="dashboard">dashboard</span>Type</span><span class="font-semibold text-primary">Terrasse</span></div><div class="flex items-center justify-between"><span class="text-text-muted flex items-center gap-1.5"><span class="material-symbols-outlined text-xs text-outline" data-icon="straighten">straighten</span>Longueur</span><span class="font-bold text-primary font-metric-price-md">8,00 m</span></div><div class="flex items-center justify-between"><span class="text-text-muted flex items-center gap-1.5"><span class="material-symbols-outlined text-xs text-outline" data-icon="opacity">opacity</span>Verre</span><span class="font-semibold text-secondary font-bold">Opale (Fixture Démo V5.3)</span></div></div><!-- Action Buttons: Voir dans le configurateur + Annuler tour --><div class="flex items-center gap-2 pt-1"><button class="flex-1 py-2 px-3 bg-secondary text-white rounded-lg text-xs font-semibold hover:bg-on-secondary-fixed-variant transition-colors flex items-center justify-center gap-1.5 shadow-xs"><span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span><span class="">Voir dans le configurateur</span></button><button class="py-2 px-3 border border-border-subtle hover:bg-surface-container-low text-text-muted rounded-lg text-xs font-medium transition-colors flex items-center justify-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="undo">undo</span><span class="">Annuler</span></button></div></div><!-- 5. Solutions compatibles certifiées avec prix et boutons d'application --><div class="space-y-2.5"><div class="flex items-center justify-between"><span class="text-label-md font-label-md font-bold text-primary">2 solutions compatibles certifiées</span><a class="text-label-technical font-label-technical text-secondary hover:underline flex items-center gap-1" href="#">Voir toutes<span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span></a></div><div class="space-y-2"><div class="border border-secondary/50 bg-surface-glass-tint/30 rounded-lg p-3 flex items-center justify-between"><div class="flex items-center space-x-3"><div class="w-14 h-12 rounded overflow-hidden flex-shrink-0"><img class="w-full h-full object-cover" data-alt="Profil continu profilé aluminium" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhRa-yzWKOfA8DaYRptblUaWtAesn28daZgz7jvqcfjrBVKEZl5nvXIMGrQ-tcQVqHh4hsoqROtWTCj-yUUnANpX3nRnZVZ6BaZUca3xEBYKyXqsv5435ahHUSzlwmG3spcVNhvyn-nWLZYfZicnoHnGZSAH0tmhPbtBjEt9TRDFwkdK9mvuq-_K-X4_X9yFif8GKjtlCkQCTkCip_Ve-SB4n943u2Ss99GjGcddw"></div><div><h4 class="text-label-md font-bold text-primary leading-tight">Profil continu</h4><p class="text-xs text-secondary font-semibold">dès 339 €/ml TTC</p><p class="text-[11px] text-text-muted mt-0.5">Ligne épurée, pose sur dalle</p></div></div><div class="flex items-center space-x-1.5"><button class="px-2.5 py-1.5 bg-primary text-white text-xs font-semibold rounded-md hover:bg-primary-container transition-colors">Appliquer</button><button class="px-2 py-1.5 border border-border-subtle text-xs rounded-md text-text-secondary hover:bg-surface-canvas">Voir</button></div></div><div class="border border-border-subtle bg-surface-card rounded-lg p-3 flex items-center justify-between"><div class="flex items-center space-x-3"><div class="w-14 h-12 rounded overflow-hidden flex-shrink-0"><img class="w-full h-full object-cover" data-alt="Fixations ponctuelles inox" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr9dh1mBTLOdUNvbmaKMmDxY6VBGEl1MgduUyCn8dhIUxsHnmUKgYYEuYO51fDK6z5uSDIUPj_yHgUATGw8bD-0mdTbLzW2E1X4E7oqibG8V1DE2wnu5dcda9-qfizB7yz_zP3eu1Yy_5mz_1f24EIM-2zLU-d2KcsXqNuUb39pW-YZ9skX47Cqelw8F_rgVJxh3UiSHyYoDzMCruEqKgbmLLEkNu7fhvrq8tQMYc"></div><div><h4 class="text-label-md font-bold text-primary leading-tight">Fixations ponctuelles</h4><p class="text-xs text-secondary font-semibold">dès 289 €/ml TTC</p><p class="text-[11px] text-text-muted mt-0.5">Rendu architectural par points</p></div></div><div class="flex items-center space-x-1.5"><button class="px-2.5 py-1.5 bg-primary text-white text-xs font-semibold rounded-md hover:bg-primary-container transition-colors">Appliquer</button><button class="px-2 py-1.5 border border-border-subtle text-xs rounded-md text-text-secondary hover:bg-surface-canvas">Voir</button></div></div></div></div></div>
+<!-- Footer du Pilot IA : Input bar & Quick Action Chips -->
+<div class="p-4 bg-surface-card border-t border-border-subtle space-y-3"><!-- Chips contextuelles au-dessus de l'input --><div class="flex items-center space-x-2 overflow-x-auto custom-scrollbar pb-1 text-xs"><button class="flex-shrink-0 px-2.5 py-1 bg-surface-canvas hover:bg-surface-glass-tint border border-secondary/40 text-secondary font-medium rounded-full transition-colors whitespace-nowrap">Hauteur 1,00 m (standard)</button><button class="flex-shrink-0 px-2.5 py-1 bg-surface-canvas hover:bg-surface-glass-tint border border-border-subtle text-text-secondary rounded-full transition-colors whitespace-nowrap">Hauteur 1,10 m</button><button class="flex-shrink-0 px-2.5 py-1 bg-surface-canvas hover:bg-surface-glass-tint border border-border-subtle text-text-secondary rounded-full transition-colors whitespace-nowrap">Profil encastré</button></div><!-- Champ de saisie avec micro et envoi --><div class="relative flex items-center"><input class="w-full pl-3.5 pr-20 py-2.5 bg-surface-canvas border border-border-subtle rounded-full text-body-sm font-body-sm text-on-surface focus:outline-none focus:ring-1 focus:ring-secondary focus:border-secondary transition-all" placeholder="Décrivez votre projet ou posez une question..." type="text"><div class="absolute right-1.5 flex items-center space-x-1"><button class="p-1.5 text-outline hover:text-primary transition-colors" title="Dicter"><span class="material-symbols-outlined text-xl" data-icon="mic">mic</span></button><button class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center hover:bg-on-secondary-fixed-variant transition-colors shadow-xs" title="Envoyer"><span class="material-symbols-outlined text-base" data-icon="arrow_upward">arrow_upward</span></button></div></div></div>
+</aside>
+</div>
+</main>
+<!-- 3. FOOTER (Footer Shared Component) -->
+<footer class="bg-surface-dark text-inverse-on-surface w-full pt-16 pb-12 border-t border-primary-container mt-12">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col space-y-12">
+<!-- Top Columns -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+<!-- Brand Info -->
+<div class="lg:col-span-2 space-y-4">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-lg bg-secondary text-surface-dark flex items-center justify-center font-bold">
+<span class="material-symbols-outlined text-lg" data-icon="grid_view">grid_view</span>
+</div>
+<span class="text-headline-md font-headline-md font-bold text-inverse-on-surface tracking-tight">BatiHome</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline-variant max-w-sm">
+            Concepteur et fabricant français de systèmes de garde-corps en verre et aluminium certifiés NF P01-012/013. Précision architecturale et livraison sur mesure.
+          </p>
+<div class="flex items-center space-x-3 text-outline-variant pt-2">
+<a class="w-8 h-8 rounded-full border border-outline-variant/30 flex items-center justify-center hover:text-secondary-fixed hover:border-secondary-fixed transition-colors" href="#">
+<span class="text-xs font-bold">in</span>
+</a>
+<a class="w-8 h-8 rounded-full border border-outline-variant/30 flex items-center justify-center hover:text-secondary-fixed hover:border-secondary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="photo_camera">photo_camera</span>
+</a>
+<a class="w-8 h-8 rounded-full border border-outline-variant/30 flex items-center justify-center hover:text-secondary-fixed hover:border-secondary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="play_circle">play_circle</span>
+</a>
+</div>
+</div>
+<!-- Links Solutions -->
+<div class="space-y-3">
+<h4 class="text-label-technical font-label-technical uppercase tracking-wider text-secondary-fixed">Solutions</h4>
+<ul class="space-y-2 text-body-sm font-body-sm text-outline-variant">
+<li class=""><a class="hover:text-inverse-on-surface transition-colors" href="#">Profil continu</a></li>
+<li class=""><a class="hover:text-inverse-on-surface transition-colors" href="#">Fixations ponctuelles</a></li>
+<li class=""><a class="hover:text-inverse-on-surface transition-colors" href="#">Verre opale &amp; dépoli</a></li>
+<li class=""><a class="hover:text-inverse-on-surface transition-colors" href="#">Tous les produits</a></li>
+</ul>
+</div>
+<!-- Links Projets -->
+<div class="space-y-3">
+<h4 class="text-label-technical font-label-technical uppercase tracking-wider text-secondary-fixed">Projets</h4>
+<ul class="space-y-2 text-body-sm font-body-sm text-outline-variant">
+<li class=""><a class="hover:text-inverse-on-surface transition-colors" href="#">Terrasse extérieure</a></li>
+<li class=""><a class="hover:text-inverse-on-surface transition-colors" href="#">Escalier design</a></li>
+<li class=""><a class="hover:text-inverse-on-surface transition-colors" href="#">Balcon d'appartement</a></li>
+<li class=""><a class="hover:text-inverse-on-surface transition-colors" href="#">Mezzanine intérieure</a></li>
+</ul>
+</div>
+<!-- Links Conseils & Entreprise -->
+<div class="space-y-3">
+<h4 class="text-label-technical font-label-technical uppercase tracking-wider text-secondary-fixed">Conseils &amp; L'Entreprise</h4>
+<ul class="space-y-2 text-body-sm font-body-sm text-outline-variant">
+<li class=""><a class="hover:text-inverse-on-surface transition-colors" href="#">Guides techniques &amp; FAQ</a></li>
+<li class=""><a class="hover:text-inverse-on-surface transition-colors" href="#">Normes NF P01-012/013</a></li>
+<li class=""><a class="hover:text-inverse-on-surface transition-colors" href="#">Nos réalisations</a></li>
+<li class=""><a class="hover:text-inverse-on-surface transition-colors" href="#">Contactez nos ingénieurs</a></li>
+</ul>
+</div>
+</div>
+<!-- Newsletter subscription -->
+<div class="pt-8 border-t border-primary-container/60 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="space-y-1">
+<p class="text-label-md font-label-md font-semibold text-inverse-on-surface">Inscription à la documentation technique &amp; newsletter</p>
+<p class="text-body-sm font-body-sm text-outline-variant">Recevez nos abaques de charges et nouveautés architecturales.</p>
+</div>
+<div class="flex items-center w-full md:w-auto space-x-2">
+<input class="px-4 py-2 bg-surface-card/10 border border-outline-variant/30 rounded-lg text-body-sm font-body-sm text-inverse-on-surface placeholder:text-outline-variant focus:outline-none focus:ring-1 focus:ring-secondary-fixed" placeholder="Votre email professionnel" type="email">
+<button class="px-5 py-2 bg-secondary text-white rounded-lg text-label-md font-label-md hover:bg-secondary-container hover:text-on-secondary-fixed transition-colors">
+            S'inscrire
+          </button>
+</div>
+</div>
+<!-- Bottom Legal Row -->
+<div class="pt-6 border-t border-primary-container flex flex-col md:flex-row items-center justify-between text-body-sm font-body-sm text-outline-variant gap-4">
+<div class="">
+          © 2026 BatiHome. Tous droits réservés. Normes NF P01-012/013 garanties.
+        </div>
+<div class="flex flex-wrap items-center gap-6">
+<a class="hover:text-secondary-fixed transition-colors" href="#">Solutions garde-corps</a>
+<a class="hover:text-secondary-fixed transition-colors" href="#">Projets &amp; Réalisations</a>
+<a class="hover:text-secondary-fixed transition-colors" href="#">Configurateur 3D</a>
+<a class="hover:text-secondary-fixed transition-colors" href="#">Guides techniques &amp; FAQ</a>
+<a class="hover:text-secondary-fixed transition-colors" href="#">Mentions légales &amp; CGV</a>
+<a class="hover:text-secondary-fixed transition-colors" href="#">Gestion des cookies</a>
+</div>
+</div>
+</div>
+</footer>
+
+
+</body></html>

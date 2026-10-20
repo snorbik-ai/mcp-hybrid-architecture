@@ -1,0 +1,205 @@
+{
+  "system_identity": {
+    "tool_id": "04_ecommerce_catalog_scanner",
+    "module_name": "04_ecommerce_catalog_scanner",
+    "product_name": "Scanneur DOM E-Commerce Sans API & Moissonneur Tarifaire",
+    "industrial_designation": "Scanneur DOM E-Commerce Sans API & Moissonneur Tarifaire",
+    "version": "2.1.0",
+    "architecture": "Clean Architecture (Domain Entities/Ports -> Application Use Cases via DI -> Infrastructure Adapters)",
+    "mission": "Scanne universellement tout site e-commerce SSR (PrestaShop, Shopify, WooCommerce, Magento) ET applications modernes SPA (React, Vue, Angular, Vite, Next.js) avec bascule automatique Chromium Headless. Extrait SKUs, prix TTC/HT, images HD et génère un rapport HTML interactif.",
+    "standards": "Clean Architecture DIP, Moteur Hybride SSR/SPA (Playwright Headless + BeautifulSoup), Idempotence, Extraction tarifaire TTC/HT certifiée, Tolérance offline",
+    "titre_accessible": "Scanneur Universel de Produits & Prix Boutique (SSR & SPA)",
+    "description_accessible": "Lit les fiches produits, références, prix TTC/HT et photos sur n'importe quel site web marchand ou application moderne React/Vue/Angular."
+  },
+  "tool_id": "04_ecommerce_catalog_scanner",
+  "tool_name": "Scanneur DOM E-Commerce Sans API & Moissonneur Tarifaire",
+  "version": "2.0.0",
+  "gps_tools_registry": [
+    {
+      "name": "discover_ecommerce_categories",
+      "use_case": "DiscoverCategoryTreeUseCase",
+      "cli_command": "python outils_internes/04_ecommerce_catalog_scanner/canal_sdk_cli/cli.py --discover <URL>",
+      "signature": "seed_url: str, base_domain: str = 'www.inoxdesign.fr', keywords: List[str] = None",
+      "purpose": "Découvre automatiquement toutes les sous-catégories et vignettes du mégamenu à partir d'une page hub sans utiliser d'API.",
+      "best_practices": "Exécuter lors de l'exploration initiale d'un nouveau site de référence pour cartographier ses URLs produits."
+    },
+    {
+      "name": "scan_glass_railing_catalog",
+      "use_case": "ScanEcommerceCatalogUseCase",
+      "cli_command": "python outils_internes/04_ecommerce_catalog_scanner/canal_sdk_cli/cli.py --scan",
+      "signature": "output_json_path: str = None, limit_categories: int = None",
+      "purpose": "Parcourt les 22 pages catégories de garde-corps verre & accessoires, parse chaque carte DOM, extrait SKU + prix TTC/HT + unité + URL image, et sauvegarde catalogue_complet_garde_corps_verre.json.",
+      "best_practices": "Utiliser --limit 2 lors d'un test rapide de connectivité avant de lancer le scan complet des 22 catégories."
+    },
+    {
+      "name": "audit_and_search_scanned_catalog",
+      "use_case": "AuditScannedCatalogUseCase",
+      "cli_command": "python outils_internes/04_ecommerce_catalog_scanner/canal_sdk_cli/cli.py --audit --search <QUERY>",
+      "signature": "catalog_json_path: str = None, category_filter: str = 'all', search_query: str = None",
+      "purpose": "Analyse la répartition par famille (01_kits, 02_profils, 04_pinces, 05_points_spider, 06_verres), les fourchettes de prix et recherche instantanément une référence SKU.",
+      "best_practices": "Toujours exécuter après un scan pour vérifier le nombre de références extraites (133 références attendues)."
+    },
+    {
+      "name": "run_quality_and_tests_suite",
+      "use_case": "RunQualityAndTestsSuiteUseCase",
+      "cli_command": "python outils_internes/04_ecommerce_catalog_scanner/tests/run_all_suites.py",
+      "signature": "none",
+      "purpose": "Exécute les 4 couches de tests (Unitaires, Intégration, Validation/Performance, Smoke).",
+      "best_practices": "Exécuter systématiquement avant et après toute modification de code."
+    }
+  ],
+  "gps_tools_manifest": [
+    {
+      "name": "discover_ecommerce_categories",
+      "cli_equivalent": "python outils_internes/04_ecommerce_catalog_scanner/canal_sdk_cli/cli.py --discover <URL>",
+      "description": "Découvre automatiquement les sous-catégories et vignettes du mégamenu sans API."
+    },
+    {
+      "name": "scan_glass_railing_catalog",
+      "cli_equivalent": "python outils_internes/04_ecommerce_catalog_scanner/canal_sdk_cli/cli.py --scan",
+      "description": "Scanne les pages catégories et extrait les 133 cartes produits avec prix TTC/HT."
+    },
+    {
+      "name": "audit_and_search_scanned_catalog",
+      "cli_equivalent": "python outils_internes/04_ecommerce_catalog_scanner/canal_sdk_cli/cli.py --audit",
+      "description": "Audite la distribution et les prix du catalogue extrait."
+    },
+    {
+      "name": "run_quality_and_tests_suite",
+      "cli_equivalent": "python outils_internes/04_ecommerce_catalog_scanner/tests/run_all_suites.py",
+      "description": "Exécute les 4 couches de tests (Unit, Integration, Validation/Performance, Smoke)."
+    }
+  ],
+  "agent_turn_lifecycle_rules": {
+    "step_1": "Lire README.md puis ce fichier context_llm.json pour charger le GPS des Use Cases et l'historique des 30 derniers tours",
+    "step_2": "Exécuter le Use Case requis via le Tool MCP ou le CLI. Toujours demander l'URL cible à l'utilisateur si elle n'est pas précisée.",
+    "step_3": "À la fin de l'exécution, le moteur local génère automatiquement le catalogue JSON brut ET un rapport HTML visuel interactif (tableau avec filtre instantané et panneau d'aperçu d'images).",
+    "step_4": "COMMUNICATION À L'UTILISATEUR (Ce qu'il faut dire et ne pas dire) :",
+    "rule_do": "Fournir un résumé exécutif concis (nombre de produits, catégories, statut) et OBLIGATOIREMENT le lien cliquable vers le rapport HTML généré (ex: [Ouvrir le Rapport Visuel Interactif](file:///...)) pour que l'utilisateur puisse vérifier les prix et voir les photos.",
+    "rule_dont": "NE JAMAIS déverser le contenu brut du JSON ou du HTML dans le chat. Ne jamais inventer ou halluciner des prix.",
+    "step_5": "Enregistrer le compte-rendu dans history/sessions/YYYY-MM-DD/turn_XX/turn_report.json via ContextHistoryManager",
+    "step_6": "Mettre à jour la fenêtre glissante dynamic_history dans context_llm.json (bornée à 30 tours max)"
+  },
+  "context_history": {
+    "max_retained_turns": 30,
+    "static_history": [
+      {
+        "example_id": "ref_example_inoxdesign_full_harvest",
+        "user_goal": "Récupérer tous les produits, accessoires, références SKU et prix autour du garde-corps en verre sur inoxdesign.fr sans API",
+        "agent_actions_taken": [
+          "Exécution de DiscoverCategoryTreeUseCase sur https://www.inoxdesign.fr/systemes-profil-paroi-de-verre.html et /pince-a-verre.html -> découverte de 22 sous-catégories spécialisées",
+          "Exécution de ScanEcommerceCatalogUseCase sur les 22 catégories -> extraction et dédoublonnage de 133 produits/accessoires et 7 vignettes catégories",
+          "Vérification par AuditScannedCatalogUseCase -> 43 profilés/cales, 52 pinces à verre, 33 points/spider, 3 verres sur mesure, 2 kits complets"
+        ],
+        "outcome": "Succès - 133 références consolidées avec prix TTC/HT et URLs d'images dans base_src/matiere_premiere_garde_corps_verre/catalogue_complet_garde_corps_verre.json"
+      }
+    ],
+    "dynamic_history": [
+      {
+        "session_date": "2026-10-19",
+        "turn_id": "turn_01",
+        "goal": "Validation du pipeline MCP Agent Coding & archivage de session",
+        "semantic_summary": "Pipeline MCP Agent Coding et mémoire glissante 30 tours validés avec succès (0 erreur).",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-19",
+        "turn_id": "turn_02",
+        "goal": "Test de validation de tour réel par l agent IA",
+        "semantic_summary": "Validation en direct du cycle de vie MCP Agent Coding.",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-19",
+        "turn_id": "turn_03",
+        "goal": "Validation dynamique reelle en conditions de production pour 04_ecommerce_catalog_scanner",
+        "semantic_summary": "Cycle de vie valide avec succes sans falsification pour 04_ecommerce_catalog_scanner.",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_03",
+        "goal": "Porte A lifecycle → audit_scanned_catalog",
+        "semantic_summary": "{\"use_case\": \"audit_scanned_catalog\", \"status\": \"success\", \"total_products\": 133, \"html_report_url\": null}",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_04",
+        "goal": "Porte A lifecycle → scan_ecommerce_catalog",
+        "semantic_summary": "{\"use_case\": \"scan_ecommerce_catalog\", \"status\": \"error\", \"total_products\": 0, \"html_report_url\": null}",
+        "status": "ERROR"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_06",
+        "goal": "Porte A lifecycle → audit_scanned_catalog",
+        "semantic_summary": "{\"use_case\": \"audit_scanned_catalog\", \"status\": \"success\", \"total_products\": 133, \"html_report_url\": null}",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_07",
+        "goal": "Porte A lifecycle → audit_scanned_catalog",
+        "semantic_summary": "{\"use_case\": \"audit_scanned_catalog\", \"status\": \"success\", \"total_products\": 133, \"html_report_url\": null}",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_08",
+        "goal": "Porte A lifecycle → audit_scanned_catalog",
+        "semantic_summary": "{\"use_case\": \"audit_scanned_catalog\", \"status\": \"success\", \"total_products\": 133, \"html_report_url\": null}",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_09",
+        "goal": "Porte A lifecycle → audit_scanned_catalog",
+        "semantic_summary": "{\"use_case\": \"audit_scanned_catalog\", \"status\": \"success\", \"total_products\": 133, \"html_report_url\": null}",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_10",
+        "goal": "Porte A lifecycle → audit_scanned_catalog",
+        "semantic_summary": "{\"use_case\": \"audit_scanned_catalog\", \"status\": \"success\", \"total_products\": 133, \"html_report_url\": null}",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_official_batihome",
+        "goal": "Scan prototype officiel BatiHome SPA React (P01_home)",
+        "semantic_summary": "Scan BatiHome prototype https://batihome.snorbik.fr/#P01_home valide: 14 solutions extraites via rendu Playwright Chromium. Rapport HTML genere.",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_10",
+        "goal": "Porte A lifecycle → audit_scanned_catalog",
+        "semantic_summary": "{\"use_case\": \"audit_scanned_catalog\", \"status\": \"success\", \"total_products\": 133, \"html_report_url\": null}",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_10",
+        "goal": "Porte A lifecycle → scan_ecommerce_catalog",
+        "semantic_summary": "{\"use_case\": \"scan_ecommerce_catalog\", \"status\": \"success\", \"total_products\": 14, \"html_report_url\": \"file:///C:/Users/ntpar/Dev_IT/Projet_depo/Projet_IA/MCP/04_ecommerce_catalog_scanner/output/scan_batihome_snorbik_fr_catalogue_view.html\"}",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_10",
+        "goal": "Porte A lifecycle → audit_scanned_catalog",
+        "semantic_summary": "{\"use_case\": \"audit_scanned_catalog\", \"status\": \"success\", \"total_products\": 133, \"html_report_url\": null}",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_10",
+        "goal": "Porte A lifecycle → scan_ecommerce_catalog",
+        "semantic_summary": "{\"use_case\": \"scan_ecommerce_catalog\", \"status\": \"success\", \"total_products\": 14, \"html_report_url\": \"file:///C:/Users/ntpar/Dev_IT/Projet_depo/Projet_IA/MCP/04_ecommerce_catalog_scanner/output/scan_batihome_snorbik_fr_catalogue_view.html\"}",
+        "status": "SUCCESS"
+      }
+    ]
+  }
+}

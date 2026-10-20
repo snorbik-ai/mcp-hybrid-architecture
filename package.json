@@ -1,0 +1,28 @@
+{
+  "name": "batihome-outils-internes",
+  "version": "2.0.0",
+  "description": "Index de lancement global optionnel pour les 5 Voitures Autonomes (Clean Architecture, 3 Canaux, 2 Variantes MCP, 4 Couches de Tests)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:all": "run_all_tests.bat",
+    "mcp:gateway": "python mcp_shared/mcp_http_gateway.py --port 5185",
+    "01:test": "node 01_web_assets_manager/tests/run_all_suites.mjs",
+    "01:ui": "node 01_web_assets_manager/canal_ui/server.mjs --port 5181",
+    "01:mcp": "node 01_web_assets_manager/canal_mcp/mcp_classic_stdio/mcp_server.mjs",
+    "02:test": "python 02_pdf_technical_extractor/tests/run_all_suites.py",
+    "02:ui": "python 02_pdf_technical_extractor/canal_ui/server.py --port 5180",
+    "02:mcp": "python 02_pdf_technical_extractor/canal_mcp/mcp_classic_stdio/mcp_server.py",
+    "03:test": "python 03_media_quality_auditor/tests/run_all_suites.py",
+    "03:ui": "python 03_media_quality_auditor/canal_ui/server.py --port 5182",
+    "03:mcp": "python 03_media_quality_auditor/canal_mcp/mcp_classic_stdio/mcp_server.py",
+    "04:test": "python 04_ecommerce_catalog_scanner/tests/run_all_suites.py",
+    "04:ui": "python 04_ecommerce_catalog_scanner/canal_ui/server.py --port 5183",
+    "04:mcp": "python 04_ecommerce_catalog_scanner/canal_mcp/mcp_classic_stdio/mcp_server.py",
+    "05:test": "python 05_visual_catalog_sync/tests/run_all_suites.py",
+    "05:ui": "python 05_visual_catalog_sync/canal_ui/server.py --port 5184",
+    "05:mcp": "python 05_visual_catalog_sync/canal_mcp/mcp_classic_stdio/mcp_server.py"
+  },
+  "author": "BatiHome / AXESTEEL Engineering Team",
+  "license": "ISC"
+}

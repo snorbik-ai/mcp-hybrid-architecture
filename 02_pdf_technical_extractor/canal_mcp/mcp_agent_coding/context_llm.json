@@ -1,0 +1,100 @@
+{
+  "system_identity": {
+    "tool_id": "02_pdf_technical_extractor",
+    "module_name": "02_pdf_technical_extractor",
+    "product_name": "Extracteur de Catalogues Techniques BTP & Découpeur CAO",
+    "industrial_designation": "Extracteur de Catalogues Techniques BTP & Découpeur CAO",
+    "version": "2.0.0",
+    "architecture": "Clean Architecture (Domain Entities -> Application Use Cases via DI -> Infrastructure Adapters)",
+    "mission": "Ingeste les catalogues fabricants PDF de garde-corps, génère les planches 150 DPI, extrait les images brutes sans perte et sépare les schémas CAO des photos.",
+    "standards": "Clean Architecture DIP, Rendus 150 DPI fidèles, Catégorisation technique automatisée",
+    "titre_accessible": "Découpeur de Catalogues PDF",
+    "description_accessible": "Découpe vos catalogues PDF fabricants et en extrait les fiches, plans techniques et photos HD."
+  },
+  "tool_id": "02_pdf_technical_extractor",
+  "tool_name": "Extracteur de Catalogues Techniques BTP & Découpeur CAO",
+  "version": "2.0.0",
+  "gps_tools_registry": [
+    {
+      "name": "process_pdf_document",
+      "use_case": "ProcessPdfDocumentUseCase",
+      "cli_command": "python outils_internes/02_pdf_technical_extractor/canal_sdk_cli/cli.py --input <pdf_path> --output output --dpi 150",
+      "signature": "pdf_path: str, output_dir: str = 'output', dpi: int = 150",
+      "purpose": "Découpe chaque page d'un PDF, génère les rendus haute résolution PNG 150 DPI, extrait les images brutes incorporées et génère full_text.md.",
+      "best_practices": "Fournir un chemin absolu ou relatif depuis la racine du workspace."
+    },
+    {
+      "name": "get_pdf_manifest",
+      "use_case": "GetPdfManifestUseCase",
+      "cli_command": "python -c \"import sys; sys.path.insert(0, 'outils_internes/02_pdf_technical_extractor'); from canal_sdk_cli.sdk import PdfProcessorSDK; print(PdfProcessorSDK().get_manifest('output/...'))\"",
+      "signature": "document_dir: str",
+      "purpose": "Récupère le manifest.json d'un document PDF préalablement extrait (coordonnées, dimensions, classification schémas vs photos).",
+      "best_practices": "Utiliser pour auditer la structure d'un catalogue extrait."
+    },
+    {
+      "name": "get_pdf_document_text",
+      "use_case": "GetPdfDocumentTextUseCase",
+      "cli_command": "python -c \"import sys; sys.path.insert(0, 'outils_internes/02_pdf_technical_extractor'); from canal_sdk_cli.sdk import PdfProcessorSDK; print(PdfProcessorSDK().get_document_text('output/...'))\"",
+      "signature": "document_dir: str",
+      "purpose": "Lit le texte intégral d'un document PDF extrait sous forme Markdown structuré pour RAG ou analyse LLM.",
+      "best_practices": "Idéal pour alimenter le contexte d'un agent IA en spécifications techniques de garde-corps."
+    },
+    {
+      "name": "run_quality_and_tests_suite",
+      "use_case": "RunQualityAndTestsSuiteUseCase",
+      "cli_command": "python outils_internes/02_pdf_technical_extractor/tests/run_all_suites.py",
+      "signature": "none",
+      "purpose": "Exécute les 4 couches de tests (Unitaires, Intégration, Validation/Performance, Smoke).",
+      "best_practices": "Exécuter systématiquement avant et après toute modification de code."
+    }
+  ],
+  "gps_tools_manifest": [
+    {
+      "name": "process_pdf_document",
+      "cli_equivalent": "python outils_internes/02_pdf_technical_extractor/canal_sdk_cli/cli.py --input <pdf_path> --output output --dpi 150",
+      "description": "Découpe un catalogue PDF par page, génère les PNG 150 DPI, extrait les schémas et compile full_text.md."
+    },
+    {
+      "name": "get_pdf_manifest",
+      "cli_equivalent": "python outils_internes/02_pdf_technical_extractor/canal_sdk_cli/cli.py --manifest <document_dir>",
+      "description": "Charge le manifest.json d'un PDF traité."
+    },
+    {
+      "name": "run_quality_and_tests_suite",
+      "cli_equivalent": "python outils_internes/02_pdf_technical_extractor/tests/run_all_suites.py",
+      "description": "Exécute les 4 couches de tests (Unit, Integration, Validation/Performance, Smoke)."
+    }
+  ],
+  "agent_turn_lifecycle_rules": {
+    "step_1": "Lire README.md puis ce fichier context_llm.json pour charger le GPS des Use Cases et la mémoire des tours précédents",
+    "step_2": "Exécuter le Use Case requis via le CLI (recommandé pour agent autonome) ou le SDK",
+    "step_3": "Compresser les résultats du tour en un résumé sémantique concis et factuel",
+    "step_4": "Enregistrer le compte-rendu dans history/sessions/YYYY-MM-DD/turn_XX/turn_report.json via ContextHistoryManager",
+    "step_5": "Mettre à jour la fenêtre glissante dynamic_history dans context_llm.json (bornée à 30 tours max)"
+  },
+  "context_history": {
+    "max_retained_turns": 30,
+    "static_history": [
+      {
+        "reference_turn_id": "static_ref_01",
+        "goal": "Ingestion du catalogue fournisseur GARDE CORPS VI_TREE.pdf et validation des 4 couches de tests",
+        "actions_performed": [
+          "Exécution de ProcessPdfDocumentUseCase à 150 DPI",
+          "Classification automatique des schémas techniques et photos produits",
+          "Validation 100% des 4 suites de tests (Unit, Integration, Validation/Perf, Smoke)"
+        ],
+        "semantic_summary": "Catalogue PDF ingéré avec succès, manifest.json et full_text.md générés.",
+        "status": "SUCCESS"
+      }
+    ],
+    "dynamic_history": [
+      {
+        "session_date": "2026-10-19",
+        "turn_id": "turn_01",
+        "goal": "Validation dynamique reelle en conditions de production pour 02_pdf_technical_extractor",
+        "semantic_summary": "Cycle de vie valide avec succes sans falsification pour 02_pdf_technical_extractor.",
+        "status": "SUCCESS"
+      }
+    ]
+  }
+}

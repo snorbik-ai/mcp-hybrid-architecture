@@ -1,0 +1,40 @@
+# Environnements Python & Caches
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environnement & Variables Secrètes
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Sorties temporaires de sessions
+**/output/
+**/sessions/
+!**/sessions/2026-10-20/turn_01/turn_report.json
+*.tmp
+*.log
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Archives
+*.zip
+*.tar.gz

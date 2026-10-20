@@ -1,0 +1,661 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="fr" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>BatiHome - Garde-corps sur mesure en verre et inox</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- FontAwesome Icons for clean rendering -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#0a424f',
+              darkteal: '#07323c',
+              emerald: '#0c616f',
+              accent: '#0d7685',
+              light: '#f4f8f9',
+              dark: '#111827'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="base-styling">
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #1f2937;
+      background-color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+<style data-purpose="glass-card-effects">
+    .hero-gradient {
+      background: linear-gradient(180deg, rgba(8, 38, 46, 0.72) 0%, rgba(10, 50, 60, 0.85) 60%, rgba(9, 44, 53, 0.95) 100%);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="min-h-screen flex flex-col antialiased bg-white text-slate-800">
+<!-- BEGIN: MainHeader -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all shadow-sm">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<!-- Logo -->
+<a class="flex items-center gap-3 group" href="#">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-teal to-brand-accent flex items-center justify-center text-white shadow-md shadow-brand-teal/20">
+<i class="fa-solid fa-layer-group text-lg"></i>
+</div>
+<div class="flex flex-col">
+<span class="text-xl font-bold tracking-tight text-slate-900 leading-none">Bati<span class="text-brand-accent">Home</span></span>
+<span class="text-[10px] tracking-wider uppercase font-semibold text-slate-500 mt-1">Garde-corps sur mesure</span>
+</div>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold text-slate-700 hover:text-brand-accent transition-colors" href="#solutions">Solutions</a>
+<a class="text-sm font-semibold text-slate-700 hover:text-brand-accent transition-colors" href="#projets">Projets</a>
+<a class="text-sm font-semibold text-slate-700 hover:text-brand-accent transition-colors" href="#configurateur">Configurateur</a>
+<a class="text-sm font-semibold text-slate-700 hover:text-brand-accent transition-colors" href="#realisations">Réalisations</a>
+<a class="text-sm font-semibold text-slate-700 hover:text-brand-accent transition-colors" href="#conseils">Conseils</a>
+</nav>
+<!-- Search Bar and Action Tools -->
+<div class="flex items-center gap-4">
+<!-- Search Input Bar -->
+<div class="relative hidden lg:block w-64">
+<input class="w-full pl-9 pr-4 py-2 text-xs rounded-full bg-slate-100 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-accent/30 focus:border-brand-accent text-slate-800 placeholder-slate-400" placeholder="Rechercher un produit, une solution..." type="text">
+<i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-xs text-slate-400"></i>
+</div>
+<!-- Icons Actions -->
+<div class="flex items-center gap-3 border-l border-slate-200 pl-4">
+<button aria-label="Favoris" class="p-2 text-slate-600 hover:text-brand-teal rounded-full hover:bg-slate-100 transition-colors">
+<i class="fa-regular fa-heart text-base"></i>
+</button>
+<button aria-label="Mon compte" class="p-2 text-slate-600 hover:text-brand-teal rounded-full hover:bg-slate-100 transition-colors">
+<i class="fa-regular fa-user text-base"></i>
+</button>
+<button aria-label="Panier" class="relative p-2 text-slate-600 hover:text-brand-teal rounded-full hover:bg-slate-100 transition-colors">
+<i class="fa-solid fa-bag-shopping text-base"></i>
+<span class="absolute top-1 right-0.5 w-4 h-4 bg-amber-500 text-white rounded-full text-[10px] font-bold flex items-center justify-center leading-none">0</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<main class="flex-grow">
+<!-- BEGIN: HeroSection -->
+<section class="relative bg-slate-900 min-h-[580px] lg:min-h-[640px] flex flex-col justify-between overflow-hidden">
+<!-- Background Architectural Image with Overlay -->
+<div class="absolute inset-0 z-0">
+<img alt="Duplex contemporain avec garde-corps verre et escalier bois" class="w-full h-full object-cover object-center scale-105 transform hover:scale-100 transition-transform duration-1000 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW5b6dR_5ua_BZpWk2Zv-2O01aS52bYnDyOd1DtQIm7DCnD97K9d31qcteSdo-XUmGntKKbWlDy0CJ36MsRvcOYVuyfyelNbmbz7wJZ9q5-CANE5W9k6Cgv9tGI0qBt0j_5aFzxpXSLe8WZTwWS57o5Blk0GT5jh3TijuPEwqSeuOol3U8zjVig6nvhlB0Jq3bNLlhNs2pbtBKAZfiLcwJ3SuybaGwDPtX0kowwbw">
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-slate-900/60" style="background: linear-gradient(rgba(7, 30, 37, 0.65) 0%, rgba(10, 40, 50, 0.5) 45%, rgba(7, 26, 32, 0.85) 100%);"></div>
+</div>
+<!-- Hero Main Content -->
+<div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-20 w-full flex-grow flex flex-col justify-center">
+<div class="max-w-3xl"><span class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-black/40 backdrop-blur-md border border-white/20 text-[11px] font-semibold uppercase tracking-wider text-slate-200 mb-6"><span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span>GARDE-CORPS SUR MESURE</span><h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">Votre garde-corps,<br>conçu pour <span class="text-white font-extrabold">votre projet.</span></h1><p class="mt-4 text-base sm:text-lg text-slate-200 font-medium max-w-2xl leading-relaxed">Escaliers, terrasses, balcons et mezzanines.</p><div class="mt-8 flex flex-wrap gap-4 items-center"><a class="px-7 py-3.5 rounded-full bg-brand-teal hover:bg-brand-darkteal border border-teal-400/30 text-white font-semibold text-sm transition-all duration-200 shadow-lg flex items-center gap-3 group" href="#configurateur"><span class="">Configurer mon projet</span><i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i></a><a class="px-7 py-3.5 rounded-full bg-white hover:bg-slate-100 text-slate-900 font-semibold text-sm transition-all duration-200 shadow-md" href="#solutions">Voir nos solutions</a></div></div>
+</div>
+<!-- Floating Integrated AI Assistant Bar -->
+<div class="relative z-20 max-w-5xl mx-auto w-full px-4 sm:px-6 -mb-8">
+  <div class="bg-white rounded-full px-3 py-2 sm:px-4 sm:py-2.5 shadow-2xl border border-slate-200/80 flex items-center gap-3 md:gap-4 transition-all">
+    <!-- Icon & Title -->
+    <div class="flex items-center gap-2 pl-2 sm:pl-3 shrink-0">
+      <i class="fa-solid fa-sparkles text-lg text-brand-emerald"></i>
+      <span class="font-bold text-slate-900 text-sm md:text-base whitespace-nowrap">Assistant IA</span>
+    </div>
+
+    <!-- Dropdown Selector Capsule -->
+    <div class="hidden sm:flex items-center gap-2 bg-brand-teal hover:bg-brand-darkteal text-white px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer shadow-sm transition-colors shrink-0">
+      <i class="fa-solid fa-file-invoice text-teal-200 text-xs"></i>
+      <span class="">Devis</span>
+      <i class="fa-solid fa-chevron-down text-[10px] text-teal-300 ml-0.5"></i>
+    </div>
+
+    <!-- Search & Prompt Input Form -->
+    <div class="relative flex-grow flex items-center min-w-0">
+      <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm pl-2 pr-1 shrink-0"></i>
+      <input class="w-full py-1.5 pl-2 pr-2 text-xs sm:text-sm md:text-base bg-transparent border-none focus:ring-0 text-slate-800 placeholder-slate-400 font-medium focus:outline-none" placeholder="Décrivez votre projet ou posez une question..." type="text">
+    </div>
+
+    <!-- Mic & Submit Action Buttons -->
+    <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0 pr-1">
+      <button aria-label="Commande vocale" class="w-9 h-9 rounded-full text-slate-500 hover:text-brand-accent hover:bg-slate-100 flex items-center justify-center transition-colors">
+        <i class="fa-solid fa-microphone text-base"></i>
+      </button>
+      <button aria-label="Envoyer" class="w-10 h-10 rounded-full bg-brand-teal hover:bg-brand-darkteal text-white flex items-center justify-center transition-transform hover:scale-105 shadow-md shrink-0">
+        <i class="fa-solid fa-arrow-right text-sm"></i>
+      </button>
+    </div>
+  </div>
+</div>
+</section>
+<!-- END: HeroSection -->
+<!-- BEGIN: ValueReassuranceBar -->
+<section class="bg-slate-50 border-b border-slate-200/80 pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+<div class="flex items-center gap-3.5">
+<div class="w-11 h-11 rounded-xl bg-white border border-slate-200/80 flex items-center justify-center text-brand-teal shadow-xs shrink-0">
+<i class="fa-solid fa-ruler-combined text-lg"></i>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 leading-tight">Sur mesure</p>
+<p class="text-xs text-slate-500 mt-0.5">Adapté à vos dimensions</p>
+</div>
+</div>
+<div class="flex items-center gap-3.5">
+<div class="w-11 h-11 rounded-xl bg-white border border-slate-200/80 flex items-center justify-center text-brand-teal shadow-xs shrink-0">
+<i class="fa-regular fa-clipboard text-lg"></i>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 leading-tight">Devis personnalisé</p>
+<p class="text-xs text-slate-500 mt-0.5">Selon votre projet</p>
+</div>
+</div>
+<div class="flex items-center gap-3.5">
+<div class="w-11 h-11 rounded-xl bg-white border border-slate-200/80 flex items-center justify-center text-brand-teal shadow-xs shrink-0">
+<i class="fa-solid fa-handshake-angle text-lg"></i>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 leading-tight">Accompagnement projet</p>
+<p class="text-xs text-slate-500 mt-0.5">Du conseil à la réalisation</p>
+</div>
+</div>
+<div class="flex items-center gap-3.5">
+<div class="w-11 h-11 rounded-xl bg-white border border-slate-200/80 flex items-center justify-center text-brand-teal shadow-xs shrink-0">
+<i class="fa-solid fa-headset text-lg"></i>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 leading-tight">Solutions adaptées</p>
+<p class="text-xs text-slate-500 mt-0.5">Selon votre configuration</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ValueReassuranceBar -->
+<!-- BEGIN: ProjectTypeSelector -->
+<section class="py-16 bg-white" id="projets">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+<div>
+<h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Quel est votre projet ?</h2>
+<p class="text-sm text-slate-500 mt-1">Choisissez votre espace pour découvrir les solutions adaptées.</p>
+</div>
+<a class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-teal hover:text-brand-accent transition-colors" href="#">
+<span class="">Voir tous les projets</span>
+<i class="fa-solid fa-arrow-right text-[11px]"></i>
+</a>
+</div>
+<!-- 4 Grid Project Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Card 1: Terrasse -->
+<a class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-sm border border-slate-200 block" href="#">
+<img alt="Garde-corps terrasse vue panoramique" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCq4GDsxH-tZ0KxNpkQaHn0lW_g2w8QRQS6jKDhXzVZCG2LM6vMCp86yuK3__LM0QCHxTRnBOb23nMGtKpGPJkPx2h57YYlUB5af-IKUuGGeaTbJFj7pBw9iVom3RtblnoHH2CZzleofrn14rlb1qasfqw3ceS0Jb4R66Ch4B1OY6lEBwlhEXhRyco2EzYYc_7eM1p2jMRQ_ZRziqhqEnQODbNxW_XLNsEWXyCTEOs">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+<div>
+<h3 class="text-lg font-bold text-white leading-tight">Terrasse</h3>
+<p class="text-xs text-slate-300 mt-0.5">Vue dégagée, en toute sécurité.</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center text-xs group-hover:bg-brand-teal group-hover:text-white transition-colors shrink-0 shadow">
+<i class="fa-solid fa-arrow-right"></i>
+</div>
+</div>
+</a>
+<!-- Card 2: Escalier -->
+<a class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-sm border border-slate-200 block" href="#">
+<img alt="Garde-corps escalier intérieur design" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyAC-e5ohI7PNkJd8mSfHWWuCY5ui-KxPrvWdFYFuWPHP5-AZZPTKgYTobnQwXxyKh3M1YaPC9rQFfiLaCsyAtBpFDkgadmCE87OsLHFtPYA-oZ-OPrCSq3rAvda2pbItQnN9lPUGu97FwbxSDxPhCme2GesF4LnNnSv8EgNjSR9xtd-IxTNQlGyLMdHLEep8BDfK9-ngdMTWrqaPUNvZHd6t3hnhuyRYoLErhqic">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+<div>
+<h3 class="text-lg font-bold text-white leading-tight">Escalier</h3>
+<p class="text-xs text-slate-300 mt-0.5">Droit, en L, en U ou sur mesure.</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center text-xs group-hover:bg-brand-teal group-hover:text-white transition-colors shrink-0 shadow">
+<i class="fa-solid fa-arrow-right"></i>
+</div>
+</div>
+</a>
+<!-- Card 3: Balcon -->
+<a class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-sm border border-slate-200 block" href="#">
+<img alt="Garde-corps balcon appartement façade" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBW0PeD53m4Qqv3dVryJ0PHeioNdAuicdIov4kHNCH9yhU4_eCNzv7m1hyyRpBpGQ5XyT3rG-W5SC2JC9yV8IUKxN2D98sRyz_Uj_3KFuf2iFuyPw1ibCqMa6_HeFtLZla4VirAYO49to0t1usgENT1Fbq-ac3CUfAZ-BrWYgn0PltCXCZfh2pbZwd__ypWAK6QsGRFwVad-ESKo-47INC1K6p38JyaCCJIs1dAEs">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+<div>
+<h3 class="text-lg font-bold text-white leading-tight">Balcon</h3>
+<p class="text-xs text-slate-300 mt-0.5">Appartement, façade.</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center text-xs group-hover:bg-brand-teal group-hover:text-white transition-colors shrink-0 shadow">
+<i class="fa-solid fa-arrow-right"></i>
+</div>
+</div>
+</a>
+<!-- Card 4: Mezzanine -->
+<a class="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-sm border border-slate-200 block" href="#">
+<img alt="Garde-corps mezzanine moderne" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmRjI6hLn5tIZ99HGmTabmqt-KBpG2i_a3H9wKTokeQu5vM9QTHSKPrnM4XLEEUvW-r4HvwGVllv9jHey7ueCPQ_jYIbwV5dP4xzHkfXtLt2tKsAN_Wg0xry9pDpk84NV5ZC7ucDBy8g9O3vO4k1W3sbDJ-QQEIdmQ45YaPeksxj_veGlc9YuQNtNbr-6UkCXjv4uviCp_VVgqe5fx8HMiLqaYSlLUtQMf7u2HgLI">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+<div>
+<h3 class="text-lg font-bold text-white leading-tight">Mezzanine</h3>
+<p class="text-xs text-slate-300 mt-0.5">Espace intérieur.</p>
+</div>
+<div class="w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center text-xs group-hover:bg-brand-teal group-hover:text-white transition-colors shrink-0 shadow">
+<i class="fa-solid fa-arrow-right"></i>
+</div>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- END: ProjectTypeSelector -->
+<!-- BEGIN: SolutionsFamilies -->
+<section class="py-16 bg-slate-50 border-t border-slate-200/60" id="solutions">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+<div>
+<h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Nos solutions de garde-corps</h2>
+<p class="text-sm text-slate-500 mt-1">Trois grandes familles pour s'adapter à tous vos projets.</p>
+</div>
+<a class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-teal hover:text-brand-accent transition-colors" href="#">
+<span class="">Voir toutes les solutions</span>
+<i class="fa-solid fa-arrow-right text-[11px]"></i>
+</a>
+</div>
+<!-- 3 Big Family Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Famille 1: Profil continu -->
+<div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-shadow flex flex-col">
+<div class="h-52 overflow-hidden relative">
+<img alt="Garde-corps sur profil aluminium" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEebcaCAyGBK681z0tuYI7PAG_OBmITAR0k7Tu1Ef47JpGSMRzjRBw0oZ-W_F3LgG-DfydekcnfWnXdKYnfn2heLxbWcBPj9d4IcRpUmQh0yvWUq5EhWNmLtyzWXSAoRjxACRCTCbJsn8VLDnbEKLpiWVpK4VY-Un7wT3TTGST9_LFloeFrzW9d8SbhQVtQ4ZU1clCdzdISu2tJGoVB5b-8w_u7jW9D8n8ija5E0w">
+</div>
+<div class="p-6 flex-grow flex flex-col justify-between">
+<div>
+<h3 class="text-lg font-bold text-slate-900 mb-1">Garde-corps sur profil</h3>
+<p class="text-xs text-brand-teal font-medium mb-4">Ligne épurée, aucun poteau apparent.</p>
+<ul class="space-y-2 text-xs text-slate-600 mb-6">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal"></span> Pose au sol ou latérale</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal"></span> Plusieurs profils et configurations</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal"></span> Compatible avec différents vitrages</li>
+</ul>
+</div>
+<a class="inline-flex items-center gap-2 text-xs font-bold text-brand-teal hover:text-brand-darkteal group" href="#">
+<span class="">Découvrir les variantes</span>
+<i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+</a>
+</div>
+</div>
+<!-- Famille 2: Fixations ponctuelles -->
+<div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-shadow flex flex-col">
+<div class="h-52 overflow-hidden relative">
+<img alt="Fixations ponctuelles plots inox" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcB-zJShvXK6BOCWuyQTiEexKcRusczEBo_ZUSjywUw-JrScCPIvfVU462e0zWjM1Tjl7LYZQCRyubLf_X-6HYCVnU7DTrktAXt66vkGCBWQvt5pfhH1HPKLqVrOs8GUUE0RFVnCy5e-44dE-Ctdp_4kYrjkccJXKg1uXqVLirTeTjMZ_2zqSWAP47G6pF-6g0oahB_LiBvvWgJeEdwhT301CTbdKYRqzHHcn0OM8">
+</div>
+<div class="p-6 flex-grow flex flex-col justify-between">
+<div>
+<h3 class="text-lg font-bold text-slate-900 mb-1">Fixations ponctuelles</h3>
+<p class="text-xs text-brand-teal font-medium mb-4">Verre maintenu par des points discrets.</p>
+<ul class="space-y-2 text-xs text-slate-600 mb-6">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal"></span> Plots ronds ou carrés</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal"></span> Implantation au sol ou latérale</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal"></span> Rendu minimaliste, vue préservée</li>
+</ul>
+</div>
+<a class="inline-flex items-center gap-2 text-xs font-bold text-brand-teal hover:text-brand-darkteal group" href="#">
+<span class="">Découvrir les variantes</span>
+<i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+</a>
+</div>
+</div>
+<!-- Famille 3: Systèmes avec potelets -->
+<div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-shadow flex flex-col">
+<div class="h-52 overflow-hidden relative">
+<img alt="Systèmes potelets verre et métal" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdky1fVsSZNvQJlPznSYKFJAyLCWjJA8rmUZb-OLkgLZGxXfsElpXilale1mKmlWFTkfTb6eKYkOdDBDOoizxLonD4iR2nN1-P8p4vFYABq4nyXKIBE7mPe8Zjlg11ABY-nQGfzVfhq7qdlI7Ovo2BFIQn1ikEWsdga-KIrfpfVxWc-gY1-YXgaxV62gB1RyykhFiEe6N8DIS5Jobba5GvS2F68857cMJksWI2z9w">
+</div>
+<div class="p-6 flex-grow flex flex-col justify-between">
+<div>
+<h3 class="text-lg font-bold text-slate-900 mb-1">Systèmes avec potelets</h3>
+<p class="text-xs text-brand-teal font-medium mb-4">Une solution robuste et polyvalente.</p>
+<ul class="space-y-2 text-xs text-slate-600 mb-6">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal"></span> Potelets inox ou aluminium</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal"></span> Plusieurs styles de main courante</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-brand-teal"></span> Idéal pour terrasses, balcons, escaliers</li>
+</ul>
+</div>
+<a class="inline-flex items-center gap-2 text-xs font-bold text-brand-teal hover:text-brand-darkteal group" href="#">
+<span class="">Découvrir les variantes</span>
+<i class="fa-solid fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: SolutionsFamilies -->
+<!-- BEGIN: DualCTASection -->
+<section class="py-12 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+<!-- Box Left: Direct Configurator -->
+<div class="rounded-3xl bg-gradient-to-br from-brand-teal to-brand-darkteal text-white p-8 sm:p-10 flex flex-col justify-between relative overflow-hidden shadow-xl">
+<div class="absolute -right-8 -bottom-8 opacity-10 text-white pointer-events-none text-9xl font-bold">
+<i class="fa-solid fa-compass-drafting"></i>
+</div>
+<div>
+<div class="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center text-teal-300 mb-6 border border-white/10">
+<i class="fa-solid fa-sliders text-xl"></i>
+</div>
+<h3 class="text-2xl sm:text-3xl font-bold mb-2">Vous avez déjà votre projet ?</h3>
+<p class="text-slate-300 text-sm mb-6">Configurez votre garde-corps sur mesure en quelques étapes.</p>
+<!-- Step icon badges -->
+<div class="flex flex-wrap gap-4 text-xs font-medium text-slate-300 mb-8">
+<span class="inline-flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
+<i class="fa-solid fa-ruler"></i> Dimensions
+                </span>
+<span class="inline-flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
+<i class="fa-solid fa-shapes"></i> Forme
+                </span>
+<span class="inline-flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
+<i class="fa-solid fa-screwdriver-wrench"></i> Fixation
+                </span>
+<span class="inline-flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
+<i class="fa-regular fa-clone"></i> Vitrage
+                </span>
+<span class="inline-flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
+<i class="fa-solid fa-box-open"></i> Options
+                </span>
+</div>
+</div>
+<div>
+<a class="inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-white text-brand-darkteal font-bold text-sm hover:bg-slate-100 transition-colors shadow-lg" href="#configurateur">
+<span class="">Commencer ma configuration</span>
+<i class="fa-solid fa-arrow-right text-xs"></i>
+</a>
+</div>
+</div>
+<!-- Box Right: AI Guidance with Prompts -->
+<div class="rounded-3xl bg-slate-50 border border-slate-200 p-8 sm:p-10 flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center gap-2 text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">
+<i class="fa-solid fa-sparkles"></i> Conseil intelligent
+              </div>
+<h3 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Vous ne savez pas quelle solution choisir ?</h3>
+<p class="text-slate-600 text-sm mb-6">Décrivez votre projet à l'Assistant IA pour obtenir une recommandation sur mesure.</p>
+<!-- Example Prompt Pills -->
+<div class="flex flex-wrap gap-2.5 mb-8">
+<button class="text-xs bg-white border border-slate-200 text-slate-700 hover:border-brand-accent hover:text-brand-accent px-3.5 py-2 rounded-full font-medium transition-colors shadow-2xs">
+                  J'ai une terrasse de 8 mètres
+                </button>
+<button class="text-xs bg-white border border-slate-200 text-slate-700 hover:border-brand-accent hover:text-brand-accent px-3.5 py-2 rounded-full font-medium transition-colors shadow-2xs">
+                  Un escalier en L avec verre opale
+                </button>
+<button class="text-xs bg-white border border-slate-200 text-slate-700 hover:border-brand-accent hover:text-brand-accent px-3.5 py-2 rounded-full font-medium transition-colors shadow-2xs">
+                  Un balcon avec potelets
+                </button>
+<button class="text-xs bg-white border border-slate-200 text-slate-700 hover:border-brand-accent hover:text-brand-accent px-3.5 py-2 rounded-full font-medium transition-colors shadow-2xs">
+                  Devis avec pose
+                </button>
+</div>
+</div>
+<div>
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-full bg-brand-teal hover:bg-brand-darkteal text-white font-bold text-sm transition-colors shadow-md">
+<span class="">Discuter avec l'Assistant IA</span>
+<i class="fa-solid fa-arrow-right text-xs"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: DualCTASection -->
+<!-- BEGIN: ProjectsShowcase -->
+<section class="py-16 bg-white border-t border-slate-200/60" id="realisations">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<div>
+<h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Nos réalisations</h2>
+<p class="text-sm text-slate-500 mt-1">Découvrez des projets réalisés avec nos garde-corps sur mesure.</p>
+</div>
+<!-- Category filter pills -->
+<div class="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 custom-scrollbar">
+<button class="px-4 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-white shrink-0">Tous</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0">Terrasses</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0">Escaliers</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0">Balcons</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0">Mezzanines</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0">Extérieurs</button>
+<a class="text-xs font-semibold text-brand-teal ml-2 shrink-0" href="#">Voir toutes les réalisations <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+</div>
+</div>
+<!-- Realisation Project Cards 4 cols -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="rounded-2xl border border-slate-200 overflow-hidden group bg-white shadow-2xs hover:shadow-md transition-shadow">
+<div class="aspect-[4/3] overflow-hidden relative">
+<img alt="Villa bord de mer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTvExS_5Nu8bGVXx7Q0R86J-sIUhVeXKhAbB028anxcGzU2jRs-CEjUz3IY-xCKHz5Nj6OIQnNj3gAtgVx5pGBfhWCRUQUCjF76vX-WDKRWUHOwjl5A26UdZ1gTEhS1pj72pTOhqEr7QUGKxcQkyEBgmsQuYf2WcHsZ9g83-iYVs2vgTCME8Y_d7u3I6-lqPVX8CeZzv0fHqy8CwyplLstbfpm7kKKNo6yWv_Rw4s">
+</div>
+<div class="p-4 flex items-center justify-between">
+<div>
+<h4 class="text-sm font-bold text-slate-900">Villa bord de mer</h4>
+<p class="text-xs text-slate-500">Garde-corps verre sur profil</p>
+</div>
+<div class="w-7 h-7 rounded-full bg-slate-100 group-hover:bg-brand-teal group-hover:text-white flex items-center justify-center text-xs text-slate-600 transition-colors">
+<i class="fa-solid fa-arrow-right"></i>
+</div>
+</div>
+</div>
+<div class="rounded-2xl border border-slate-200 overflow-hidden group bg-white shadow-2xs hover:shadow-md transition-shadow">
+<div class="aspect-[4/3] overflow-hidden relative">
+<img alt="Escalier contemporain" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA30Nxd5i6Q3FAapBe70tEgBJvErNjc-CyE6Z0j0l17f0MPuwMwRk7iObzxKhsgor_1AhbL4foy-o1L1fF2SqYFx1Bmlt5Rxxq5kB16Hyh08gap2dZyArf2uOBq09cl745Kk5pb7NMhv6tfpNg2geCD5KaohZRAeCRENUYSOT5M_uTO3JMJ1YvnTrv8RSas8hmN7IwgxiUJ1UfMzNI-k9-XfceMKVNo3Qb_SFQyoTk">
+</div>
+<div class="p-4 flex items-center justify-between">
+<div>
+<h4 class="text-sm font-bold text-slate-900">Escalier contemporain</h4>
+<p class="text-xs text-slate-500">Fixations ponctuelles</p>
+</div>
+<div class="w-7 h-7 rounded-full bg-slate-100 group-hover:bg-brand-teal group-hover:text-white flex items-center justify-center text-xs text-slate-600 transition-colors">
+<i class="fa-solid fa-arrow-right"></i>
+</div>
+</div>
+</div>
+<div class="rounded-2xl border border-slate-200 overflow-hidden group bg-white shadow-2xs hover:shadow-md transition-shadow">
+<div class="aspect-[4/3] overflow-hidden relative">
+<img alt="Terrasse panoramique" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyK31DmBRm0sptMbYsUtcSW7HwXv7MkHcExpw-ow4dLJzi1naeED6FHfVSAew4kYp_1-KtKvAOndF5QdxJMTcybaD4sLY2VCPC7aXHzssPNsizUD2lgsPH6R2ECBI4S9sZ1xCdrV0GoLuraPBn-1rzXS7YDfs9dUmvyhp7emfOo4FdThMVvmgb-IcPsqU-1rKNtaMhYOGTo-q21WhrFyNssIzI51HjMQUKCFPHJuY">
+</div>
+<div class="p-4 flex items-center justify-between">
+<div>
+<h4 class="text-sm font-bold text-slate-900">Terrasse panoramique</h4>
+<p class="text-xs text-slate-500">Vue dégagée</p>
+</div>
+<div class="w-7 h-7 rounded-full bg-slate-100 group-hover:bg-brand-teal group-hover:text-white flex items-center justify-center text-xs text-slate-600 transition-colors">
+<i class="fa-solid fa-arrow-right"></i>
+</div>
+</div>
+</div>
+<div class="rounded-2xl border border-slate-200 overflow-hidden group bg-white shadow-2xs hover:shadow-md transition-shadow">
+<div class="aspect-[4/3] overflow-hidden relative">
+<img alt="Balcon d'appartement" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU_iOBcOQepmfToZhf--6A2a-5zyzoHbY7Mlrz4V9yHpk-w26zevY2WE2I-ncTX9aryCUv74JO2eBSr4U5tzjvYOCrHaMLCQr-hUcOrZGYfAiRJQe6Kc9Qj2TQPGBRpC_ji416Wgl4DtiwTkiDFaEt0wCndkMgmA-IIK8CijLZU0K8OHnI5u6euzAsB1JBINviZHQSoxYBXADUHQaxnIYHYz4xp1X4iEhIVm3nJg0">
+</div>
+<div class="p-4 flex items-center justify-between">
+<div>
+<h4 class="text-sm font-bold text-slate-900">Balcon d'appartement</h4>
+<p class="text-xs text-slate-500">Verre opale</p>
+</div>
+<div class="w-7 h-7 rounded-full bg-slate-100 group-hover:bg-brand-teal group-hover:text-white flex items-center justify-center text-xs text-slate-600 transition-colors">
+<i class="fa-solid fa-arrow-right"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ProjectsShowcase -->
+<!-- BEGIN: StepByStepGuide -->
+<section class="py-16 bg-slate-50 border-t border-slate-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-12">Comment ça marche ?</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+<!-- Step 1 -->
+<div class="flex items-start gap-4">
+<div class="w-9 h-9 rounded-full bg-brand-teal text-white flex items-center justify-center font-bold text-sm shrink-0">
+              1
+            </div>
+<div>
+<div class="w-7 h-7 text-brand-teal text-xl mb-1 flex items-center">
+<i class="fa-regular fa-comment-dots"></i>
+</div>
+<h4 class="text-sm font-bold text-slate-900">Décrivez votre projet</h4>
+<p class="text-xs text-slate-500 mt-1">À l'Assistant IA ou via le configurateur.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex items-start gap-4">
+<div class="w-9 h-9 rounded-full bg-brand-teal text-white flex items-center justify-center font-bold text-sm shrink-0">
+              2
+            </div>
+<div>
+<div class="w-7 h-7 text-brand-teal text-xl mb-1 flex items-center">
+<i class="fa-regular fa-file-lines"></i>
+</div>
+<h4 class="text-sm font-bold text-slate-900">Recevez une estimation</h4>
+<p class="text-xs text-slate-500 mt-1">Des solutions adaptées avec un ordre de prix.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex items-start gap-4">
+<div class="w-9 h-9 rounded-full bg-brand-teal text-white flex items-center justify-center font-bold text-sm shrink-0">
+              3
+            </div>
+<div>
+<div class="w-7 h-7 text-brand-teal text-xl mb-1 flex items-center">
+<i class="fa-solid fa-headset"></i>
+</div>
+<h4 class="text-sm font-bold text-slate-900">Affinez avec un conseiller</h4>
+<p class="text-xs text-slate-500 mt-1">Un expert valide les mesures et les finitions avec vous.</p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex items-start gap-4">
+<div class="w-9 h-9 rounded-full bg-brand-teal text-white flex items-center justify-center font-bold text-sm shrink-0">
+              4
+            </div>
+<div>
+<div class="w-7 h-7 text-brand-teal text-xl mb-1 flex items-center">
+<i class="fa-solid fa-truck-ramp-box"></i>
+</div>
+<h4 class="text-sm font-bold text-slate-900">Recevez et posez</h4>
+<p class="text-xs text-slate-500 mt-1">Fabrication sur mesure, livraison, pose par nos équipes.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: StepByStepGuide -->
+</main>
+<!-- BEGIN: MainFooter -->
+<footer class="bg-brand-darkteal text-slate-300 pt-16 pb-12 border-t border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<!-- Footer Columns -->
+<div class="grid grid-cols-2 md:grid-cols-6 gap-8 pb-12 border-b border-teal-900/60">
+<!-- Brand Info -->
+<div class="col-span-2">
+<a class="flex items-center gap-3 mb-4" href="#">
+<div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-white">
+<i class="fa-solid fa-layer-group text-base"></i>
+</div>
+<span class="text-xl font-bold text-white tracking-tight">Bati<span class="text-teal-400">Home</span></span>
+</a>
+<p class="text-xs text-slate-300 leading-relaxed mb-6 max-w-sm">
+            Expert français de la conception et fabrication de garde-corps vitrés, en profil aluminium et acier inoxydable de haute technicité.
+          </p>
+<div class="flex items-center gap-3 text-slate-400">
+<a class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 hover:text-white flex items-center justify-center transition-colors" href="#">
+<i class="fa-brands fa-instagram text-sm"></i>
+</a>
+<a class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 hover:text-white flex items-center justify-center transition-colors" href="#">
+<i class="fa-brands fa-linkedin text-sm"></i>
+</a>
+<a class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 hover:text-white flex items-center justify-center transition-colors" href="#">
+<i class="fa-brands fa-youtube text-sm"></i>
+</a>
+</div>
+</div>
+<!-- Solutions -->
+<div>
+<h5 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Solutions</h5>
+<ul class="space-y-2.5 text-xs text-slate-300">
+<li class=""><a class="hover:text-white transition-colors" href="#">Garde-corps sur profil</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Fixations ponctuelles</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Systèmes avec potelets</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Tous les produits</a></li>
+</ul>
+</div>
+<!-- Projets -->
+<div>
+<h5 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Projets</h5>
+<ul class="space-y-2.5 text-xs text-slate-300">
+<li class=""><a class="hover:text-white transition-colors" href="#">Terrasses</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Escaliers</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Balcons</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Mezzanines</a></li>
+</ul>
+</div>
+<!-- Conseils -->
+<div>
+<h5 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Conseils</h5>
+<ul class="space-y-2.5 text-xs text-slate-300">
+<li class=""><a class="hover:text-white transition-colors" href="#">Guides</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">FAQ</a></li>
+<li class=""><a class="hover:text-white transition-colors" href="#">Entretien</a></li>
+</ul>
+</div>
+<!-- Newsletter & Contact -->
+<div>
+<h5 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Recevez nos conseils</h5>
+<form class="space-y-2" onsubmit="event.preventDefault();">
+<input class="w-full text-xs px-3 py-2 rounded-lg bg-white/10 border border-teal-800 focus:outline-none focus:border-teal-400 text-white placeholder-slate-400" placeholder="Votre email" type="email">
+<button class="w-full py-2 bg-teal-600 hover:bg-teal-500 text-white font-semibold text-xs rounded-lg transition-colors" type="submit">
+              S'inscrire
+            </button>
+</form>
+</div>
+</div>
+<!-- Footer Bottom -->
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+<p class="">© 2026 BatiHome. Tous droits réservés.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-slate-200 transition-colors" href="#">Mentions légales</a>
+<a class="hover:text-slate-200 transition-colors" href="#">CGV</a>
+<a class="hover:text-slate-200 transition-colors" href="#">Confidentialité</a>
+<a class="hover:text-slate-200 transition-colors" href="#">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+
+
+
+
+
+
+
+
+</body></html>

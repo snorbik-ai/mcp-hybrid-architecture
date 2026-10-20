@@ -1,0 +1,6 @@
+# Dépendances consolidées pour la suite des 5 Outils Métiers BatiHome / AXESTEEL
+# Installation : pip install -r requirements-all.txt
+
+pymupdf>=1.24.0      # Outil #02 : Extraction PDF et rendu 150 DPI
+Pillow>=10.0.0       # Outil #03 : Audit de netteté HD et dimensions
+beautifulsoup4>=4.12.0 # Outil #04 : Analyse et parsing DOM e-commerce

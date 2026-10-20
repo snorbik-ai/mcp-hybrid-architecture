@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "01-recuperateur-images-web": {
+      "command": "node",
+      "args": ["01_web_assets_manager/canal_mcp/mcp_classic_stdio/mcp_server.mjs"],
+      "description": "Outil #01 (Récupérateur d'Images Web) : Récupère les photos d'une page web ou maquette et met à jour les liens d'images du site."
+    },
+    "02-decoupeur-catalogue-pdf": {
+      "command": "python",
+      "args": ["02_pdf_technical_extractor/canal_mcp/mcp_classic_stdio/mcp_server.py"],
+      "description": "Outil #02 (Découpeur de Catalogue PDF) : Découpe les catalogues PDF fabricants et en extrait les fiches, plans techniques et photos HD."
+    },
+    "03-controleur-qualite-photos": {
+      "command": "python",
+      "args": ["03_media_quality_auditor/canal_mcp/mcp_classic_stdio/mcp_server.py"],
+      "description": "Outil #03 (Contrôleur Qualité Photos) : Vérifie la netteté des photos en haute définition et supprime les doublons."
+    },
+    "04-scanneur-produits-boutique": {
+      "command": "python",
+      "args": ["04_ecommerce_catalog_scanner/canal_mcp/mcp_classic_stdio/mcp_server.py"],
+      "description": "Outil #04 (Scanneur Produits & Prix) : Lit les fiches produits, références, prix TTC/HT et photos sur un site marchand."
+    },
+    "05-synchroniseur-catalogue-visuels": {
+      "command": "python",
+      "args": ["05_visual_catalog_sync/canal_mcp/mcp_classic_stdio/mcp_server.py"],
+      "description": "Outil #05 (Synchroniseur de Catalogue) : Enregistre proprement les photos sur le disque et compile le catalogue prêt pour le site."
+    }
+  }
+}

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BatiHome — Gestionnaire d'Assets Web Multi-Canal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B0F17;
+      --card-bg: rgba(22, 30, 46, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --amber: #F59E0B;
+      --amber-hover: #D97706;
+      --amber-glow: rgba(245, 158, 11, 0.2);
+      --text: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --primary: #3B82F6;
+      --success: #10B981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      line-height: 1.5;
+      background-image: 
+        radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.08) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%);
+    }
+    header {
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--card-border);
+      background: rgba(11, 15, 23, 0.8);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .badge {
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-amber { background: var(--amber-glow); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .channels-bar {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+    }
+    .channel-chip {
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .channel-chip.active {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--amber);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+      margin-bottom: 1.5rem;
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--amber); color: #000; }
+    .btn-primary:hover { background: var(--amber-hover); box-shadow: 0 0 15px var(--amber-glow); }
+    .btn-secondary { background: rgba(255, 255, 255, 0.08); color: var(--text); border: 1px solid var(--card-border); }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.15); }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .stat-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+    }
+    .stat-val { font-size: 1.8rem; font-weight: 800; color: var(--amber); }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    .gallery-item {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .gallery-item:hover {
+      transform: translateY(-3px);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+    .gallery-thumb {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      background: #000;
+      cursor: pointer;
+    }
+    .gallery-info {
+      padding: 0.75rem;
+      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .gallery-name {
+      font-weight: 600;
+      color: var(--text);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .status-tag {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .status-ok { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-badge">
+      <h2 style="font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em;">BatiHome <span style="color: var(--amber);">Web Assets Studio</span></h2>
+      <span class="badge badge-amber">Canal 2 : UI Graphique</span>
+    </div>
+
+    <div class="channels-bar">
+      <span class="channel-chip active">🖥️ Canal UI (Humain)</span>
+      <span class="channel-chip" title="Accessible via JSON-RPC MCP">🤖 Canal MCP (IA)</span>
+      <span class="channel-chip" title="Accessible via Node.js/CLI">⚙️ Canal SDK / CLI</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Actions rapides -->
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h3 style="font-size: 1.1rem; margin-bottom: 0.25rem;">🌐 Synchronisation des Médias Web & React</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">
+            Télécharge localement les images distantes des maquettes pour garantir un fonctionnement hors-ligne 100% autonome.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <button class="btn btn-primary" id="btnScan" onclick="triggerScan()">
+            <span>⚡ Scanner & Télécharger</span>
+          </button>
+          <button class="btn btn-secondary" id="btnReplace" onclick="triggerReplace()">
+            <span>🔄 Remplacer dans React</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-val" id="statTotal">0</div>
+          <div class="stat-label">Total d'Assets Découverts</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" style="color: var(--success);" id="statLocal">0</div>
+          <div class="stat-label">Présents en Local (/images/)</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val" style="color: var(--primary);" id="statComponents">14+</div>
+          <div class="stat-label">Composants Synchronisés</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Galerie d'assets -->
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <h4 style="font-size: 1rem;">📁 Galerie des Images Référencées (<span id="countBadge">0</span>)</h4>
+        <input type="text" id="searchInput" placeholder="Filtrer par nom ou URL..." oninput="filterAssets()" style="max-width: 300px; padding: 0.5rem 0.75rem;" />
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </main>
+
+  <script>
+    let allAssets = [];
+
+    async function loadManifest() {
+      try {
+        const res = await fetch('/api/manifest');
+        if (res.ok) {
+          const data = await res.json();
+          allAssets = data.assets || [];
+          document.getElementById('statTotal').innerText = data.total_assets || allAssets.length;
+          document.getElementById('statLocal').innerText = allAssets.filter(a => !a.status.startsWith('erreur')).length;
+          document.getElementById('countBadge').innerText = allAssets.length;
+          renderGrid(allAssets);
+        }
+      } catch (e) {
+        console.error("Erreur de chargement du manifeste :", e);
+      }
+    }
+
+    async function triggerScan() {
+      const btn = document.getElementById('btnScan');
+      btn.disabled = true;
+      btn.innerHTML = "<span>⏳ Téléchargement en cours...</span>";
+      try {
+        const res = await fetch('/api/scan-download', { method: 'POST' });
+        const data = await res.json();
+        alert(`✅ Scan terminé !\nTotal : ${data.total_urls}\nTéléchargés : ${data.downloaded}\nDéjà présents : ${data.existing}`);
+        loadManifest();
+      } catch (err) {
+        alert("Erreur : " + err);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = "<span>⚡ Scanner & Télécharger</span>";
+      }
+    }
+
+    async function triggerReplace() {
+      const btn = document.getElementById('btnReplace');
+      btn.disabled = true;
+      btn.innerHTML = "<span>⏳ Remplacement...</span>";
+      try {
+        const res = await fetch('/api/replace', { method: 'POST' });
+        const data = await res.json();
+        alert(`✅ Remplacement terminé !\nFichiers modifiés : ${data.modified_files_count}\nURLs substituées : ${data.total_replacements}`);
+      } catch (err) {
+        alert("Erreur : " + err);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = "<span>🔄 Remplacer dans React</span>";
+      }
+    }
+
+    function renderGrid(assets) {
+      const grid = document.getElementById('galleryGrid');
+      grid.innerHTML = "";
+
+      if (assets.length === 0) {
+        grid.innerHTML = `<p style="color: var(--text-muted); grid-column: 1/-1; text-align: center; padding: 2rem;">Aucun asset trouvé.</p>`;
+        return;
+      }
+
+      assets.forEach(a => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        const imgUrl = a.public_path;
+        item.innerHTML = `
+          <img src="${imgUrl}" class="gallery-thumb" loading="lazy" onclick="window.open('${imgUrl}', '_blank')" />
+          <div class="gallery-info">
+            <span class="gallery-name" title="${a.local_filename}">${a.local_filename}</span>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.25rem;">
+              <span class="status-tag status-ok">Localisé</span>
+              <a href="${a.original_url}" target="_blank" style="color: var(--text-muted); text-decoration: none; font-size: 0.7rem;">Lien CDN ↗</a>
+            </div>
+          </div>
+        `;
+        grid.appendChild(item);
+      });
+    }
+
+    function filterAssets() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const filtered = allAssets.filter(a => 
+        a.local_filename.toLowerCase().includes(query) || 
+        a.original_url.toLowerCase().includes(query)
+      );
+      renderGrid(filtered);
+    }
+
+    loadManifest();
+  </script>
+</body>
+</html>

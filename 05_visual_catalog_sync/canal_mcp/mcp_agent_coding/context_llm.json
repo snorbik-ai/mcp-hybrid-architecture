@@ -1,0 +1,97 @@
+{
+  "system_identity": {
+    "tool_id": "05_visual_catalog_sync",
+    "module_name": "05_visual_catalog_sync",
+    "product_name": "Moissonneur Visuel Safe-Path & Compilateur TypeScript",
+    "industrial_designation": "Moissonneur Visuel Safe-Path & Compilateur TypeScript",
+    "version": "2.0.0",
+    "architecture": "Clean Architecture (Domain Ports -> Application Use Cases via DI -> Infrastructure Adapters)",
+    "mission": "Télécharge les visuels produits en garantissant MAX_PATH < 260, synchronise public/assets et compile le mock TypeScript RawGlassRailingCatalog.ts.",
+    "standards": "Zéro image manquante, Windows MAX_PATH < 260 caractères, TypeScript Zero-Lint, Clean Architecture DIP",
+    "titre_accessible": "Synchroniseur de Catalogue & Visuels",
+    "description_accessible": "Enregistre proprement les photos sur votre disque et prépare le catalogue prêt pour le site."
+  },
+  "tool_id": "05_visual_catalog_sync",
+  "tool_name": "Moissonneur Visuel Safe-Path & Compilateur TypeScript",
+  "version": "2.0.0",
+  "gps_tools_registry": [
+    {
+      "name": "sync_visual_catalog_assets",
+      "use_case": "SyncVisualAssetsUseCase",
+      "cli_command": "python outils_internes/05_visual_catalog_sync/canal_sdk_cli/cli.py --sync",
+      "signature": "catalog_json_path: str = None, raw_base_dir: str = None, public_catalog_dir: str = None",
+      "purpose": "Sanitise les noms de fichiers (max 38 caractères de base), télécharge les images manquantes dans images/{01_kits..06_verres} et synchronise frontend/public/assets/catalogue_verre/.",
+      "best_practices": "Toujours vérifier que windows_max_path_compliant vaut true et que missing_count vaut 0."
+    },
+    {
+      "name": "compile_typescript_and_markdown_catalog",
+      "use_case": "CompileFrontendCatalogUseCase",
+      "cli_command": "python outils_internes/05_visual_catalog_sync/canal_sdk_cli/cli.py --compile",
+      "signature": "catalog_json_path: str = None, target_ts_path: str = None, target_md_path: str = None",
+      "purpose": "Génère automatiquement le module TypeScript RawGlassRailingCatalog.ts consommé par P02_solutions et P03_produit ainsi que le tableau Markdown complet.",
+      "best_practices": "Exécuter après chaque mise à jour du catalogue JSON puis lancer npm run build dans frontend/."
+    },
+    {
+      "name": "run_quality_and_tests_suite",
+      "use_case": "RunQualityAndTestsSuiteUseCase",
+      "cli_command": "python outils_internes/05_visual_catalog_sync/tests/run_all_suites.py",
+      "signature": "none",
+      "purpose": "Exécute les 4 couches de tests (Unitaires, Intégration, Validation/Performance, Smoke).",
+      "best_practices": "Exécuter systématiquement avant et après toute modification de code."
+    }
+  ],
+  "gps_tools_manifest": [
+    {
+      "name": "sync_visual_catalog_assets",
+      "cli_equivalent": "python outils_internes/05_visual_catalog_sync/canal_sdk_cli/cli.py --sync",
+      "description": "Télécharge les visuels produits sans dépasser la limite Windows MAX_PATH."
+    },
+    {
+      "name": "compile_typescript_and_markdown_catalog",
+      "cli_equivalent": "python outils_internes/05_visual_catalog_sync/canal_sdk_cli/cli.py --compile",
+      "description": "Compile le catalogue frontend TypeScript et la documentation Markdown."
+    },
+    {
+      "name": "run_quality_and_tests_suite",
+      "cli_equivalent": "python outils_internes/05_visual_catalog_sync/tests/run_all_suites.py",
+      "description": "Exécute les 4 couches de tests (Unit, Integration, Validation/Performance, Smoke)."
+    }
+  ],
+  "agent_turn_lifecycle_rules": {
+    "step_1": "Lire README.md puis ce fichier context_llm.json pour charger le GPS et les 30 derniers tours",
+    "step_2": "Exécuter SyncVisualAssetsUseCase et/ou CompileFrontendCatalogUseCase",
+    "step_3": "Rédiger un résumé sémantique compressé du tour (images synchronisées, chemin max, statut TS)",
+    "step_4": "Appeler ContextHistoryManager pour archiver turn_report.json et actualiser dynamic_history (max 30 tours)"
+  },
+  "context_history": {
+    "max_retained_turns": 30,
+    "static_history": [
+      {
+        "example_id": "ref_example_max_path_resolution_and_ts_compile",
+        "user_goal": "Résoudre l'erreur Windows MAX_PATH lors du téléchargement des 140 images et compiler le catalogue TypeScript pour P02/P03",
+        "agent_actions_taken": [
+          "Application de WindowsSafeImageHarvesterAdapter avec sous-dossiers courts (01_kits..06_verres) et troncature à 38 caractères",
+          "Exécution de SyncVisualAssetsUseCase -> 133 images produits + 7 vignettes synchronisées (0 manquante, chemin max < 225 caractères)",
+          "Exécution de CompileFrontendCatalogUseCase -> génération de RawGlassRailingCatalog.ts (133 items) et build Vite réussi en 1.07s"
+        ],
+        "outcome": "Succès - 140 images servies dans frontend/public/assets/catalogue_verre/ et module TypeScript compilé sans erreur"
+      }
+    ],
+    "dynamic_history": [
+      {
+        "session_date": "2026-10-19",
+        "turn_id": "turn_01",
+        "goal": "Validation du pipeline MCP Agent Coding & archivage de session",
+        "semantic_summary": "Pipeline MCP Agent Coding et mémoire glissante 30 tours validés avec succès (0 erreur).",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-19",
+        "turn_id": "turn_02",
+        "goal": "Validation dynamique reelle en conditions de production pour 05_visual_catalog_sync",
+        "semantic_summary": "Cycle de vie valide avec succes sans falsification pour 05_visual_catalog_sync.",
+        "status": "SUCCESS"
+      }
+    ]
+  }
+}

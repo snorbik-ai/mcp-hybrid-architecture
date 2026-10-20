@@ -1,0 +1,17 @@
+{
+  "name": "01-web-assets-manager",
+  "version": "2.0.0",
+  "description": "Outil Interne Autonome #01 (Voiture Autonome) — Extraction d'assets depuis les maquettes HTML et remplacement d'URLs dans React (Clean Architecture, 3 Canaux, 2 Variantes MCP, 4 Couches de Tests)",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "ui": "node canal_ui/server.mjs --port 5181",
+    "mcp": "node canal_mcp/mcp_classic_stdio/mcp_server.mjs",
+    "extract": "node canal_sdk_cli/cli_extract.mjs",
+    "replace": "node canal_sdk_cli/cli_replace.mjs",
+    "test": "node tests/run_all_suites.mjs",
+    "test:json": "node tests/run_all_suites.mjs --json"
+  },
+  "author": "BatiHome / AXESTEEL Engineering Team",
+  "license": "ISC"
+}

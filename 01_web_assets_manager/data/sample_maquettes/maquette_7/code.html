@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BatiHome — Suivi de Commande &amp; Dossier de Fabrication CMD-2026-0812</title>
+<!-- Google Font: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-fixed": "#b7eafe",
+            "on-surface-variant": "#40484b",
+            "tertiary": "#541b00",
+            "on-tertiary": "#ffffff",
+            "inverse-surface": "#293041",
+            "outline-variant": "#c0c8cb",
+            "on-secondary-fixed": "#00201d",
+            "tertiary-container": "#782b00",
+            "border-strong": "#D0D5DD",
+            "surface-bright": "#f9f9ff",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#d2daf0",
+            "on-primary-fixed": "#001f28",
+            "inverse-primary": "#9bcee1",
+            "on-primary": "#ffffff",
+            "background": "#f9f9ff",
+            "text-muted": "#475467",
+            "text-secondary": "#344054",
+            "error-container": "#ffdad6",
+            "surface-container-high": "#e0e8ff",
+            "secondary-fixed": "#84f5e8",
+            "outline": "#70787c",
+            "on-error": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#006a62",
+            "surface-variant": "#dbe2f9",
+            "on-tertiary-fixed": "#360f00",
+            "surface-container-highest": "#dbe2f9",
+            "tertiary-fixed-dim": "#ffb597",
+            "surface-canvas": "#F7F8FA",
+            "surface": "#f9f9ff",
+            "secondary-fixed-dim": "#66d9cc",
+            "on-secondary-fixed-variant": "#005049",
+            "primary-fixed-dim": "#9bcee1",
+            "surface-container": "#e9edff",
+            "primary": "#00323f",
+            "on-tertiary-container": "#ff9567",
+            "secondary-container": "#81f3e5",
+            "surface-tint": "#316576",
+            "success-green": "#067647",
+            "primary-container": "#0e4a5a",
+            "on-error-container": "#93000a",
+            "on-primary-container": "#86b9cb",
+            "on-tertiary-fixed-variant": "#7d2d00",
+            "surface-card": "#FFFFFF",
+            "border-subtle": "#EAECF0",
+            "on-secondary-container": "#006f66",
+            "tertiary-fixed": "#ffdbcd",
+            "on-background": "#141b2c",
+            "surface-glass-tint": "#E6F2F5",
+            "surface-dark": "#0B2630",
+            "on-primary-fixed-variant": "#134d5d",
+            "on-surface": "#141b2c",
+            "error": "#ba1a1a",
+            "inverse-on-surface": "#edf0ff",
+            "surface-container-low": "#f1f3ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "margin": "2rem",
+            "space-md": "1rem",
+            "gutter-mobile": "1rem",
+            "space-xl": "2.5rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "headline-hero-mobile": ["Inter"],
+            "body-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-hero": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "metric-price-md": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "label-technical": ["Inter"],
+            "headline-md": ["Inter"],
+            "metric-price-lg": ["Inter"]
+          },
+          "fontSize": {
+            "headline-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "headline-hero": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "metric-price-md": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label-technical": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "metric-price-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .font-tnum { font-feature-settings: 'tnum'; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined[data-weight="fill"] {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="bg-surface-canvas text-on-surface antialiased min-h-screen flex flex-col font-body-md">
+<!-- TOP APP BAR (Shared Component) -->
+<header class="bg-surface-card dark:bg-surface-dark border-b border-border-subtle dark:border-outline-variant shadow-sm docked full-width top-0 z-50 sticky">
+<div class="flex justify-between items-center w-full px-6 lg:px-12 max-w-7xl mx-auto h-20">
+<!-- Brand Logo -->
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-2.5" href="#">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-2xl" data-icon="balcony">balcony</span>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-inverse-primary tracking-tight">BatiHome</span>
+<span class="text-label-technical font-label-technical text-text-muted uppercase tracking-wider -mt-1">Garde-corps sur mesure</span>
+</div>
+</a>
+<!-- Desktop Navigation Links -->
+<nav class="hidden md:flex items-center space-x-7">
+<a class="text-text-secondary dark:text-outline-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-all duration-150 text-body-md font-body-md" href="#">Solutions</a>
+<a class="text-primary dark:text-secondary-fixed font-semibold border-b-2 border-primary dark:border-secondary-fixed pb-1 text-body-md font-body-md" href="#">Projets</a>
+<a class="text-text-secondary dark:text-outline-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-all duration-150 text-body-md font-body-md" href="#">Configurateur</a>
+<a class="text-text-secondary dark:text-outline-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-all duration-150 text-body-md font-body-md" href="#">Réalisations</a>
+<a class="text-text-secondary dark:text-outline-variant font-medium hover:text-primary dark:hover:text-inverse-primary transition-all duration-150 text-body-md font-body-md" href="#">Conseils</a>
+</nav>
+</div>
+<!-- Search & Trailing Actions -->
+<div class="flex items-center gap-4">
+<!-- Search bar on right -->
+<div class="relative hidden xl:block w-64">
+<input class="w-full bg-surface-canvas text-body-sm font-body-sm text-on-surface rounded-lg pl-9 pr-4 py-2 border border-border-subtle focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-colors" placeholder="Rechercher un dossier, profil..." type="text"/>
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-text-muted text-lg" data-icon="search">search</span>
+</div>
+<!-- Trailing Icon Actions -->
+<div class="flex items-center space-x-1 sm:space-x-2">
+<button aria-label="Favoris" class="p-2 text-text-secondary hover:text-primary hover:bg-surface-container-low rounded-lg transition-all">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<button aria-label="Compte" class="p-2 text-primary bg-surface-glass-tint rounded-lg transition-all relative">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-success-green rounded-full ring-2 ring-white"></span>
+</button>
+<button aria-label="Panier" class="p-2 text-text-secondary hover:text-primary hover:bg-surface-container-low rounded-lg transition-all">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+<!-- Primary Action -->
+<button class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary-container text-white text-label-md font-label-md hover:bg-primary transition-colors shadow-sm font-semibold active:scale-[0.98]">
+          Devis en ligne
+        </button>
+</div>
+</div>
+</header>
+<!-- MAIN VIEWPORT CONTAINER -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-6 sm:py-8 space-y-8">
+<!-- BREADCRUMB -->
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 text-body-sm font-body-sm text-text-muted">
+<a class="hover:text-primary transition-colors" href="#">Accueil</a>
+<span class="material-symbols-outlined text-sm text-outline-variant" data-icon="chevron_right">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Espace Client</a>
+<span class="material-symbols-outlined text-sm text-outline-variant" data-icon="chevron_right">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Commandes</a>
+<span class="material-symbols-outlined text-sm text-outline-variant" data-icon="chevron_right">chevron_right</span>
+<span class="text-on-surface font-semibold">CMD-2026-0812</span>
+</nav>
+<!-- HEADER TITLE & META BADGE -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-border-subtle">
+<div>
+<div class="flex items-center gap-3 mb-2 flex-wrap">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-glass-tint text-primary-container font-label-technical text-label-technical uppercase tracking-wide border border-primary-container/20">
+            Dossier Usine BatiFab #0812
+          </span>
+<span class="flex items-center gap-1.5 text-label-technical font-label-technical text-success-green bg-green-50 px-2.5 py-0.5 rounded-full border border-green-200">
+<span class="w-2 h-2 rounded-full bg-success-green animate-pulse"></span>
+            En fabrication atelier
+          </span>
+<span class="text-label-technical font-label-technical text-text-muted">Norme NF P01-012/013 Certifiée</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-primary tracking-tight">
+          Suivi de votre commande CMD-2026-0812 — Terrasse Panoramique 8,00 ml
+        </h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 border border-border-strong rounded-lg text-body-sm font-body-sm text-text-secondary bg-surface-card hover:bg-surface-canvas transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="print">print</span>
+          Imprimer le dossier
+        </button>
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-container text-white text-body-sm font-body-sm font-semibold hover:bg-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg text-secondary-fixed" data-icon="chat_bubble">chat_bubble</span>
+          Assistance usine
+        </button>
+</div>
+</div>
+<!-- CARTE RÉSUMÉ COMMANDE & LOGISTIQUE -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Stat 1: Montant & Paiement -->
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-glass-tint text-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="payments">payments</span>
+</div>
+<div class="space-y-1">
+<span class="text-label-technical font-label-technical uppercase text-text-muted">Règlement dossier</span>
+<div class="text-metric-price-md font-metric-price-md text-primary font-tnum">3 680,00 € TTC</div>
+<p class="text-body-sm font-body-sm text-success-green flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-base" data-icon="check_circle">check_circle</span>
+            Acompte 40% validé (1 472,00 €)
+          </p>
+<span class="text-body-sm font-body-sm text-text-muted">Solde de 60% à la livraison</span>
+</div>
+</div>
+<!-- Stat 2: Livraison Estimée -->
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-glass-tint text-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="calendar_month">calendar_month</span>
+</div>
+<div class="space-y-1">
+<span class="text-label-technical font-label-technical uppercase text-text-muted">Fenêtre d'expédition</span>
+<div class="text-metric-price-md font-metric-price-md text-primary">Semaine 12 — Mars 2026</div>
+<p class="text-body-sm font-body-sm text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-base text-primary-container" data-icon="schedule">schedule</span>
+            Créneau confirmé sous 48h avant départ
+          </p>
+<span class="text-body-sm font-body-sm text-text-muted">Délai standard usine : 15 à 20 jours</span>
+</div>
+</div>
+<!-- Stat 3: Transport Spécialisé -->
+<div class="bg-surface-card rounded-xl border border-border-subtle p-5 shadow-sm flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-surface-glass-tint text-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="local_shipping">local_shipping</span>
+</div>
+<div class="space-y-1">
+<span class="text-label-technical font-label-technical uppercase text-text-muted">Logistique Verre lourd</span>
+<div class="text-headline-sm font-headline-sm text-primary">Chevalet Verrier Spécifique</div>
+<p class="text-body-sm font-body-sm text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-base text-primary-container" data-icon="pin_drop">pin_drop</span>
+            Camion hayon bâché 19t + chariot
+          </p>
+<span class="text-body-sm font-body-sm text-text-muted">Protocole manutention NF P08-301</span>
+</div>
+</div>
+</section>
+<!-- TIMELINE INTERACTIVE À 5 ÉTAPES -->
+<section class="bg-surface-card rounded-xl border border-border-subtle p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h2 class="text-headline-sm font-headline-sm text-primary">Progression de fabrication &amp; acheminement</h2>
+<p class="text-body-sm font-body-sm text-text-muted">Suivi en direct synchronisé avec notre ERP d'usinage aluminium et vitrage</p>
+</div>
+<span class="hidden sm:inline-block px-3 py-1 bg-surface-glass-tint text-primary-container text-label-technical font-label-technical rounded-lg">
+          Étape 3 sur 5 active
+        </span>
+</div>
+<!-- Stepper Component (Responsive) -->
+<div class="relative">
+<!-- Connecting Track Line -->
+<div class="absolute top-5 left-6 right-6 h-0.5 bg-border-subtle hidden lg:block -z-0">
+<div class="h-full bg-primary-container w-[52%] transition-all duration-500"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
+<!-- Étape 1 : Complétée -->
+<div class="flex flex-col space-y-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center shrink-0 shadow-sm ring-4 ring-white">
+<span class="material-symbols-outlined text-lg" data-icon="check">check</span>
+</div>
+<span class="lg:hidden text-label-md font-label-md font-semibold text-primary">Étape 1</span>
+</div>
+<div>
+<p class="text-label-md font-label-md font-semibold text-primary">1. Commande &amp; Métré</p>
+<p class="text-body-sm font-body-sm text-success-green font-medium">Validé le 16 Fév</p>
+<p class="text-body-sm font-body-sm text-text-muted mt-0.5">Côtes terrasse 8,00 ml confirmées par laser</p>
+</div>
+</div>
+<!-- Étape 2 : Complétée -->
+<div class="flex flex-col space-y-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center shrink-0 shadow-sm ring-4 ring-white">
+<span class="material-symbols-outlined text-lg" data-icon="check">check</span>
+</div>
+<span class="lg:hidden text-label-md font-label-md font-semibold text-primary">Étape 2</span>
+</div>
+<div>
+<p class="text-label-md font-label-md font-semibold text-primary">2. Calepinage &amp; B.E.</p>
+<p class="text-body-sm font-body-sm text-success-green font-medium">Validé le 18 Fév</p>
+<p class="text-body-sm font-body-sm text-text-muted mt-0.5">Plan de découpe verre &amp; jeux d'extrémité approuvés</p>
+</div>
+</div>
+<!-- Étape 3 : Active (En cours) -->
+<div class="flex flex-col space-y-2 bg-surface-glass-tint/40 p-3 rounded-lg border border-primary-container/20 -m-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container text-secondary-fixed flex items-center justify-center shrink-0 shadow-sm ring-4 ring-secondary-fixed/50 animate-pulse">
+<span class="material-symbols-outlined text-lg" data-icon="precision_manufacturing">precision_manufacturing</span>
+</div>
+<span class="lg:hidden text-label-md font-label-md font-semibold text-primary">Étape 3</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<p class="text-label-md font-label-md font-bold text-primary">3. Usinage en Atelier</p>
+<span class="text-[10px] font-bold uppercase tracking-wider bg-primary-container text-secondary-fixed px-1.5 py-0.5 rounded">En cours</span>
+</div>
+<p class="text-body-sm font-body-sm text-primary-container font-medium">Découpe feuilleté 88.2 &amp; Profilés</p>
+<p class="text-body-sm font-body-sm text-text-secondary mt-0.5">Finition anodisé brossé 25 microns</p>
+</div>
+</div>
+<!-- Étape 4 : À venir -->
+<div class="flex flex-col space-y-2 opacity-75">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-card border-2 border-border-strong text-text-muted flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="local_shipping">local_shipping</span>
+</div>
+<span class="lg:hidden text-label-md font-label-md text-text-muted">Étape 4</span>
+</div>
+<div>
+<p class="text-label-md font-label-md font-semibold text-text-secondary">4. Expédition Chevalet</p>
+<p class="text-body-sm font-body-sm text-text-muted">Prévu S12 (22-26 Mars)</p>
+<p class="text-body-sm font-body-sm text-text-muted mt-0.5">Emballage sécurisé et sanglage dynamique</p>
+</div>
+</div>
+<!-- Étape 5 : À venir -->
+<div class="flex flex-col space-y-2 opacity-75">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-card border-2 border-border-strong text-text-muted flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="task_alt">task_alt</span>
+</div>
+<span class="lg:hidden text-label-md font-label-md text-text-muted">Étape 5</span>
+</div>
+<div>
+<p class="text-label-md font-label-md font-semibold text-text-secondary">5. Réception &amp; Pose</p>
+<p class="text-body-sm font-body-sm text-text-muted">À la livraison</p>
+<p class="text-body-sm font-body-sm text-text-muted mt-0.5">Contrôle contradictoire &amp; cales de réglage</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- MAIN TWO-COLUMN CONTENT GRID -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- COLONNE GAUCHE (7/12 Desktop): Atelier, Documents, Colisage -->
+<div class="lg:col-span-8 space-y-8">
+<!-- SECTION 1: FICHE DE FABRICATION ATELIER -->
+<section class="bg-surface-card rounded-xl border border-border-subtle p-6 shadow-sm space-y-6">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-border-subtle gap-2">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="architecture">architecture</span>
+                Fiche technique de fabrication atelier
+              </h3>
+<p class="text-body-sm font-body-sm text-text-muted">Usinage commande conforme au calepinage BE BatiHome #BE-26-881</p>
+</div>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-surface-canvas border border-border-strong rounded-lg text-label-technical font-label-technical text-text-secondary font-mono">
+              REV: 03 (VALIDÉE)
+            </span>
+</div>
+<!-- Photo-first 60/40 demonstration section -->
+<div class="grid grid-cols-1 sm:grid-cols-12 gap-4 rounded-xl overflow-hidden border border-border-subtle bg-surface-canvas p-3">
+<div class="sm:col-span-7 h-56 rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Close-up architectural photograph of an elegant continuous aluminium base channel profile with tempered laminated glass railing installed on a sunny luxury villa terrace overlooking the Mediterranean sea. Natural daylight reveals the satin brushed anodized metal texture, clear transparent structural glass panels, and precision silicone gaskets with high architectural clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCs1-VLkdQQRTAFl5KP4krW4qIzomHTwukMsf3hCn5DHgeSN4LzFf_R5YFAtfFydQg-tOWO8kxPE_S9QyJfxQigQcWVUHk-cmbOTQWzus4rDSzkogvGG-Bm_vAft4BuiU7lp7G9yze53OtMwImb1s0EJUCFpoqWwXsmdF5J8F9b0mm_Lk-6wZGAYKgJIMm5QZ56EOootdN3jwdq5-iuInyinwrCmcBm4GlvVwlJ1g"/>
+<div class="absolute bottom-2 left-2 bg-surface-dark/85 backdrop-blur-md text-white px-2.5 py-1 rounded text-label-technical font-label-technical">
+                Rendu de pose projet : Profil Sol Continu 8,00m
+              </div>
+</div>
+<div class="sm:col-span-5 flex flex-col justify-between p-2 space-y-2">
+<div>
+<span class="text-label-technical font-label-technical text-primary font-bold uppercase">Configuration Système</span>
+<p class="text-body-md font-body-md font-semibold text-primary mt-1">Système Panoramik Sol 4200</p>
+<p class="text-body-sm font-body-sm text-text-muted">Profil aluminium 6063 T6 thermo-laqué brossé, ancrage au sol dalle béton C25/30.</p>
+</div>
+<div class="bg-surface-card p-3 rounded-lg border border-border-subtle space-y-1">
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-text-muted">Hauteur finie :</span>
+<span class="font-semibold text-on-surface">1 020 mm</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-text-muted">Verre homologué :</span>
+<span class="font-semibold text-on-surface">88.2 (17,52 mm) EVA</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-text-muted">Résistance aux chocs :</span>
+<span class="font-semibold text-success-green">1 200 Joules (CSTB)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Tableau Calepinage des 8 panneaux de verre -->
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<h4 class="text-body-md font-body-md font-semibold text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-primary-container" data-icon="grid_view">grid_view</span>
+                Calepinage des 8 panneaux de vitrage (Feuilleté trempé 88.2 - 17,52 mm)
+              </h4>
+<span class="text-label-technical font-label-technical text-text-muted font-tnum">8 unités usinées</span>
+</div>
+<div class="overflow-x-auto rounded-lg border border-border-subtle">
+<table class="w-full text-left text-body-sm font-body-sm border-collapse">
+<thead class="bg-surface-canvas border-b border-border-subtle text-text-secondary text-label-technical font-label-technical uppercase">
+<tr>
+<th class="py-2.5 px-4 font-semibold">Repère</th>
+<th class="py-2.5 px-4 font-semibold">Dimensions (L × H mm)</th>
+<th class="py-2.5 px-4 font-semibold">Usinage chants</th>
+<th class="py-2.5 px-4 font-semibold">Poids unitaire</th>
+<th class="py-2.5 px-4 font-semibold text-right">Statut atelier</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle font-tnum">
+<tr class="hover:bg-surface-canvas/50">
+<td class="py-2.5 px-4 font-bold text-primary">V-01 (Départ gauche)</td>
+<td class="py-2.5 px-4">988 × 980 mm</td>
+<td class="py-2.5 px-4">Joint plat poli (JPP)</td>
+<td class="py-2.5 px-4">42,5 kg</td>
+<td class="py-2.5 px-4 text-right">
+<span class="inline-flex items-center gap-1 text-label-technical font-label-technical text-success-green bg-green-50 px-2 py-0.5 rounded font-semibold">
+<span class="material-symbols-outlined text-xs" data-icon="check">check</span> Découpé
+                      </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-canvas/50">
+<td class="py-2.5 px-4 font-bold text-primary">V-02 à V-07 (Courants)</td>
+<td class="py-2.5 px-4">1 000 × 980 mm (×6)</td>
+<td class="py-2.5 px-4">JPP + coins abattus 2mm</td>
+<td class="py-2.5 px-4">43,0 kg/u</td>
+<td class="py-2.5 px-4 text-right">
+<span class="inline-flex items-center gap-1 text-label-technical font-label-technical text-primary-container bg-surface-glass-tint px-2 py-0.5 rounded font-semibold">
+<span class="material-symbols-outlined text-xs" data-icon="autorenew">autorenew</span> Biseautage en cours
+                      </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-canvas/50">
+<td class="py-2.5 px-4 font-bold text-primary">V-08 (Fin de ligne)</td>
+<td class="py-2.5 px-4">988 × 980 mm</td>
+<td class="py-2.5 px-4">Joint plat poli (JPP)</td>
+<td class="py-2.5 px-4">42,5 kg</td>
+<td class="py-2.5 px-4 text-right">
+<span class="inline-flex items-center gap-1 text-label-technical font-label-technical text-text-muted bg-surface-canvas px-2 py-0.5 rounded font-semibold">
+                        En attente trempe
+                      </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="text-label-technical font-label-technical text-text-muted italic">
+              * Jeux inter-panneaux calibrés à 4 mm selon rapport d'essai CSTB avec cales en EPDM dures incluses.
+            </p>
+</div>
+<!-- Détail profilés aluminium usinés -->
+<div class="bg-surface-canvas rounded-lg p-4 border border-border-subtle space-y-3">
+<h4 class="text-body-md font-body-md font-semibold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="straighten">straighten</span>
+              Profilés de maintien et perçage usine
+            </h4>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<div class="bg-surface-card p-3 rounded border border-border-subtle">
+<span class="text-label-technical font-label-technical text-text-muted">Profilé P1 (Base départ)</span>
+<p class="text-body-md font-body-md font-semibold text-primary mt-0.5 font-tnum">3 000 mm</p>
+<p class="text-body-sm font-body-sm text-text-muted">Perçage entraxe 200 mm</p>
+</div>
+<div class="bg-surface-card p-3 rounded border border-border-subtle">
+<span class="text-label-technical font-label-technical text-text-muted">Profilé P2 (Intermédiaire)</span>
+<p class="text-body-md font-body-md font-semibold text-primary mt-0.5 font-tnum">3 000 mm</p>
+<p class="text-body-sm font-body-sm text-text-muted">Perçage entraxe 200 mm</p>
+</div>
+<div class="bg-surface-card p-3 rounded border border-border-subtle">
+<span class="text-label-technical font-label-technical text-text-muted">Profilé P3 (Recoupe usine)</span>
+<p class="text-body-md font-body-md font-semibold text-primary mt-0.5 font-tnum">2 000 mm</p>
+<p class="text-body-sm font-body-sm text-success-green font-medium">Recoupé avec ébavurage net</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: TÉLÉCHARGEMENT DES DOCUMENTS TECHNIQUES -->
+<section class="bg-surface-card rounded-xl border border-border-subtle p-6 shadow-sm space-y-5">
+<div class="flex items-center justify-between pb-3 border-b border-border-subtle">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="folder_open">folder_open</span>
+                Documents &amp; Certificats du Dossier
+              </h3>
+<p class="text-body-sm font-body-sm text-text-muted">Téléchargez l'intégralité des plans d'exécution et procès-verbaux d'homologation</p>
+</div>
+<button class="text-body-sm font-body-sm text-primary font-semibold hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-base" data-icon="download">download</span>
+              Tout télécharger (.ZIP)
+            </button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Doc 1 -->
+<div class="p-4 rounded-lg border border-border-subtle hover:border-primary transition-all flex items-start gap-3 bg-surface-card group">
+<div class="w-10 h-10 rounded bg-red-50 text-red-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="text-label-md font-label-md font-semibold text-primary truncate group-hover:text-primary-container">Plan technique de pose (PDF)</p>
+<span class="text-label-technical font-label-technical text-text-muted font-tnum">2.4 Mo</span>
+</div>
+<p class="text-body-sm font-body-sm text-text-muted">Plans de calepinage, réservations et côtes d'implantation.</p>
+<a class="mt-2 text-label-technical font-label-technical text-primary font-bold inline-flex items-center gap-1 hover:underline" href="#">
+                  Télécharger <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Doc 2 -->
+<div class="p-4 rounded-lg border border-border-subtle hover:border-primary transition-all flex items-start gap-3 bg-surface-card group">
+<div class="w-10 h-10 rounded bg-blue-50 text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="text-label-md font-label-md font-semibold text-primary truncate group-hover:text-primary-container">Guide de montage pas-à-pas</p>
+<span class="text-label-technical font-label-technical text-text-muted font-tnum">4.1 Mo</span>
+</div>
+<p class="text-body-sm font-body-sm text-text-muted">Manuel illustré 16 pages : serrage dynamométrique &amp; calage.</p>
+<a class="mt-2 text-label-technical font-label-technical text-primary font-bold inline-flex items-center gap-1 hover:underline" href="#">
+                  Télécharger <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Doc 3 -->
+<div class="p-4 rounded-lg border border-border-subtle hover:border-primary transition-all flex items-start gap-3 bg-surface-card group">
+<div class="w-10 h-10 rounded bg-green-50 text-success-green flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="text-label-md font-label-md font-semibold text-primary truncate group-hover:text-primary-container">Certificat d'essai 1200J CSTB</p>
+<span class="text-label-technical font-label-technical text-text-muted font-tnum">1.1 Mo</span>
+</div>
+<p class="text-body-sm font-body-sm text-text-muted">PV d'essai officiel pour conformité assurances et permis.</p>
+<a class="mt-2 text-label-technical font-label-technical text-primary font-bold inline-flex items-center gap-1 hover:underline" href="#">
+                  Télécharger <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Doc 4 -->
+<div class="p-4 rounded-lg border border-border-subtle hover:border-primary transition-all flex items-start gap-3 bg-surface-card group">
+<div class="w-10 h-10 rounded bg-amber-50 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="text-label-md font-label-md font-semibold text-primary truncate group-hover:text-primary-container">Facture d'acompte acquittée</p>
+<span class="text-label-technical font-label-technical text-text-muted font-tnum">450 Ko</span>
+</div>
+<p class="text-body-sm font-body-sm text-text-muted">Réf. FAC-2026-1190 émise le 16/02/2026.</p>
+<a class="mt-2 text-label-technical font-label-technical text-primary font-bold inline-flex items-center gap-1 hover:underline" href="#">
+                  Télécharger <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: COLISAGE & LOGISTIQUE SPÉCIALISÉE -->
+<section class="bg-surface-card rounded-xl border border-border-subtle p-6 shadow-sm space-y-6">
+<div class="flex items-center justify-between pb-3 border-b border-border-subtle">
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="inventory_2">inventory_2</span>
+                Colisage &amp; Répartition du Fret (Total : 280 kg)
+              </h3>
+<p class="text-body-sm font-body-sm text-text-muted">Structure des 3 colis préparés pour l'expédition sécurisée sur semi-remorque hayon</p>
+</div>
+<span class="text-label-technical font-label-technical px-2.5 py-1 bg-surface-canvas rounded text-text-secondary border border-border-subtle">
+              Conditionnement A+
+            </span>
+</div>
+<div class="space-y-4">
+<!-- Colis 1: Verre -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-border-subtle bg-surface-canvas/60 gap-4">
+<div class="flex items-start gap-3.5">
+<div class="w-12 h-12 rounded-lg bg-surface-card border border-border-subtle flex items-center justify-center text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-2xl" data-icon="grid_goldenratio">grid_goldenratio</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary font-headline-sm text-base">Colis 1 — Chevalet verre sécurisé</span>
+<span class="px-2 py-0.5 text-[11px] font-semibold bg-tertiary-fixed text-tertiary rounded">Lourd / Fragile</span>
+</div>
+<p class="text-body-sm font-body-sm text-text-muted mt-0.5">8 panneaux 88.2 calés sous mousse intercalaire et film thermorétractable étanche.</p>
+<div class="flex items-center gap-4 text-label-technical font-label-technical text-text-secondary mt-2">
+<span>Dimensions chevalet : 140 × 110 × 125 cm</span>
+<span>•</span>
+<span>Poids brut : 240 kg</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="text-label-technical font-label-technical uppercase text-text-muted">Code Traçabilité</span>
+<p class="text-body-sm font-body-sm font-mono font-semibold text-primary">CHV-882-0812</p>
+</div>
+</div>
+<!-- Colis 2: Profilés Alu -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-border-subtle bg-surface-canvas/60 gap-4">
+<div class="flex items-start gap-3.5">
+<div class="w-12 h-12 rounded-lg bg-surface-card border border-border-subtle flex items-center justify-center text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-2xl" data-icon="view_week">view_week</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary font-headline-sm text-base">Colis 2 — Fardeau Profilés Aluminium</span>
+<span class="px-2 py-0.5 text-[11px] font-semibold bg-surface-glass-tint text-primary-container rounded">Longueur 3m</span>
+</div>
+<p class="text-body-sm font-body-sm text-text-muted mt-0.5">3 barres d'ancrage avec cales d'alignement + capots de finition clippables anodisés.</p>
+<div class="flex items-center gap-4 text-label-technical font-label-technical text-text-secondary mt-2">
+<span>Dimensions fardeau : 310 × 20 × 25 cm</span>
+<span>•</span>
+<span>Poids brut : 32 kg</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="text-label-technical font-label-technical uppercase text-text-muted">Code Traçabilité</span>
+<p class="text-body-sm font-body-sm font-mono font-semibold text-primary">ALU-300-4200</p>
+</div>
+</div>
+<!-- Colis 3: Visserie & EPDM -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-border-subtle bg-surface-canvas/60 gap-4">
+<div class="flex items-start gap-3.5">
+<div class="w-12 h-12 rounded-lg bg-surface-card border border-border-subtle flex items-center justify-center text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-2xl" data-icon="build">build</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-bold text-primary font-headline-sm text-base">Colis 3 — Cartouche Visserie &amp; Joints EPDM</span>
+<span class="px-2 py-0.5 text-[11px] font-semibold bg-surface-container-high text-primary rounded">Accessoires</span>
+</div>
+<p class="text-body-sm font-body-sm text-text-muted mt-0.5">Goujons d'ancrage M12 Inox A4, cales de serrage brevetées, rouleau de joint d'étanchéité.</p>
+<div class="flex items-center gap-4 text-label-technical font-label-technical text-text-secondary mt-2">
+<span>Boîte renforcée : 40 × 30 × 25 cm</span>
+<span>•</span>
+<span>Poids brut : 8 kg</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="text-label-technical font-label-technical uppercase text-text-muted">Code Traçabilité</span>
+<p class="text-body-sm font-body-sm font-mono font-semibold text-primary">ACC-FIX-0812</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- COLONNE DROITE (4/12 Desktop): Contact Responsable Atelier, Actions SAV, Conseils Livraison -->
+<div class="lg:col-span-4 space-y-6">
+<!-- CARTE RESPONSABLE FABRICATION ATELIER -->
+<section class="bg-surface-card rounded-xl border border-border-subtle p-6 shadow-sm space-y-5">
+<div class="flex items-center gap-2 text-label-technical font-label-technical uppercase tracking-wider text-text-muted">
+<span class="w-2 h-2 rounded-full bg-success-green"></span>
+            Votre Référent Technique Dédié
+          </div>
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-primary-container shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Portrait of an experienced French manufacturing workshop engineer wearing safety glasses and a dark blue technical polo shirt smiling in an architectural aluminium and glass processing workshop with soft industrial lighting in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNLc2uXDOJABNKCTxAf_ii54aPrZK3IHZ_r-SahUd1VADF2440CeH8qTX4ruXj6JOm7kXwa0F4WmR4Ta7pIyk6nkjc_TK3SkEI5_hvTMBKdVaLWGTb4JbAlM1vXXWL9gf25dUo0D9IXFlGlvXhb2ttIq_3kFA7Z3kBhY4_cHpaj6BcdABig7_biHB0Xmo_AvKthrwzx0EM-gr9TtOQSmBDsOUJ_rm3o18ZE6wmLdk"/>
+</div>
+<div>
+<h3 class="text-headline-sm font-headline-sm text-primary">Alexandre Martin</h3>
+<p class="text-body-sm font-body-sm text-primary-container font-medium">Ingénieur Bureau d'Études &amp; Usinage</p>
+<p class="text-label-technical font-label-technical text-text-muted mt-0.5">Atelier BatiFab Nord — Usine #2</p>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-text-secondary bg-surface-canvas p-3 rounded-lg border border-border-subtle">
+            « Bonjour ! J'ai personnellement validé votre calepinage verre et supervisé le réglage de la scie numérique pour la coupe nette de vos 8 mètres de profilé. Je reste à votre écoute jusqu'à la livraison finale. »
+          </p>
+<div class="space-y-2.5 pt-1">
+<a class="w-full flex items-center justify-center gap-2.5 py-2.5 px-4 rounded-lg bg-surface-canvas hover:bg-surface-container-low text-primary font-semibold text-body-sm font-body-sm border border-border-subtle transition-colors" href="tel:+33189470211">
+<span class="material-symbols-outlined text-lg text-primary-container" data-icon="call">call</span>
+              01 89 47 02 11 (Ligne directe)
+            </a>
+<a class="w-full flex items-center justify-center gap-2.5 py-2.5 px-4 rounded-lg bg-surface-canvas hover:bg-surface-container-low text-primary font-semibold text-body-sm font-body-sm border border-border-subtle transition-colors" href="mailto:alexandre.m@batihome.fr">
+<span class="material-symbols-outlined text-lg text-primary-container" data-icon="mail">mail</span>
+              alexandre.m@batihome.fr
+            </a>
+</div>
+</section>
+<!-- CARTE ACTIONS CLIENT & TICKET SAV -->
+<section class="bg-surface-card rounded-xl border border-border-subtle p-6 shadow-sm space-y-4">
+<h3 class="text-headline-sm font-headline-sm text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="support_agent">support_agent</span>
+            Assistance &amp; Remarques
+          </h3>
+<p class="text-body-sm font-body-sm text-text-muted">
+            Un doute sur l'épaisseur du sol ou une contrainte de date de livraison ? Signalez-le avant le départ de l'usine.
+          </p>
+<div class="space-y-3 pt-2">
+<button class="w-full py-2.5 px-4 rounded-lg bg-primary-container text-white text-body-sm font-body-sm font-semibold hover:bg-primary transition-colors flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-lg text-secondary-fixed" data-icon="edit_note">edit_note</span>
+              Déclarer une remarque fabrication
+            </button>
+<button class="w-full py-2.5 px-4 rounded-lg border border-border-strong text-text-secondary hover:text-primary hover:bg-surface-canvas text-body-sm font-body-sm font-medium transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg text-text-muted" data-icon="confirmation_number">confirmation_number</span>
+              Ouvrir un ticket SAV / Livraison
+            </button>
+</div>
+</section>
+<!-- PROTOCOLE DE RÉCEPTION & CONSEILS JOUR J -->
+<section class="bg-gradient-to-br from-surface-card to-surface-canvas rounded-xl border border-border-strong p-6 shadow-sm space-y-4">
+<div class="flex items-center gap-2 text-tertiary">
+<span class="material-symbols-outlined text-xl" data-icon="warning">warning</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Protocole Jour de Livraison</h4>
+</div>
+<p class="text-body-sm font-body-sm text-text-secondary">
+            Le verre trempé feuilleté exige des précautions logistiques rigoureuses :
+          </p>
+<ul class="space-y-3 text-body-sm font-body-sm text-text-secondary">
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-base text-primary shrink-0 mt-0.5" data-icon="rv_hookup">rv_hookup</span>
+<span><strong>Accès porteur 19 tonnes :</strong> Vérifiez la voie carrossable sans restriction de tonnage ni virage en épingle.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-base text-primary shrink-0 mt-0.5" data-icon="group">group</span>
+<span><strong>Présence requise :</strong> Vous ou votre poseur professionnel devez être sur place muni de gants anti-coupure.</span>
+</li>
+<li class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-base text-primary shrink-0 mt-0.5" data-icon="checklist">checklist</span>
+<span><strong>Déballage contradictoire :</strong> Vérifiez l'intégrité des tranches des 8 verres avant de signer le bon transporteur CMR.</span>
+</li>
+</ul>
+<div class="pt-2">
+<a class="inline-flex items-center gap-1.5 text-label-technical font-label-technical text-primary font-bold hover:underline" href="#">
+              Télécharger la check-list réception (PDF)
+              <span class="material-symbols-outlined text-xs" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- FOOTER (Shared Component) -->
+<footer class="bg-surface-dark text-inverse-on-surface border-t border-primary-container w-full pt-16 pb-12 mt-16">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col space-y-12">
+<!-- Top Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-white/10">
+<!-- Col 1: Brand & Norms -->
+<div class="space-y-4 md:col-span-1">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-secondary-fixed text-xl" data-icon="balcony">balcony</span>
+</div>
+<span class="text-headline-md font-headline-md font-bold text-inverse-on-surface tracking-tight">BatiHome</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline-variant">
+            Concepteur et fabricant français de garde-corps tout verre et profilés aluminium de précision sur mesure.
+          </p>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 bg-white/5 rounded border border-white/10 text-label-technical font-label-technical text-secondary-fixed">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
+            Conformité Normes NF P01-012 &amp; 013
+          </div>
+</div>
+<!-- Col 2: Navigation Links -->
+<div class="space-y-3">
+<h4 class="text-headline-sm font-headline-sm text-white text-base">Solutions &amp; Systèmes</h4>
+<ul class="space-y-2 text-body-sm font-body-sm">
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Solutions garde-corps</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Profilés sol continu</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Fixations ponctuelles nez de dalle</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Potelets et mains courantes</a></li>
+</ul>
+</div>
+<!-- Col 3: Bureau d'études & Outils -->
+<div class="space-y-3">
+<h4 class="text-headline-sm font-headline-sm text-white text-base">Bureau d'Études &amp; Espace</h4>
+<ul class="space-y-2 text-body-sm font-body-sm">
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Configurateur 3D</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Projets &amp; Réalisations</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Guides techniques &amp; FAQ</a></li>
+<li><a class="text-secondary-fixed font-semibold" href="#">Suivi de fabrication &amp; atelier</a></li>
+</ul>
+</div>
+<!-- Col 4: Sécurité & Certificats -->
+<div class="space-y-3">
+<h4 class="text-headline-sm font-headline-sm text-white text-base">Garanties &amp; Légal</h4>
+<ul class="space-y-2 text-body-sm font-body-sm">
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Mentions légales &amp; CGV</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Gestion des cookies</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Garantie décennale usine</a></li>
+<li><a class="text-outline-variant hover:text-inverse-on-surface transition-colors duration-150" href="#">Politique de confidentialité</a></li>
+</ul>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="flex flex-col sm:flex-row items-center justify-between text-body-sm font-body-sm text-outline-variant gap-4 pt-2">
+<p>© 2026 BatiHome. Tous droits réservés. Normes NF P01-012/013 garanties.</p>
+<div class="flex items-center gap-6">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed"></span>
+            ERP Atelier Connecté : 100% Opérationnel
+          </span>
+<span>Serveurs hébergés en France</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

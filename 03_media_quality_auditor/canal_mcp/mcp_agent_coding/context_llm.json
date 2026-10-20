@@ -1,0 +1,99 @@
+{
+  "system_identity": {
+    "tool_id": "03_media_quality_auditor",
+    "module_name": "03_media_quality_auditor",
+    "product_name": "Auditeur Qualité Média HD & Moteur Dédoublonneur MD5",
+    "industrial_designation": "Auditeur Qualité Média HD & Moteur Dédoublonneur MD5",
+    "version": "2.0.0",
+    "architecture": "Clean Architecture (Domain Entities -> Application Use Cases via DI -> Infrastructure Adapters)",
+    "mission": "Analyse la résolution réelle (>= 1200x700), certifie l'éligibilité pour les bannières Hero et purge les doublons physiques par empreinte cryptographique MD5.",
+    "standards": "Clean Architecture DIP, Résolution Hero HD certifiée, Dédoublonnage MD5 strict, Idempotence",
+    "titre_accessible": "Contrôleur Qualité Photos & Doublons",
+    "description_accessible": "Vérifie la netteté de vos photos en haute définition et supprime les doublons inutiles."
+  },
+  "tool_id": "03_media_quality_auditor",
+  "tool_name": "Auditeur Qualité Média HD & Moteur Dédoublonneur MD5",
+  "version": "2.0.0",
+  "gps_tools_registry": [
+    {
+      "name": "audit_media_folder",
+      "use_case": "AuditMediaDirectoryUseCase",
+      "cli_command": "python outils_internes/03_media_quality_auditor/canal_sdk_cli/cli.py --folder frontend/public/assets/catalogue_verre",
+      "signature": "folder_path: str, min_width: int = 1200, min_height: int = 700",
+      "purpose": "Parcourt un dossier d'images, calcule les dimensions réelles, hachages MD5 et classe chaque fichier (CERTIFIED_HERO_CANDIDATE, REJECTED_LOW_RES, DUPLICATE_CANDIDATE).",
+      "best_practices": "Toujours exécuter en premier pour obtenir l'état des lieux d'un répertoire d'assets."
+    },
+    {
+      "name": "get_certified_hero_candidates",
+      "use_case": "GetCertifiedHeroCandidatesUseCase",
+      "cli_command": "python -c \"import sys; sys.path.insert(0, 'outils_internes/03_media_quality_auditor'); from canal_sdk_cli.sdk import MediaAuditorPipeline; print(MediaAuditorPipeline().get_hero_candidates('frontend/public/assets/catalogue_verre'))\"",
+      "signature": "folder_path: str, min_width: int = 1200, min_height: int = 700",
+      "purpose": "Filtre et retourne uniquement la liste des photographies certifiées haute résolution pour les carrousels et en-têtes.",
+      "best_practices": "Utiliser pour alimenter automatiquement les galeries scénographiques du frontend."
+    },
+    {
+      "name": "clean_duplicate_media",
+      "use_case": "CleanDuplicatesUseCase",
+      "cli_command": "python outils_internes/03_media_quality_auditor/canal_sdk_cli/cli.py --folder frontend/public/assets/catalogue_verre --clean --dry-run",
+      "signature": "folder_path: str, dry_run: bool = True",
+      "purpose": "Identifie et supprime les doublons physiques identifiés par empreinte MD5 stricte ou suffixe de copie d'OS.",
+      "best_practices": "Toujours vérifier avec --dry-run avant toute purge définitive sur disque."
+    },
+    {
+      "name": "run_quality_and_tests_suite",
+      "use_case": "RunQualityAndTestsSuiteUseCase",
+      "cli_command": "python outils_internes/03_media_quality_auditor/tests/run_all_suites.py",
+      "signature": "none",
+      "purpose": "Exécute les 4 couches de tests (Unitaires, Intégration, Validation/Performance, Smoke).",
+      "best_practices": "Exécuter systématiquement avant et après toute modification de code."
+    }
+  ],
+  "gps_tools_manifest": [
+    {
+      "name": "audit_media_folder",
+      "cli_equivalent": "python outils_internes/03_media_quality_auditor/canal_sdk_cli/cli.py --folder frontend/public/assets/catalogue_verre",
+      "description": "Audite les dimensions, formats et doublons MD5 d'un dossier d'images."
+    },
+    {
+      "name": "clean_duplicate_media",
+      "cli_equivalent": "python outils_internes/03_media_quality_auditor/canal_sdk_cli/cli.py --folder frontend/public/assets/catalogue_verre --clean --dry-run",
+      "description": "Identifie ou supprime les doublons MD5."
+    },
+    {
+      "name": "run_quality_and_tests_suite",
+      "cli_equivalent": "python outils_internes/03_media_quality_auditor/tests/run_all_suites.py",
+      "description": "Exécute les 4 couches de tests (Unit, Integration, Validation/Performance, Smoke)."
+    }
+  ],
+  "agent_turn_lifecycle_rules": {
+    "step_1": "Lire README.md puis ce fichier context_llm.json pour charger le GPS des Use Cases et la mémoire des tours précédents",
+    "step_2": "Exécuter le Use Case requis via le CLI (recommandé pour agent autonome) ou le SDK",
+    "step_3": "Compresser les résultats du tour en un résumé sémantique concis et factuel",
+    "step_4": "Enregistrer le compte-rendu dans history/sessions/YYYY-MM-DD/turn_XX/turn_report.json via ContextHistoryManager",
+    "step_5": "Mettre à jour la fenêtre glissante dynamic_history dans context_llm.json (bornée à 30 tours max)"
+  },
+  "context_history": {
+    "max_retained_turns": 30,
+    "static_history": [
+      {
+        "reference_turn_id": "static_ref_01",
+        "goal": "Audit HD et dédoublonnage MD5 des visuels catalogue_verre",
+        "actions_performed": [
+          "Exécution de AuditMediaDirectoryUseCase sur les photographies du catalogue verre",
+          "Validation 100% des 4 suites de tests (Unit, Integration, Validation/Perf, Smoke)"
+        ],
+        "semantic_summary": "Audit qualité et dédoublonnage MD5 validés sans régression.",
+        "status": "SUCCESS"
+      }
+    ],
+    "dynamic_history": [
+      {
+        "session_date": "2026-10-19",
+        "turn_id": "turn_01",
+        "goal": "Validation dynamique reelle en conditions de production pour 03_media_quality_auditor",
+        "semantic_summary": "Cycle de vie valide avec succes sans falsification pour 03_media_quality_auditor.",
+        "status": "SUCCESS"
+      }
+    ]
+  }
+}
