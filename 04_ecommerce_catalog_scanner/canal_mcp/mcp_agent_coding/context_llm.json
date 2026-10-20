@@ -199,6 +199,20 @@
         "goal": "Porte A lifecycle → scan_ecommerce_catalog",
         "semantic_summary": "{\"use_case\": \"scan_ecommerce_catalog\", \"status\": \"success\", \"total_products\": 14, \"html_report_url\": \"file:///C:/Users/ntpar/Dev_IT/Projet_depo/Projet_IA/MCP/04_ecommerce_catalog_scanner/output/scan_batihome_snorbik_fr_catalogue_view.html\"}",
         "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_10",
+        "goal": "Porte A lifecycle → audit_scanned_catalog",
+        "semantic_summary": "{\"use_case\": \"audit_scanned_catalog\", \"status\": \"success\", \"total_products\": 133, \"html_report_url\": null}",
+        "status": "SUCCESS"
+      },
+      {
+        "session_date": "2026-10-20",
+        "turn_id": "turn_10",
+        "goal": "Porte A lifecycle → scan_ecommerce_catalog",
+        "semantic_summary": "{\"use_case\": \"scan_ecommerce_catalog\", \"status\": \"success\", \"total_products\": 14, \"html_report_url\": \"file:///C:/Users/ntpar/Dev_IT/Projet_depo/Projet_IA/MCP/04_ecommerce_catalog_scanner/output/scan_batihome_snorbik_fr_catalogue_view.html\"}",
+        "status": "SUCCESS"
       }
     ]
   }
