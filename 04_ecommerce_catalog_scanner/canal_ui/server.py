@@ -6,7 +6,7 @@ OUTIL INTERNE #04 — E-COMMERCE CATALOG SCANNER PIPELINE
 Module : canal_ui/server.py (Canal 2 : Mini-Application Web Graphique Locale)
 ========================================================================================
 Rôle :
-Micro-serveur HTTP sur le port 5183 servant un Dashboard Web au Design System AXESTEEL
+Micro-serveur HTTP sur le port 5183 servant un Dashboard Web au Design System BatiHome
 pour explorer, filtrer, rechercher et lancer des scans DOM sur les 133 références du
 catalogue e-commerce garde-corps verre.
 ========================================================================================

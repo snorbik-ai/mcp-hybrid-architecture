@@ -1,7 +1,7 @@
 # 📖 Cahier des Charges, Vision Produit & Architecture Clean — `ecommerce_catalog_scanner_pipeline`
 ## Outil Interne #04 : Scanner E-Commerce DOM & Extracteur de Prix / SKU / Accessoires (Sans API)
 
-> **Produit Logiciel :** `axesteel-ecommerce-catalog-scanner`  
+> **Produit Logiciel :** `batihome-ecommerce-catalog-scanner`  
 > **Version :** 1.0.0 — Octobre 2026  
 > **Architecture Interne :** Clean Architecture Stricte (Domain $\leftarrow$ Application Use Cases avec Injection de Dépendances $\leftarrow$ Infrastructure à Responsabilité Technique Unique)  
 > **Exposition :** 3 Canaux Canoniques + 2 Variantes MCP (`mcp_classic_stdio` & `mcp_agent_coding`)
@@ -11,7 +11,7 @@
 ## 🧭 1. Vision du Produit & Problème Métier Résolu
 
 ### 1.1. Pourquoi ce produit existe-t-il ?
-Lors de la conception d'un site e-commerce industriel spécialisé (comme **AXESTEEL**, dédié 100 % aux garde-corps vitrés et à leurs accessoires), l'équipe produit et les développeurs doivent constituer une **matière première exhaustive** à partir de sites de référence du secteur (ex: `inoxdesign.fr`, `inoxkit.fr`) qui **ne proposent aucune API publique**.
+Lors de la conception d'un site e-commerce industriel spécialisé (comme le démonstrateur **BatiHome**, dédié aux garde-corps vitrés et à leurs accessoires), l'équipe produit et les développeurs doivent constituer une **matière première exhaustive** à partir de sites de référence du secteur (ex: `inoxdesign.fr`, `inoxkit.fr`) qui **ne proposent aucune API publique**.
 
 Coder des scripts jetables à chaque besoin entraîne une perte de savoir-faire. Cet outil interne transforme cette capacité d'extraction sans API en un **produit logiciel réutilisable et prêt pour l'Open Source**.
 
@@ -28,7 +28,7 @@ Coder des scripts jetables à chaque besoin entraîne une perte de savoir-faire.
 | :--- | :--- | :--- |
 | **1. Agent IA Autonome (Coding Agent)** | **Canal 1 — Variante B (`mcp_agent_coding`)** | 1. Lit `README.md` puis le manifeste GPS `context_llm.json`.<br/>2. Consulte l'historique statique et les 30 derniers tours.<br/>3. Exécute `scan_glass_railing_catalog` ou `audit_and_search_scanned_catalog`.<br/>4. Archive un compte rendu compressé sémantiquement via `ContextHistoryManager`. |
 | **2. Assistant IA IDE (Claude / Cursor / AGY)** | **Canal 1 — Variante A (`mcp_classic_stdio`)** | Appelle directement les tools MCP en JSON-RPC stdio (`discover_ecommerce_categories`, `audit_and_search_scanned_catalog`) pour répondre à une question tarifaire ou technique. |
-| **3. Chef de Produit / Acheteur / Designer** | **Canal 2 — Mini-App Web (`http://localhost:5183`)** | Ouvre le Dashboard graphique AXESTEEL dans son navigateur, filtre les 133 références par famille (`Profilés`, `Pinces`, `Spider`, `Verres`), vérifie les photos et les prix TTC/HT. |
+| **3. Chef de Produit / Acheteur / Designer** | **Canal 2 — Mini-App Web (`http://localhost:5183`)** | Ouvre le Dashboard graphique BatiHome dans son navigateur, filtre les 133 références par famille (`Profilés`, `Pinces`, `Spider`, `Verres`), vérifie les photos et les prix TTC/HT. |
 | **4. Développeur Full-Stack / Ingénieur Data** | **Canal 3 — SDK & CLI (`canal_sdk_cli/`)** | Exécute `cli.py --scan` ou importe `EcommerceCatalogScannerSDK` dans un pipeline CI/CD. |
 
 ---
@@ -92,7 +92,7 @@ flowchart TD
 python outils_internes/ecommerce_catalog_scanner_pipeline/canal_sdk_cli/cli.py --audit
 python outils_internes/ecommerce_catalog_scanner_pipeline/canal_sdk_cli/cli.py --search "IN607"
 
-# Canal 2 : Mini-Application Graphique Web (Design System AXESTEEL sur port 5183)
+# Canal 2 : Mini-Application Graphique Web (Design System BatiHome sur port 5183)
 python outils_internes/ecommerce_catalog_scanner_pipeline/canal_ui/server.py --port 5183
 
 # Canal 1 (Variante A) : Serveur MCP Classique stdio

@@ -4,7 +4,7 @@
 ========================================================================================
 PASSERELLE INTERMÉDIAIRE MCP (HTTP / REST GATEWAY) — MODE 2 : IA EXTERNE
 ========================================================================================
-Agrège les 5 serveurs MCP autonomes de la suite BatiHome / AXESTEEL :
+Agrège les 5 serveurs MCP autonomes de la suite BatiHome :
 - 01_web_assets_manager (Node.js)
 - 02_pdf_technical_extractor (Python)
 - 03_media_quality_auditor (Python)

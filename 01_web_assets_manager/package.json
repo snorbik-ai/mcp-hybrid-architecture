@@ -12,6 +12,6 @@
     "test": "node tests/run_all_suites.mjs",
     "test:json": "node tests/run_all_suites.mjs --json"
   },
-  "author": "BatiHome / AXESTEEL Engineering Team",
+  "author": "SNORBIK AI (https://github.com/snorbik-ai)",
   "license": "ISC"
 }

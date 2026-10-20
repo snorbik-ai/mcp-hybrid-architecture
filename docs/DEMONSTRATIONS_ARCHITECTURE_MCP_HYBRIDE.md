@@ -3,7 +3,9 @@
 
 > **Directive de référence :** DIRECTIVE CANONIQUE — Nettoyage des risques et validation (v1.0 - 20 octobre 2026)  
 > **Prototype officiel de démonstration :** [https://batihome.snorbik.fr/#P01_home](https://batihome.snorbik.fr/#P01_home)  
-> **Auteur :** Équipe d'Ingénierie BatiHome / AXESTEEL  
+> **Auteur :** SNORBIK AI  
+> **Projet de démonstration :** BatiHome  
+> **Dépôt open source :** `snorbik-ai/mcp-hybrid-architecture`  
 > **Statut :** Conforme aux règles d'accès éthiques, reproductible sans dépendance non autorisée  
 
 ---

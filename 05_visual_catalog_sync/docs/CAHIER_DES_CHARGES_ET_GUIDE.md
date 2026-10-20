@@ -1,7 +1,7 @@
 # 📖 Cahier des Charges, Vision Produit & Architecture Clean — `visual_catalog_sync_pipeline`
 ## Outil Interne #05 : Synchroniseur d'Assets Visuels Anti-MAX_PATH Windows & Compilateur TypeScript / Markdown
 
-> **Produit Logiciel :** `axesteel-visual-catalog-sync`  
+> **Produit Logiciel :** `batihome-visual-catalog-sync`  
 > **Version :** 1.0.0 — Octobre 2026  
 > **Architecture Interne :** Clean Architecture Stricte (Domain $\leftarrow$ Application Use Cases avec Injection de Dépendances $\leftarrow$ Infrastructure à Responsabilité Technique Unique)  
 > **Exposition :** 3 Canaux Canoniques + 2 Variantes MCP (`mcp_classic_stdio` & `mcp_agent_coding`)
@@ -69,7 +69,7 @@ flowchart TD
 # Canal 3 : CLI (Synchronisation visuelle + Compilation TypeScript & Markdown)
 python outils_internes/visual_catalog_sync_pipeline/canal_sdk_cli/cli.py --all
 
-# Canal 2 : Mini-Application Graphique Web (Design System AXESTEEL sur port 5184)
+# Canal 2 : Mini-Application Graphique Web (Design System BatiHome sur port 5184)
 python outils_internes/visual_catalog_sync_pipeline/canal_ui/server.py --port 5184
 
 # Canal 1 (Variante A) : Serveur MCP Classique stdio

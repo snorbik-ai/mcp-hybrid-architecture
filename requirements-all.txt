@@ -1,4 +1,4 @@
-# Dépendances consolidées pour la suite des 5 Outils Métiers BatiHome / AXESTEEL
+# Dépendances consolidées pour la suite des 5 Outils Métiers BatiHome (mcp-hybrid-architecture)
 # Installation : pip install -r requirements-all.txt
 
 pymupdf>=1.24.0      # Outil #02 : Extraction PDF et rendu 150 DPI

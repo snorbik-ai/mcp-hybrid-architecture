@@ -11,7 +11,7 @@ Rôle :
 3. Maintient une fenêtre glissante stricte de 30 tours dans context_llm.json.
 4. Assure la compression sémantique et la persistance entre les sessions de dev.
 
-Auteur : BatiHome / AXESTEEL Engineering Team
+Auteur : SNORBIK AI (https://github.com/snorbik-ai)
 ========================================================================================
 """
 
