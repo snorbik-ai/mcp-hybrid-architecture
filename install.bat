@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 echo ================================================================================
-echo          MCP-TOOLKIT : SCRIPT D'INSTALLATION ET VERIFICATION [WINDOWS]
+echo          MCP-HYBRID-ARCHITECTURE : SCRIPT D'INSTALLATION ET VERIFICATION [WINDOWS]
 echo ================================================================================
 echo.
 

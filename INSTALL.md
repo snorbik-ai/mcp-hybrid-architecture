@@ -1,4 +1,4 @@
-# 📦 Guide d'Installation et d'Utilisation — Suite `mcp-toolkit`
+# 📦 Guide d'Installation et d'Utilisation — Suite `mcp-hybrid-architecture`
 
 Ce guide permet à tout développeur, agent IA ou utilisateur d'installer, diagnostiquer et exécuter la suite des 5 serveurs MCP autonomes sur un environnement propre.
 

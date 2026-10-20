@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 ========================================================================================
-MCP-TOOLKIT : DIAGNOSTIC D'ENVIRONNEMENT ET RAPPORT DE SANTE (DOCTOR)
+MCP-HYBRID-ARCHITECTURE : DIAGNOSTIC D'ENVIRONNEMENT ET RAPPORT DE SANTE (DOCTOR)
 ========================================================================================
 Diagnostique :
 1. Version Python, architecture 64-bit, chemin d'execution
@@ -25,7 +25,7 @@ ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
 def run_doctor():
     print("=" * 80)
-    print("           MCP-TOOLKIT : RAPPORT DE SANTE ET DIAGNOSTIC (DOCTOR)")
+    print("           MCP-HYBRID-ARCHITECTURE : RAPPORT DE SANTE ET DIAGNOSTIC (DOCTOR)")
     print("=" * 80)
     print()
 

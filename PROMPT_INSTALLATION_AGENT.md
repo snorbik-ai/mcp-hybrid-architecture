@@ -5,7 +5,7 @@
 ---
 
 ```text
-Tu es un agent de programmation autonome chargé d'installer, vérifier et configurer la suite d'outils open source "mcp-toolkit".
+Tu es un agent de programmation autonome chargé d'installer, vérifier et configurer la suite d'outils open source "mcp-hybrid-architecture".
 
 Emplacement de travail : ./ (racine du dépôt)
 Documentation de référence : README.md et INSTALL.md

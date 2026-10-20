@@ -19,7 +19,7 @@ if not errorlevel 1 (
 )
 
 echo ================================================================================
-echo               MCP-TOOLKIT : RAPPORT DE SANTE ET DIAGNOSTIC (DOCTOR)
+echo               MCP-HYBRID-ARCHITECTURE : RAPPORT DE SANTE ET DIAGNOSTIC (DOCTOR)
 echo ================================================================================
 echo.
 echo [ERREUR] Aucun interpreteur Python n'a ete trouve sur cette machine.

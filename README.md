@@ -1,4 +1,4 @@
-# 🛠️ MCP-TOOLKIT — Suite des 5 Outils Métiers Autonomes pour Agents IA
+# 🛠️ MCP-HYBRID-ARCHITECTURE — Suite des 5 Outils Métiers Autonomes pour Agents IA
 
 > **Le Pattern MCP Hybride :**  
 > *« MCP standardise l'accès aux outils ; le Pattern organise leur exécution, la restitution des résultats et la continuité du travail. »*
@@ -7,7 +7,7 @@
   <img src="docs/images/cover_mcp_hybride_officielle.jpg" alt="Pattern MCP Hybride — Couverture Officielle" width="100%" />
 </p>
 
-Bienvenue dans **`mcp-toolkit`**, une suite de 5 outils modulaires conçus pour automatiser les tâches d'extraction, d'audit média et de structuration de catalogues e-commerce complexes, exploitable aussi bien par un développeur que par un agent d'intelligence artificielle (Cursor, Claude Desktop, Antigravity IDE, Windsurf, Claude Code).
+Bienvenue dans **`mcp-hybrid-architecture`**, une suite de 5 outils modulaires conçus pour automatiser les tâches d'extraction, d'audit média et de structuration de catalogues e-commerce complexes, exploitable aussi bien par un développeur que par un agent d'intelligence artificielle (Cursor, Claude Desktop, Antigravity IDE, Windsurf, Claude Code).
 
 ---
 
@@ -19,7 +19,7 @@ Lors de la construction ou de la migration d'un site e-commerce technique (comme
 3. **La disparité de qualité des médias :** Photos de résolution insuffisante pour l'affichage Retina/HD, doublons d'images gaspillant de la bande passante.
 4. **La surcharge de contexte des LLMs :** Lorsqu'un agent IA traditionnel tente d'inspecter un catalogue ou un DOM e-commerce, il déverse des milliers de lignes de JSON brut dans sa fenêtre de contexte, provoquant explosion de coûts, amnésie et hallucinations tarifaires.
 
-`mcp-toolkit` résout ces défis en fournissant des moteurs déterministes locaux, rapides et autonomes, capables d'effectuer le travail lourd en millisecondes et de renvoyer à l'IA uniquement des résumés structurés fiables.
+`mcp-hybrid-architecture` résout ces défis en fournissant des moteurs déterministes locaux, rapides et autonomes, capables d'effectuer le travail lourd en millisecondes et de renvoyer à l'IA uniquement des résumés structurés fiables.
 
 ---
 

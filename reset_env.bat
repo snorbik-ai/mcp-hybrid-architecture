@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 echo ================================================================================
-echo           MCP-TOOLKIT : REINITIALISATION DE L'ENVIRONNEMENT VIRTUEL
+echo           MCP-HYBRID-ARCHITECTURE : REINITIALISATION DE L'ENVIRONNEMENT VIRTUEL
 echo ================================================================================
 echo.
 echo ATTENTION : Cette operation va :
@@ -50,6 +50,6 @@ if errorlevel 1 (
 
 echo.
 echo ================================================================================
-echo [SUCCES] L'environnement mcp-toolkit a ete reinitialise a neuf avec succes !
+echo [SUCCES] L'environnement mcp-hybrid-architecture a ete reinitialise a neuf avec succes !
 echo ================================================================================
 exit /b 0

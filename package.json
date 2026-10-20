@@ -1,5 +1,5 @@
 {
-  "name": "mcp-toolkit",
+  "name": "mcp-hybrid-architecture",
   "version": "1.0.0",
   "description": "Suite de 5 serveurs MCP autonomes pour l'e-commerce technique (Clean Architecture, Stdio & Gateway HTTP)",
   "private": true,
