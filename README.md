@@ -37,17 +37,31 @@ Pour concilier la standardisation du protocole et la maîtrise du contexte, ce p
 
 ---
 
-## 💡 3. Contribution Propre de l'Auteur
+## 💡 3. Contribution Propre de l'Auteur & Fonctionnement du Pattern
+
+Ce projet ne prétend pas réinventer le protocole MCP standard, mais propose une organisation applicative et industrielle articulée autour de **4 piliers opérationnels**. Deux infographies synthétisent l'architecture et son fonctionnement sous le capot pour une prise en main immédiate :
+
+### 📐 3.1 Vue d'Ensemble : Architecture Globale du Pattern MCP Hybride
+Ce premier schéma présente le cycle complet de bout en bout : de l'expression des besoins réels jusqu'à la double restitution (agent IA et utilisateur humain), en passant par les deux modes d'accès (stdio et HTTP) et le cœur applicatif découpé en Clean Architecture.
 
 <p align="center">
-  <img src="docs/images/pattern_mcp_hybride_architecture.jpg" alt="Infographie Détaillée du Pattern MCP Hybride" width="100%" />
+  <img src="docs/images/pattern_mcp_hybride_architecture.jpg" alt="Architecture Globale du Pattern MCP Hybride" width="100%" />
 </p>
 
-Ce projet ne prétend pas réinventer le protocole MCP, mais propose une implémentation architecturale rigoureuse articulée autour de 4 principes :
-1. **Organisation en "Voitures Autonomes" :** Les 5 outils (`01_` à `05_`) sont découpés en modules indépendants (Clean Architecture : Domain, Application, Infrastructure). Chaque outil possède son propre serveur MCP, sa propre CLI, sa mini-interface Web de visualisation et sa batterie de tests.
-2. **Stratégie "Digest-First" :** Renvoi d'un résumé exécutif compact à l'IA avec un lien direct vers un rapport visuel HTML interactif généré localement pour l'utilisateur.
-3. **Mémoire Glissante d'Ingénierie :** Gestionnaire de session (`context_history_manager.py`) maintenant un carnet de bord borné à 30 tours pour éviter l'oubli sans surcharger le contexte.
-4. **Passerelle Universelle HTTP / REST :** Un reverse proxy local (`mcp_shared/mcp_http_gateway.py` sur le port 5185) unifiant les 17 outils sous un endpoint unique pour les environnements ne supportant pas `stdio`.
+---
+
+### ⚙️ 3.2 Fonctionnement Concret : Les 4 Composantes Sous le Capot
+Ce poster détaille pas à pas la mécanique opérationnelle qui garantit une efficacité maximale sans saturer la fenêtre de contexte de l'agent.
+
+<p align="center">
+  <img src="docs/images/pattern_mcp_hybride_poster.jpg" alt="Comment Fonctionne le Pattern MCP Hybride — Les 4 Composantes Concrètes" width="100%" />
+</p>
+
+#### Synthèse des 4 Piliers Opérationnels :
+1. **Moteur Métier Local (Domain-Driven) :** Les 5 outils (`01_` à `05_`) sont organisés en modules indépendants (Clean Architecture : Domain, Application, Infrastructure). Chaque outil intègre son propre moteur métier autonome, sa CLI, son serveur MCP et sa batterie de tests de non-régression.
+2. **Protocole Digest-First & Artefacts :** Au lieu de saturer la fenêtre de contexte en renvoyant des mégas-octets de données brutes au modèle, l'outil sauvegarde localement le rapport complet (JSON exhaustif, HTML interactif, visuels) et ne renvoie à l'IA qu'un résumé exécutif ultra-compact (ex: **470 octets** au lieu de 228 Ko, soit **-99,8% de tokens consommés**). L'utilisateur humain accède directement au rapport visuel sur son navigateur.
+3. **Mémoire de Travail de Session (30 Tours) :** Un carnet de bord glissant et structuré (`turn_report.json` via `context_history_manager.py`) consigne chaque étape, paramètre et artefact, garantissant la continuité du travail sans amnésie et sans surcharge contextuelle.
+4. **Architecture Modulaire & Passerelle Universelle :** Chaque outil fonctionne de manière 100% autonome en ligne de commande ou via MCP stdio. Pour les environnements multi-agents ou conteneurisés, une passerelle HTTP/REST unifiée (`mcp_shared/mcp_http_gateway.py` sur le port 5185) rassemble l'intégralité des 17 outils sous une interface unifiée.
 
 ---
 
