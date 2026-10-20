@@ -1,5 +1,12 @@
 # 🛠️ MCP-TOOLKIT — Suite des 5 Outils Métiers Autonomes pour Agents IA
 
+> **Le Pattern MCP Hybride :**  
+> *« MCP standardise l'accès aux outils ; le Pattern organise leur exécution, la restitution des résultats et la continuité du travail. »*
+
+<p align="center">
+  <img src="docs/images/pattern_mcp_hybride_architecture.jpg" alt="Architecture du Pattern MCP Hybride" width="100%" />
+</p>
+
 Bienvenue dans **`mcp-toolkit`**, une suite de 5 outils modulaires conçus pour automatiser les tâches d'extraction, d'audit média et de structuration de catalogues e-commerce complexes, exploitable aussi bien par un développeur que par un agent d'intelligence artificielle (Cursor, Claude Desktop, Antigravity IDE, Windsurf, Claude Code).
 
 ---
