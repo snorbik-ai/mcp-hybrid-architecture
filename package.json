@@ -1,7 +1,7 @@
 {
-  "name": "batihome-outils-internes",
-  "version": "2.0.0",
-  "description": "Index de lancement global optionnel pour les 5 Voitures Autonomes (Clean Architecture, 3 Canaux, 2 Variantes MCP, 4 Couches de Tests)",
+  "name": "mcp-toolkit",
+  "version": "1.0.0",
+  "description": "Suite de 5 serveurs MCP autonomes pour l'e-commerce technique (Clean Architecture, Stdio & Gateway HTTP)",
   "private": true,
   "type": "module",
   "scripts": {
@@ -21,8 +21,9 @@
     "04:mcp": "python 04_ecommerce_catalog_scanner/canal_mcp/mcp_classic_stdio/mcp_server.py",
     "05:test": "python 05_visual_catalog_sync/tests/run_all_suites.py",
     "05:ui": "python 05_visual_catalog_sync/canal_ui/server.py --port 5184",
-    "05:mcp": "python 05_visual_catalog_sync/canal_mcp/mcp_classic_stdio/mcp_server.py"
+    "05:mcp": "python 05_visual_catalog_sync/canal_mcp/mcp_classic_stdio/mcp_server.py",
+    "test": "run_all_tests.bat"
   },
   "author": "BatiHome / AXESTEEL Engineering Team",
-  "license": "ISC"
+  "license": "MIT"
 }

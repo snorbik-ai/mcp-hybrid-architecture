@@ -20,13 +20,13 @@ Lors de la construction ou de la migration d'un site e-commerce technique (comme
 
 Le protocole standard **MCP (Model Context Protocol)**, introduit par Anthropic, standardise la connexion entre les modèles de langage et les outils locaux via des échanges JSON-RPC (sur `stdio` ou serveur HTTP).
 
-Toutefois, lors d'une utilisation industrielle intensive, deux limites pratiques majeures apparaissent :
-- **Saturation du contexte par les retours d'outils :** Un outil MCP standard renvoyant l'intégralité d'un catalogue (100+ fiches produits) consomme immédiatement 30 000 à 60 000 tokens en un seul tour de conversation.
-- **Amnésie de l'agent lors de tâches longues :** Le protocole MCP standard est sans état (*stateless*). L'agent oublie les étapes préalablement validées dès que la conversation s'allonge.
+Toutefois, lors d'une utilisation industrielle intensive sur des données volumineuses, deux constats opérationnels s'imposent :
+- **Gestion du volume de données dans la fenêtre de contexte :** Le protocole MCP standard transmet fidèlement les sorties produites par les outils vers le client hôte. Lorsqu'un outil renvoie une charge volumineuse (un arbre DOM complet ou un dump de dizaines de fiches produits avec attributs), la fenêtre de contexte de l'agent est fortement sollicitée, ce qui augmente le coût d'inférence et peut dégrader l'attention du modèle sur ses instructions d'origine.
+- **Continuité de contexte et persistance :** Le protocole MCP standard opère comme un protocole de transport de requêtes et de réponses (RPC). La mémoire de travail, l'historique et la persistance entre étapes incombent traditionnellement au client hôte ou à la couche agent. Sur des workflows longs en plusieurs étapes, l'absence de mémoires de travail intermédiaires structurées oblige souvent l'agent à relire ou recalculer des informations déjà traitées.
 
-Pour dépasser ces limites sans altérer la compatibilité du protocole, ce projet propose deux modes d'exploitation complémentaires :
-- **En mode MCP standard :** Les serveurs respectent rigoureusement les spécifications JSON-RPC (`initialize`, `tools/list`, `tools/call`).
-- **En mode optimisé (Digest-First) :** L'outil #04 intègre une passerelle de cycle de vie qui compresse le résultat métier en un digest compact (~470 octets) et consigne automatiquement le rapport complet dans un carnet de bord local persistant (`turn_report.json`), évitant ainsi tout débordement de contexte.
+Pour concilier la standardisation du protocole et la maîtrise du contexte, ce projet propose deux approches complémentaires :
+- **En mode MCP standard (Outils 01, 02, 03, 05) :** Les serveurs respectent rigoureusement les spécifications JSON-RPC (`initialize`, `tools/list`, `tools/call`) avec des outils ciblés et sans surcharge.
+- **En mode optimisé "Digest-First" (Outil #04) :** L'outil intègre une passerelle de cycle de vie qui sauvegarde le rapport exhaustif et le catalogue sur le disque local, tout en renvoyant à l'agent un résumé exécutif compact (~400 à 500 octets). L'agent consigne ses étapes dans un carnet de bord de session (`turn_report.json`), évitant ainsi la saturation du contexte sans perte d'information pour l'utilisateur.
 
 ---
 
@@ -117,12 +117,29 @@ doctor.bat
 python mcp_shared/mcp_doctor.py
 ```
 
-### 🧪 Exécution des Tests de Non-Régression (52/52 Tests)
+### 🧪 Exécution et Reproduction des Tests de Non-Régression (52/52 Tests)
 Le projet intègre une suite stricte de **52 tests automatisés** répartis sur 4 couches (Unitaires avec mocks, Intégration locale sur jeux de données réels, Validation d'architecture et de performance, Smoke tests JSON-RPC & HTTP) :
-```cmd
-run_all_tests.bat
-```
-*Temps d'exécution moyen : ~3,8 secondes. Tous les tests sont validés à 100 % PASS.*
+
+- **Sur Windows (script global) :**
+  ```cmd
+  run_all_tests.bat
+  ```
+
+- **Sur Linux / macOS (script bash) :**
+  ```bash
+  chmod +x run_all_tests.sh
+  ./run_all_tests.sh
+  ```
+
+- **Ou commande par commande (multiplateforme) :**
+  ```bash
+  node 01_web_assets_manager/tests/run_all_suites.mjs          # 12 tests
+  python 02_pdf_technical_extractor/tests/run_all_suites.py    # 10 tests
+  python 03_media_quality_auditor/tests/run_all_suites.py      # 10 tests
+  python 04_ecommerce_catalog_scanner/tests/run_all_suites.py  # 11 tests
+  python 05_visual_catalog_sync/tests/run_all_suites.py        # 9 tests
+  ```
+*Temps d'exécution global mesuré : ~3,8 secondes. Tous les tests sont validés à 100 % (52/52 PASS).*
 
 ### 🔄 Réinitialisation de l'Environnement (`reset_env.bat`)
 Pour supprimer `.venv`, purger les caches temporaires `__pycache__` et réinstaller à neuf :
@@ -180,8 +197,8 @@ Les outils peuvent être utilisés selon deux approches distinctes :
   ```json
   { "name": "run_agent_lifecycle", "arguments": { "use_case": "scan_ecommerce_catalog", "source_url": "https://batihome.snorbik.fr/#P01_home" } }
   ```
-- **Résultat attendu (Digest-First) :** Résumé compact de 14 produits avec lien direct vers le rapport HTML interactif :
-  `[Ouvrir le Rapport Visuel Interactif](file:///.../scan_batihome_snorbik_fr_catalogue_view.html)`.
+- **Résultat attendu (Digest-First) :** Résumé compact extrayant **14 solutions et configurations d'implantation** (Terrasse, Escalier, Balcon, Mezzanine, Garde-corps sur profil...). Le rapport visuel interactif complet est automatiquement généré sur votre machine et consultable dans un navigateur à l'emplacement local :
+  `04_ecommerce_catalog_scanner/output/scan_batihome_snorbik_fr_catalogue_view.html`.
 - **Précision Playwright :** Playwright Chromium n'est utilisé en secours que si l'URL ciblée utilise un routage par fragment `#` (comme les SPAs React) ou un squelette DOM client vide. Les sites statiques/SSR sont analysés instantanément via `urllib` et `BeautifulSoup4`.
 
 ### 5️⃣ Outil #05 : Visual Catalog Sync
