@@ -15,6 +15,19 @@ Bienvenue dans **`mcp-hybrid-architecture`**, une suite de 5 outils modulaires c
 
 ---
 
+## 🚀 Démarrage en quelques minutes
+
+Installez et utilisez un outil avec votre agent IA, sans parcourir toute la documentation :
+
+1. **Choisissez l’un des cinq outils** présentés ci-dessous.
+2. **Ouvrez le [Guide d’installation assistée par agent IA](docs/guide_installation_agent_coding.md)**.
+3. **Copiez le prompt correspondant à votre outil** et collez-le dans votre agent de coding (*Cursor, Claude Code, Windsurf, Antigravity*).
+4. **Laissez l’agent préparer l’environnement**, exécuter les vérifications et vous expliquer comment utiliser l’outil.
+
+> 💡 **Prise en main immédiate :** À la fin de l'installation, votre agent vous indique ce qui fonctionne réellement dans votre environnement et vous propose des commandes prêtes à essayer directement dans la conversation.
+
+---
+
 ## 🎯 1. Le Problème que ce Projet Cherche à Résoudre
 
 Lors de la construction ou de la migration d'un site e-commerce technique (comme la boutique BatiHome dédiée aux garde-corps et quincaillerie industrielle), les équipes sont confrontées à quatre goulets d'étranglement majeurs :

@@ -26,6 +26,19 @@
 
 ---
 
+## 🚀 Quick Start in Minutes
+
+Install and use any tool with your AI coding agent, without browsing extensive technical docs:
+
+1. **Select one of the five tools** described below.
+2. **Open the [AI Coding Agent Installation Guide](docs/guide_installation_agent_coding.md)**.
+3. **Copy the prompt corresponding to your tool** and paste it into your coding agent (*Cursor, Claude Code, Windsurf, Antigravity*).
+4. **Let the agent configure your environment**, run verification suites, and walk you through using the tool.
+
+> 💡 **Immediate Onboarding:** At the end of the installation, your agent reports verified status and presents ready-to-run examples directly inside your chat.
+
+---
+
 ## 🎯 1. Overview & Architectural Contribution
 
 **`mcp-hybrid-architecture`** is an open-source suite of **5 autonomous, production-ready Model Context Protocol (MCP) servers** built in Python and Node.js. It demonstrates the **Hybrid MCP Pattern**—a software engineering blueprint designed for AI coding agents (*Cursor, Claude Desktop, Antigravity IDE, Windsurf, Claude Code, Devin*).
