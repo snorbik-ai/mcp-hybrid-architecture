@@ -26,7 +26,7 @@ Toutefois, lors d'une utilisation industrielle intensive sur des données volumi
 
 Pour concilier la standardisation du protocole et la maîtrise du contexte, ce projet propose deux approches complémentaires :
 - **En mode MCP standard (Outils 01, 02, 03, 05) :** Les serveurs respectent rigoureusement les spécifications JSON-RPC (`initialize`, `tools/list`, `tools/call`) avec des outils ciblés et sans surcharge.
-- **En mode optimisé "Digest-First" (Outil #04) :** L'outil intègre une passerelle de cycle de vie qui sauvegarde le rapport exhaustif et le catalogue sur le disque local, tout en renvoyant à l'agent un résumé exécutif compact (~400 à 500 octets). L'agent consigne ses étapes dans un carnet de bord de session (`turn_report.json`), évitant ainsi la saturation du contexte sans perte d'information pour l'utilisateur.
+- **En mode optimisé "Digest-First" (Outil #04) :** L'outil intègre une passerelle de cycle de vie qui sauvegarde le rapport exhaustif et le catalogue sur le disque local, tout en renvoyant à l'agent un résumé exécutif compact (470 octets dans notre cas de référence BatiHome). L'agent consigne ses étapes dans un carnet de bord de session (`turn_report.json`), évitant ainsi la saturation du contexte sans perte d'information pour l'utilisateur.
 
 ---
 
@@ -139,7 +139,7 @@ Le projet intègre une suite stricte de **52 tests automatisés** répartis sur 
   python 04_ecommerce_catalog_scanner/tests/run_all_suites.py  # 11 tests
   python 05_visual_catalog_sync/tests/run_all_suites.py        # 9 tests
   ```
-*Temps d'exécution global mesuré : ~3,8 secondes. Tous les tests sont validés à 100 % (52/52 PASS).*
+*Temps d'exécution global mesuré : ~3,8 secondes. Tous les 52 tests sont exécutables et validés avec succès (0 échec constaté).*
 
 ### 🔄 Réinitialisation de l'Environnement (`reset_env.bat`)
 Pour supprimer `.venv`, purger les caches temporaires `__pycache__` et réinstaller à neuf :
