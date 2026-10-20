@@ -4,7 +4,7 @@
 > *« MCP standardise l'accès aux outils ; le Pattern organise leur exécution, la restitution des résultats et la continuité du travail. »*
 
 <p align="center">
-  <img src="docs/images/pattern_mcp_hybride_architecture.jpg" alt="Architecture du Pattern MCP Hybride" width="100%" />
+  <img src="docs/images/cover_mcp_hybride_officielle.jpg" alt="Pattern MCP Hybride — Couverture Officielle" width="100%" />
 </p>
 
 Bienvenue dans **`mcp-toolkit`**, une suite de 5 outils modulaires conçus pour automatiser les tâches d'extraction, d'audit média et de structuration de catalogues e-commerce complexes, exploitable aussi bien par un développeur que par un agent d'intelligence artificielle (Cursor, Claude Desktop, Antigravity IDE, Windsurf, Claude Code).
@@ -38,6 +38,10 @@ Pour concilier la standardisation du protocole et la maîtrise du contexte, ce p
 ---
 
 ## 💡 3. Contribution Propre de l'Auteur
+
+<p align="center">
+  <img src="docs/images/pattern_mcp_hybride_architecture.jpg" alt="Infographie Détaillée du Pattern MCP Hybride" width="100%" />
+</p>
 
 Ce projet ne prétend pas réinventer le protocole MCP, mais propose une implémentation architecturale rigoureuse articulée autour de 4 principes :
 1. **Organisation en "Voitures Autonomes" :** Les 5 outils (`01_` à `05_`) sont découpés en modules indépendants (Clean Architecture : Domain, Application, Infrastructure). Chaque outil possède son propre serveur MCP, sa propre CLI, sa mini-interface Web de visualisation et sa batterie de tests.
