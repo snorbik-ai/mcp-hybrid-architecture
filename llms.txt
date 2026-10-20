@@ -23,6 +23,11 @@ It addresses three primary pain points in standard tool execution:
 5. `05_visual_catalog_sync` (Python 3.10+, 0 dependencies): Enforces Windows safe-path length constraints (MAX_PATH < 260) and compiles data into typed TypeScript modules.
 
 ## Key Files & Documentation
+- [docs/guide_utilisateur.md](./docs/guide_utilisateur.md): Unified user guide and tool orientation matrix.
+- [docs/guide_installation_agent_coding.md](./docs/guide_installation_agent_coding.md): Turnkey installation prompts for AI coding agents.
+- [docs/guide_mcp_standard.md](./docs/guide_mcp_standard.md): Standard JSON-RPC MCP integration guide.
+- [docs/scenarios_utilisation.md](./docs/scenarios_utilisation.md): Practical usage scenarios and test cases.
+- [docs/diagnostic_et_depannage.md](./docs/diagnostic_et_depannage.md): Health checks and troubleshooting guide.
 - [README.md](./README.md): Primary project documentation (English).
 - [README.fr.md](./README.fr.md): Full French documentation.
 - [INSTALL.md](./INSTALL.md): Complete multi-platform setup guide.

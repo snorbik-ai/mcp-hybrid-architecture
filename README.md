@@ -228,8 +228,16 @@ pytest 01_web_assets_manager 02_pdf_technical_extractor 03_media_quality_auditor
 
 ---
 
-## 🔗 9. Repository Navigation & Resources
+## 🔗 9. Repository Navigation & User Guides
 
+### 🧭 Comprehensive User Documentation Suite
+* 🧭 [**Unified User Guide (`docs/guide_utilisateur.md`)**](./docs/guide_utilisateur.md): Global overview and orientation matrix across all 5 autonomous tools.
+* 🤖 [**Coding Agent Installation Guide (`docs/guide_installation_agent_coding.md`)**](./docs/guide_installation_agent_coding.md): Turnkey prompts for autonomous AI agents (Cursor Composer, Devin, Claude Code).
+* 🔌 [**Standard MCP Integration Guide (`docs/guide_mcp_standard.md`)**](./docs/guide_mcp_standard.md): Step-by-step JSON-RPC setup for Cursor, Claude Desktop, and Antigravity IDE.
+* 🎯 [**Practical Scenarios Library (`docs/scenarios_utilisation.md`)**](./docs/scenarios_utilisation.md): Concrete multi-step user scenarios and end-to-end industrial pipeline.
+* 🩺 [**Diagnostics & Troubleshooting (`docs/diagnostic_et_depannage.md`)**](./docs/diagnostic_et_depannage.md): Automated health checker (`doctor.bat`), error matrix, and clean uninstall.
+
+### 📦 Technical References & Setup Files
 * 📦 [**Detailed Installation Guide (`INSTALL.md`)**](./INSTALL.md)
 * 🇫🇷 [**Documentation Complète en Français (`README.fr.md`)**](./README.fr.md)
 * 🤖 [**AI Agent Prompt (`PROMPT_INSTALLATION_AGENT.md`)**](./PROMPT_INSTALLATION_AGENT.md)

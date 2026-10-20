@@ -276,6 +276,14 @@ python mcp_shared/mcp_http_gateway.py --port 5185
 
 ## 🔗 10. Liens vers les Documents Publics Utiles
 
+### 🧭 Suite des Guides Utilisateurs Pratiques
+* 🧭 [**Guide Utilisateur Unifié (`docs/guide_utilisateur.md`)**](./docs/guide_utilisateur.md) : Accueil commun, matrice d'orientation et choix du parcours (Variante A ou B).
+* 🤖 [**Guide d'Installation Assistée par Agent de Coding (`docs/guide_installation_agent_coding.md`)**](./docs/guide_installation_agent_coding.md) : Prompts d'installation prêts à l'emploi pour chacun des 5 outils (Variante B).
+* 🔌 [**Guide d'Intégration MCP Standard (`docs/guide_mcp_standard.md`)**](./docs/guide_mcp_standard.md) : Configuration JSON-RPC permanente pour Cursor, Claude Desktop et Antigravity (Variante A).
+* 🎯 [**Bibliothèque de Scénarios Pratiques (`docs/scenarios_utilisation.md`)**](./docs/scenarios_utilisation.md) : Scénarios réels simples et multi-étapes avec prompts copiables.
+* 🩺 [**Diagnostic et Dépannage (`docs/diagnostic_et_depannage.md`)**](./docs/diagnostic_et_depannage.md) : Outil de santé (`doctor.bat`), résolution des erreurs fréquentes et réinitialisation.
+
+### 📦 Références Techniques & Configuration
 * 📦 [**Guide d'Installation Détaillé (`INSTALL.md`)**](./INSTALL.md) : Détail des procédures manuelles et dépannage avancé.
 * 🤖 [**Prompt d'Installation pour Agent IA (`PROMPT_INSTALLATION_AGENT.md`)**](./PROMPT_INSTALLATION_AGENT.md) : Procédure autonome à copier-coller dans votre agent.
 * 📋 [**Configuration MCP Standard (`mcp_config.json`)**](./mcp_config.json) : Fichier de déclaration prêt à importer dans votre IDE.
