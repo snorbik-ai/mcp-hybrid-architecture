@@ -263,6 +263,17 @@ python mcp_shared/mcp_http_gateway.py --port 5185
 
 ---
 
+## 📚 Références Normatives & Scientifiques
+
+1. **Spécification Officielle Model Context Protocol (2024–2025)** : Standard ouvert pour l'outillage des modèles de langage. [modelcontextprotocol.io/specification](https://modelcontextprotocol.io/specification/)
+2. **Spécification JSON-RPC 2.0** : Standard de communication pour protocoles d'échanges légers. [jsonrpc.org/specification](https://www.jsonrpc.org/specification)
+3. **Liu et al. (2024)** : *« Lost in the Middle: How Language Models Use Long Contexts »*, Transactions of the Association for Computational Linguistics (TACL). [doi.org/10.1162/tacl_a_00638](https://doi.org/10.1162/tacl_a_00638)
+4. **Anthropic Engineering (2025)** : *« Effective Context Engineering for AI Agents »*, Bonnes pratiques d'ingénierie et de gestion de cycle de vie du contexte pour agents. [anthropic.com/engineering/effective-context-engineering-for-ai-agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+
+> **Note méthodologique :** Les références 1 à 4 documentent les standards normatifs et les fondements théoriques de l'attention en contexte long. Les résultats quantitatifs (-99,8 % d'économie contextuelle, digest de 470 octets, suite de 52 tests de non-régression) relèvent de mesures empiriques reproductibles sur le démonstrateur BatiHome via les scripts de tests open source du dépôt.
+
+---
+
 ## 🔗 10. Liens vers les Documents Publics Utiles
 
 * 📦 [**Guide d'Installation Détaillé (`INSTALL.md`)**](./INSTALL.md) : Détail des procédures manuelles et dépannage avancé.

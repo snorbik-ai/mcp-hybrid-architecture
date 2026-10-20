@@ -217,6 +217,17 @@ pytest 01_web_assets_manager 02_pdf_technical_extractor 03_media_quality_auditor
 
 ---
 
+## 📚 Normative & Research References
+
+1. **Model Context Protocol Specification (2024–2025)**: Official open standard for LLM tool invocation. [modelcontextprotocol.io/specification](https://modelcontextprotocol.io/specification/)
+2. **JSON-RPC 2.0 Specification**: Standard transport protocol for lightweight RPC messaging. [jsonrpc.org/specification](https://www.jsonrpc.org/specification)
+3. **Liu et al. (2024)**: *“Lost in the Middle: How Language Models Use Long Contexts”*, Transactions of the Association for Computational Linguistics (TACL), 12, 157–173. [doi.org/10.1162/tacl_a_00638](https://doi.org/10.1162/tacl_a_00638)
+4. **Anthropic Engineering (2025)**: *“Effective Context Engineering for AI Agents”*, Best practices in agent state and context lifecycle management. [anthropic.com/engineering/effective-context-engineering-for-ai-agents](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
+
+> **Methodological Note**: References 1–4 document the open protocols and academic context dynamics. Quantitative benchmarks (-99.8% token savings, 470-byte digest payload, 52/52 non-regression test suite) are empirical findings measured on the [mcp-hybrid-architecture](https://github.com/snorbik-ai/mcp-hybrid-architecture) testbed on the BatiHome catalog demonstrator, fully reproducible using the provided test runner scripts.
+
+---
+
 ## 🔗 9. Repository Navigation & Resources
 
 * 📦 [**Detailed Installation Guide (`INSTALL.md`)**](./INSTALL.md)
