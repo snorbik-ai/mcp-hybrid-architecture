@@ -1,0 +1,46 @@
+# mcp-hybrid-architecture
+
+> Hybrid MCP architecture for AI agents: deterministic tool execution, compact Digest-First responses, persistent working memory, and five modular MCP servers.
+
+## Overview
+`mcp-hybrid-architecture` is a reference implementation of the **Hybrid MCP Pattern** for AI coding assistants (Cursor, Claude Desktop, Antigravity IDE, Windsurf, Claude Code, Devin).
+It addresses three primary pain points in standard tool execution:
+1. Context window bloat caused by dumping raw HTML/PDF/JSON outputs directly into agent prompts.
+2. Arithmetic and parsing instability when complex deterministic tasks are delegated to LLMs.
+3. Multi-turn session amnesia during long sequential workflows.
+
+## The 4 Architectural Pillars
+- **Domain-Driven Deterministic Engine**: Heavy calculations, PDF rasterization, image hashing, and DOM extraction run locally in compiled code (PyMuPDF, Pillow, BeautifulSoup).
+- **Digest-First Strategy**: Saves full artifacts and visual HTML reports to disk, returning a 470-byte summary to the LLM (-99.8% token savings).
+- **Persistent 30-Turn Working Memory**: A rolling session logbook (`turn_report.json` via `context_history_manager.py`) ensures task continuity.
+- **Dual Access Modes & Universal Gateway**: Standard stdio JSON-RPC 2.0 and unified HTTP/REST reverse gateway (`mcp_shared/mcp_http_gateway.py` on port 5185).
+
+## The Five Modular MCP Servers
+1. `01_web_assets_manager` (Node.js 18+): Scans HTML mockups, downloads remote web assets, updates relative URLs in React code.
+2. `02_pdf_technical_extractor` (Python 3.10+, PyMuPDF): Segments manufacturer PDF catalogs, extracts vector CAD schemas, renders 150 DPI proof images.
+3. `03_media_quality_auditor` (Python 3.10+, Pillow): Audits image dimensions (>=1200x700), sharpness, and eliminates duplicates via MD5 checksums.
+4. `04_ecommerce_catalog_scanner` (Python 3.10+, BeautifulSoup4): Scrapes e-commerce store DOMs (SSR & SPA), extracts SKUs, computes tax-inclusive prices, generates interactive HTML report.
+5. `05_visual_catalog_sync` (Python 3.10+, 0 dependencies): Enforces Windows safe-path length constraints (MAX_PATH < 260) and compiles data into typed TypeScript modules.
+
+## Key Files & Documentation
+- [README.md](./README.md): Primary project documentation (English).
+- [README.fr.md](./README.fr.md): Full French documentation.
+- [INSTALL.md](./INSTALL.md): Complete multi-platform setup guide.
+- [PROMPT_INSTALLATION_AGENT.md](./PROMPT_INSTALLATION_AGENT.md): Autonomous setup prompt for AI coding agents.
+- [mcp_config.json](./mcp_config.json): Ready-to-use standard MCP configuration.
+- [docs/GUIDE_INTEGRATION_MCP_ET_AGENTS.md](./docs/GUIDE_INTEGRATION_MCP_ET_AGENTS.md): Architectural guide on MCP integration.
+- [docs/DEMONSTRATIONS_ARCHITECTURE_MCP_HYBRIDE.md](./docs/DEMONSTRATIONS_ARCHITECTURE_MCP_HYBRIDE.md): End-to-end industrial scenarios.
+
+## Quick Start
+```bash
+# Windows
+install.bat
+doctor.bat
+
+# Linux / macOS
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements-all.txt
+npm install
+pytest
+```
