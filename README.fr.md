@@ -75,7 +75,7 @@ Ce poster détaille pas à pas la mécanique opérationnelle qui garantit une ef
 | :--- | :--- | :--- | :--- |
 | [`01_web_assets_manager/`](./01_web_assets_manager/) | **Gestionnaire d'Assets Web & Relieur React** : Scanne les maquettes HTML, télécharge les médias et met à jour les URLs relatives dans les composants React. | Node.js v18+ | `assets-manifest.json`, fichiers React mis à jour |
 | [`02_pdf_technical_extractor/`](./02_pdf_technical_extractor/) | **Extracteur Technique PDF** : Découpe les catalogues PDF fabricants, extrait les schémas CAO et génère des rendus de pages HD 150 DPI. | Python 3.10+, PyMuPDF | Images PNG HD, fiches techniques découpées |
-| [`03_media_quality_auditor/`](./03_media_quality_auditor/) | **Auditeur Qualité Média & Dédoublonneur** : Analyse la netteté et dimensions réelles ($\ge 1200\times 700$) et supprime les doublons via empreinte MD5. | Python 3.10+, Pillow | Rapport d'audit de conformité, liste des doublons |
+| [`03_media_quality_auditor/`](./03_media_quality_auditor/) | **Auditeur Qualité Média & Dédoublonneur** : Analyse la netteté et dimensions réelles (>= 1200x700 px) et supprime les doublons via empreinte MD5. | Python 3.10+, Pillow | Rapport d'audit de conformité, liste des doublons |
 | [`04_ecommerce_catalog_scanner/`](./04_ecommerce_catalog_scanner/) | **Scanneur de Catalogue E-commerce** : Analyse le DOM des boutiques (SSR PrestaShop et SPA React BatiHome), extrait SKUs, prix TTC/HT et génère un rapport interactif. | Python 3.10+, BeautifulSoup4 *(Playwright optionnel pour SPAs)* | `catalogue.json`, rapport HTML interactif |
 | [`05_visual_catalog_sync/`](./05_visual_catalog_sync/) | **Synchroniseur Visuel & Compilateur TS** : Rapatrie les visuels avec contrainte safe-path (`MAX_PATH < 260`) et compile le catalogue en TypeScript. | Python 3.10+ *(0 dépendance pip)* | `RawGlassRailingCatalog.ts`, assets locaux renommés |
 
@@ -208,7 +208,7 @@ Les outils peuvent être utilisés selon deux approches distinctes :
 - **Résolution d'erreur :** Si un PDF est protégé par mot de passe, l'outil lève une exception documentée dans le statut de réponse.
 
 ### 3️⃣ Outil #03 : Media Quality Auditor
-- **Rôle :** Contrôle de résolution minimale ($\ge 1200\times 700$) et détection de doublons stricts par empreinte MD5.
+- **Rôle :** Contrôle de résolution minimale (>= 1200x700 px) et détection de doublons stricts par empreinte MD5.
 - **Lancement MCP Stdio :** `python 03_media_quality_auditor/canal_mcp/mcp_classic_stdio/mcp_server.py`
 - **Outils MCP :** `audit_media_directory`, `clean_duplicate_media`, `get_certified_hero_candidates`, `03_run_quality_and_tests_suite`.
 - **Exemple d'appel :**
