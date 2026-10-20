@@ -1,65 +1,227 @@
-# 🛠️ Suite des 5 Outils Métiers BatiHome / AXESTEEL
-## Architecture Hybride pour Agents IA : Un Dépôt Unique, Deux Modes d'Utilisation
+# 🛠️ MCP-TOOLKIT — Suite des 5 Outils Métiers Autonomes pour Agents IA
 
-> **Philosophie "Voiture Autonome" :**  
-> Chaque dossier numéroté (`01_` à `05_`) est une **mini-application 100 % indépendante**. Elle possède ses propres réglages, son propre serveur d'assistance IA (MCP), sa propre interface Web visuelle et ses propres tests de non-régression.
+Bienvenue dans **`mcp-toolkit`**, une suite de 5 outils modulaires conçus pour automatiser les tâches d'extraction, d'audit média et de structuration de catalogues e-commerce complexes, exploitable aussi bien par un développeur que par un agent d'intelligence artificielle (Cursor, Claude Desktop, Antigravity IDE, Windsurf, Claude Code).
 
 ---
 
-## ⚡ Démarrage Rapide en 1 Minute
+## 🎯 1. Le Problème que ce Projet Cherche à Résoudre
 
-### 1. Choisissez votre Mode d'Utilisation
+Lors de la construction ou de la migration d'un site e-commerce technique (comme la boutique BatiHome dédiée aux garde-corps et quincaillerie industrielle), les équipes sont confrontées à quatre goulets d'étranglement majeurs :
+1. **La dispersion des assets graphiques :** Maquettes HTML dispersées avec des URLs d'images distantes non hébergées localement.
+2. **L'hétérogénéité des données techniques :** Fiches produits et plans d'assemblage enfermés dans de volumineux catalogues PDF fabricants.
+3. **La disparité de qualité des médias :** Photos de résolution insuffisante pour l'affichage Retina/HD, doublons d'images gaspillant de la bande passante.
+4. **La surcharge de contexte des LLMs :** Lorsqu'un agent IA traditionnel tente d'inspecter un catalogue ou un DOM e-commerce, il déverse des milliers de lignes de JSON brut dans sa fenêtre de contexte, provoquant explosion de coûts, amnésie et hallucinations tarifaires.
 
-```text
-               ┌────────────────────────────────────────────────────────┐
-               │           DÉPÔT UNIQUE : outils_internes/              │
-               │  5 serveurs • documentation • configuration • tests   │
-               └───────────────────────────┬────────────────────────────┘
-                                           │
-                 ┌─────────────────────────┴─────────────────────────┐
-                 ▼                                                   ▼
-┌───────────────────────────────────┐       ┌───────────────────────────────────┐
-│        VARIANTE A — MCP           │       │    VARIANTE B — AGENT CODING      │
-│  • Pour Cursor, Claude Desktop,   │       │  • Pour agents autonomes (Devin,  │
-│    Antigravity IDE & APIs LLM     │       │    Cline, Windsurf, Claude Code)  │
-│  • 17 outils découverts           │       │  • Lecture GPS context_llm.json   │
-│  • 5 serveurs stdio légers        │       │  • Exécution locale CLI / SDK     │
-│  • Outil #04 avec Gateway         │       │  • Mémoire glissante 30 tours     │
-│    Lifecycle & Digest automatique │       │  • 98,8 % d'économie de tokens    │
-└───────────────────────────────────┘       └───────────────────────────────────┘
+`mcp-toolkit` résout ces défis en fournissant des moteurs déterministes locaux, rapides et autonomes, capables d'effectuer le travail lourd en millisecondes et de renvoyer à l'IA uniquement des résumés structurés fiables.
+
+---
+
+## 🔌 2. Le Rôle du Protocole MCP et les Limites Pratiques Rencontrées
+
+Le protocole standard **MCP (Model Context Protocol)**, introduit par Anthropic, standardise la connexion entre les modèles de langage et les outils locaux via des échanges JSON-RPC (sur `stdio` ou serveur HTTP).
+
+Toutefois, lors d'une utilisation industrielle intensive, deux limites pratiques majeures apparaissent :
+- **Saturation du contexte par les retours d'outils :** Un outil MCP standard renvoyant l'intégralité d'un catalogue (100+ fiches produits) consomme immédiatement 30 000 à 60 000 tokens en un seul tour de conversation.
+- **Amnésie de l'agent lors de tâches longues :** Le protocole MCP standard est sans état (*stateless*). L'agent oublie les étapes préalablement validées dès que la conversation s'allonge.
+
+Pour dépasser ces limites sans altérer la compatibilité du protocole, ce projet propose deux modes d'exploitation complémentaires :
+- **En mode MCP standard :** Les serveurs respectent rigoureusement les spécifications JSON-RPC (`initialize`, `tools/list`, `tools/call`).
+- **En mode optimisé (Digest-First) :** L'outil #04 intègre une passerelle de cycle de vie qui compresse le résultat métier en un digest compact (~470 octets) et consigne automatiquement le rapport complet dans un carnet de bord local persistant (`turn_report.json`), évitant ainsi tout débordement de contexte.
+
+---
+
+## 💡 3. Contribution Propre de l'Auteur
+
+Ce projet ne prétend pas réinventer le protocole MCP, mais propose une implémentation architecturale rigoureuse articulée autour de 4 principes :
+1. **Organisation en "Voitures Autonomes" :** Les 5 outils (`01_` à `05_`) sont découpés en modules indépendants (Clean Architecture : Domain, Application, Infrastructure). Chaque outil possède son propre serveur MCP, sa propre CLI, sa mini-interface Web de visualisation et sa batterie de tests.
+2. **Stratégie "Digest-First" :** Renvoi d'un résumé exécutif compact à l'IA avec un lien direct vers un rapport visuel HTML interactif généré localement pour l'utilisateur.
+3. **Mémoire Glissante d'Ingénierie :** Gestionnaire de session (`context_history_manager.py`) maintenant un carnet de bord borné à 30 tours pour éviter l'oubli sans surcharger le contexte.
+4. **Passerelle Universelle HTTP / REST :** Un reverse proxy local (`mcp_shared/mcp_http_gateway.py` sur le port 5185) unifiant les 17 outils sous un endpoint unique pour les environnements ne supportant pas `stdio`.
+
+---
+
+## 🧭 4. Présentation des 5 MCP
+
+| Répertoire | Rôle Industriel | Prérequis | Sorties Produites |
+| :--- | :--- | :--- | :--- |
+| [`01_web_assets_manager/`](./01_web_assets_manager/) | **Gestionnaire d'Assets Web & Relieur React** : Scanne les maquettes HTML, télécharge les médias et met à jour les URLs relatives dans les composants React. | Node.js v18+ | `assets-manifest.json`, fichiers React mis à jour |
+| [`02_pdf_technical_extractor/`](./02_pdf_technical_extractor/) | **Extracteur Technique PDF** : Découpe les catalogues PDF fabricants, extrait les schémas CAO et génère des rendus de pages HD 150 DPI. | Python 3.10+, PyMuPDF | Images PNG HD, fiches techniques découpées |
+| [`03_media_quality_auditor/`](./03_media_quality_auditor/) | **Auditeur Qualité Média & Dédoublonneur** : Analyse la netteté et dimensions réelles ($\ge 1200\times 700$) et supprime les doublons via empreinte MD5. | Python 3.10+, Pillow | Rapport d'audit de conformité, liste des doublons |
+| [`04_ecommerce_catalog_scanner/`](./04_ecommerce_catalog_scanner/) | **Scanneur de Catalogue E-commerce** : Analyse le DOM des boutiques (SSR PrestaShop et SPA React BatiHome), extrait SKUs, prix TTC/HT et génère un rapport interactif. | Python 3.10+, BeautifulSoup4 *(Playwright optionnel pour SPAs)* | `catalogue.json`, rapport HTML interactif |
+| [`05_visual_catalog_sync/`](./05_visual_catalog_sync/) | **Synchroniseur Visuel & Compilateur TS** : Rapatrie les visuels avec contrainte safe-path (`MAX_PATH < 260`) et compile le catalogue en TypeScript. | Python 3.10+ *(0 dépendance pip)* | `RawGlassRailingCatalog.ts`, assets locaux renommés |
+
+---
+
+## 🚀 5. Prérequis et Parcours d'Installation
+
+### Prérequis Système
+- **Python** : Version `3.10` à `3.13` (64-bit recommandé).
+- **Node.js** : Version `18.0+` (LTS recommandée) — *Requis uniquement pour l'outil #01*.
+- **OS** : Windows 10/11, Linux, macOS.
+
+---
+
+### Parcours 1 — Installation Automatisée sous Windows (Recommandé)
+Double-cliquez sur `install.bat` ou lancez dans votre terminal Windows :
+```cmd
+install.bat
 ```
+*Le script détecte Python, crée automatiquement l'environnement virtuel local `.venv`, met à niveau pip, installe les dépendances requises et exécute un contrôle de santé final.*
 
-### 2. Installation en 2 Commandes
+> **Si Python n'est pas encore installé sur votre machine :**  
+> `install.bat` vous avertit immédiatement et vous propose d'ouvrir la page officielle [python.org/downloads](https://www.python.org/downloads/). Cochez bien `☑ Add Python to PATH` lors de l'installation, puis relancez `install.bat`.
+
+---
+
+### Parcours 2 — Installation Manuelle (Linux / macOS / Développeurs)
 ```bash
+# 1. Créer et activer l'environnement virtuel
+python3 -m venv .venv
+source .venv/bin/activate    # Sur Windows : .venv\Scripts\activate
+
+# 2. Installer les dépendances
 pip install -r requirements-all.txt
-playwright install chromium
+```
+*(L'outil #01 utilise les API natives de Node.js et ne requiert aucun `npm install` externe).*
+
+---
+
+### Parcours 3 — Installation Modulaire (Un Seul Outil)
+Si vous n'avez besoin que d'un seul outil spécifique, isolez son installation :
+```cmd
+# Outil #01 uniquement (Node.js) :
+install.bat 01
+
+# Outil #02 uniquement (PyMuPDF) :
+install.bat 02    # ou : pip install -r 02_pdf_technical_extractor/requirements.txt
+
+# Outil #03 uniquement (Pillow) :
+install.bat 03    # ou : pip install -r 03_media_quality_auditor/requirements.txt
+
+# Outil #04 uniquement (BeautifulSoup4) :
+install.bat 04    # ou : pip install -r 04_ecommerce_catalog_scanner/requirements.txt
+
+# Outil #05 uniquement (Standard) :
+install.bat 05    # Aucune dépendance externe requise
 ```
 
-### 3. Contrôle Qualité Immédiat
-```bash
-# Windows :
+---
+
+## 🧪 6. Commandes de Diagnostic, de Test et d'Utilisation
+
+### 🩺 Diagnostic de Santé (`doctor.bat`)
+Pour diagnostiquer votre environnement, vérifier les dépendances et s'assurer que le port 5185 est libre :
+```cmd
+doctor.bat
+# Ou sous Linux/macOS :
+python mcp_shared/mcp_doctor.py
+```
+
+### 🧪 Exécution des Tests de Non-Régression (52/52 Tests)
+Le projet intègre une suite stricte de **52 tests automatisés** répartis sur 4 couches (Unitaires avec mocks, Intégration locale sur jeux de données réels, Validation d'architecture et de performance, Smoke tests JSON-RPC & HTTP) :
+```cmd
 run_all_tests.bat
-# Ou multi-plateforme via npm :
-npm run test:all
 ```
-*Résultat attendu : **52/52 tests exécutés avec succès (PASS)** sur les 4 couches (Unitaires, Intégration, Validation/Perf, Smoke).*
+*Temps d'exécution moyen : ~3,8 secondes. Tous les tests sont validés à 100 % PASS.*
+
+### 🔄 Réinitialisation de l'Environnement (`reset_env.bat`)
+Pour supprimer `.venv`, purger les caches temporaires `__pycache__` et réinstaller à neuf :
+```cmd
+reset_env.bat
+```
+*(Le script demande une confirmation explicite `[O/N]` avant toute action).*
 
 ---
 
-## 🧭 Les 5 Voitures Autonomes
+## 📖 7. Documentation d'Utilisation des 5 MCP
 
-| Répertoire | Rôle Industriel | Mode MCP (Porte A) | Agent Coding (Porte B) | Contrôle Qualité |
-| :--- | :--- | :---: | :---: | :---: |
-| [`01_web_assets_manager/`](./01_web_assets_manager/) | **Moissonneur d'Assets Web & Relieur React** : Récupère les photos depuis des maquettes HTML et met à jour les liens d'images du site. | 4 outils stdio | GPS + CLI | **12/12 PASS** |
-| [`02_pdf_technical_extractor/`](./02_pdf_technical_extractor/) | **Extracteur Catalogues PDF & Découpeur CAO** : Découpe les catalogues PDF fabricants et en extrait fiches, plans techniques et photos HD. | 4 outils stdio | GPS + CLI + Mémoire | **10/10 PASS** |
-| [`03_media_quality_auditor/`](./03_media_quality_auditor/) | **Auditeur Qualité Média & Dédoublonneur MD5** : Analyse la résolution réelle ($\ge 1200\times 700$) et purge les doublons par empreinte MD5. | 4 outils stdio | GPS + CLI | **10/10 PASS** |
-| [`04_ecommerce_catalog_scanner/`](./04_ecommerce_catalog_scanner/) | **Scanneur DOM Universel & Moissonneur Tarifaire** : Extrait fiches, prix TTC/HT et SKUs sur architectures web modernes (PrestaShop SSR, React SPA BatiHome, catalogues locaux). | **Gateway Lifecycle Unique** | GPS + CLI + Mémoire 30 tours | **11/11 PASS** |
-| [`05_visual_catalog_sync/`](./05_visual_catalog_sync/) | **Moissonneur Visuel Safe-Path & Compilateur TS** : Synchronise `public/assets` avec garantie `MAX_PATH < 260` et compile le catalogue TypeScript. | 4 outils stdio | GPS + CLI | **9/9 PASS** |
+Les outils peuvent être utilisés selon deux approches distinctes :
+- **Mode MCP (JSON-RPC) :** Connexion directe via stdio (Cursor, Antigravity, Claude Desktop) ou via la passerelle HTTP.
+- **Mode Agent Coding (Local) :** Lecture du plan GPS `context_llm.json`, exécution en ligne de commande (CLI) et persistance mémoire dans `ContextHistoryManager`.
+
+### 1️⃣ Outil #01 : Web Assets Manager
+- **Rôle :** Scan de maquettes HTML et rapatriement d'images distantes.
+- **Lancement MCP Stdio :** `node 01_web_assets_manager/canal_mcp/mcp_classic_stdio/mcp_server.mjs`
+- **Outils MCP :** `scan_maquette_html`, `download_web_assets`, `replace_react_image_urls`, `01_run_quality_and_tests_suite`.
+- **Exemple d'appel :**
+  ```json
+  { "name": "scan_maquette_html", "arguments": { "maquette_path": "01_web_assets_manager/data/sample_maquettes/maquette_1/code.html" } }
+  ```
+- **Résultat attendu :** `{ "found_assets": [...], "count": 71, "status": "scanned" }`
+- **Résolution d'erreur :** Si `node` n'est pas trouvé, vérifiez son installation via `node -v` (version 18+ requise).
+
+### 2️⃣ Outil #02 : PDF Technical Extractor
+- **Rôle :** Découpage de catalogues PDF industriels et extraction de schémas techniques.
+- **Lancement MCP Stdio :** `python 02_pdf_technical_extractor/canal_mcp/mcp_classic_stdio/mcp_server.py`
+- **Outils MCP :** `extract_pdf_pages`, `extract_pdf_images`, `get_pdf_manifest`, `02_run_quality_and_tests_suite`.
+- **Exemple d'appel :**
+  ```json
+  { "name": "extract_pdf_pages", "arguments": { "pdf_path": "catalog.pdf", "render_dpi": 150 } }
+  ```
+- **Résultat attendu :** `{ "extracted_pages": 12, "manifest_path": "output/manifest.json", "status": "success" }`
+- **Résolution d'erreur :** Si un PDF est protégé par mot de passe, l'outil lève une exception documentée dans le statut de réponse.
+
+### 3️⃣ Outil #03 : Media Quality Auditor
+- **Rôle :** Contrôle de résolution minimale ($\ge 1200\times 700$) et détection de doublons stricts par empreinte MD5.
+- **Lancement MCP Stdio :** `python 03_media_quality_auditor/canal_mcp/mcp_classic_stdio/mcp_server.py`
+- **Outils MCP :** `audit_media_directory`, `clean_duplicate_media`, `get_certified_hero_candidates`, `03_run_quality_and_tests_suite`.
+- **Exemple d'appel :**
+  ```json
+  { "name": "audit_media_directory", "arguments": { "directory_path": "public/assets", "min_width": 1200, "min_height": 700 } }
+  ```
+- **Résultat attendu :** `{ "total_audited": 45, "valid_hd": 42, "duplicates_found": 0 }`
+- **Résolution d'erreur :** Si des fichiers non-images sont présents, ils sont ignorés avec avertissement sans interrompre l'audit.
+
+### 4️⃣ Outil #04 : E-commerce Catalog Scanner
+- **Rôle :** Extraction de fiches produits, prix et références avec rapport visuel HTML interactif.
+- **Lancement MCP Stdio :** `python 04_ecommerce_catalog_scanner/canal_mcp/mcp_classic_stdio/mcp_server.py`
+- **Capacité Unique :** `run_agent_lifecycle` (avec use cases : `scan_ecommerce_catalog`, `discover_category_tree`, `audit_scanned_catalog`, `run_quality_and_tests_suite`).
+- **Exemple d'appel (Test Réel BatiHome) :**
+  ```json
+  { "name": "run_agent_lifecycle", "arguments": { "use_case": "scan_ecommerce_catalog", "source_url": "https://batihome.snorbik.fr/#P01_home" } }
+  ```
+- **Résultat attendu (Digest-First) :** Résumé compact de 14 produits avec lien direct vers le rapport HTML interactif :
+  `[Ouvrir le Rapport Visuel Interactif](file:///.../scan_batihome_snorbik_fr_catalogue_view.html)`.
+- **Précision Playwright :** Playwright Chromium n'est utilisé en secours que si l'URL ciblée utilise un routage par fragment `#` (comme les SPAs React) ou un squelette DOM client vide. Les sites statiques/SSR sont analysés instantanément via `urllib` et `BeautifulSoup4`.
+
+### 5️⃣ Outil #05 : Visual Catalog Sync
+- **Rôle :** Synchronisation sécurisée des visuels avec gestion de la limite des chemins longs Windows (`MAX_PATH < 260`) et compilation TypeScript.
+- **Lancement MCP Stdio :** `python 05_visual_catalog_sync/canal_mcp/mcp_classic_stdio/mcp_server.py`
+- **Outils MCP :** `sync_visual_assets`, `compile_frontend_catalog`, `audit_catalog_sync_status`, `05_run_quality_and_tests_suite`.
+- **Exemple d'appel :**
+  ```json
+  { "name": "compile_frontend_catalog", "arguments": { "catalog_json_path": "data/catalogue_reference.json", "output_ts_path": "output/RawGlassRailingCatalog.ts" } }
+  ```
+- **Résultat attendu :** `{ "compiled_products": 133, "status": "compiled" }`
+- **Résolution d'erreur :** Les noms de fichiers contenant des caractères non autorisés sous Windows (`:`, `*`, `?`, `"`, `<`, `>`, `|`) sont automatiquement normalisés.
 
 ---
 
-## 📚 Documentation & Prise en Main
+## 🌐 8. Passerelle Universelle HTTP / REST (Port 5185)
 
-* 📖 [**Guide d'Installation Complet (`INSTALL.md`)**](./INSTALL.md) : Procédure pas à pas, double configuration `mcp_config.json` (racine vs local), passerelle HTTP (port 5185) et dépannage.
-* 🤖 [**Prompt d'Installation pour Agent IA (`PROMPT_INSTALLATION_AGENT.md`)**](./PROMPT_INSTALLATION_AGENT.md) : Le prompt prêt à l'emploi à copier-coller dans votre assistant (Cursor, Claude Code, Windsurf) pour une installation 100 % autonome.
-* 📊 [**Banc d'Essai Comparatif A/B (`docs/BENCHMARK_COMPARATIF_AB_MCP_VS_AGENT_CODING.md`)**](./docs/BENCHMARK_COMPARATIF_AB_MCP_VS_AGENT_CODING.md) : Mesure scientifique de la réduction d'empreinte contextuelle (98,8 % d'économie de tokens mesurée sur catalogue réel).
+Pour les agents ou clients IA ne gérant pas les processus stdio locaux :
+```bash
+python mcp_shared/mcp_http_gateway.py --port 5185
+```
+- **Endpoint de Santé :** `GET http://localhost:5185/health` (renvoie `total_tools: 17`).
+- **Découverte des Outils :** `GET http://localhost:5185/tools` (liste complète des 17 outils avec résolution des collisions).
+- **Exécution d'Outil :** `POST http://localhost:5185/tools/call` avec `{"name": "...", "arguments": {...}}`.
+
+---
+
+## ⚠️ 9. Limites Connues et Bonnes Pratiques
+
+1. **Rendu dynamique de SPAs complexes :** Le scanner #04 utilise Chromium standard pour les SPAs. Si un site tiers requiert une authentification complexe ou bloque les connexions automatisées, privilégiez le scan d'une exportation HTML locale ou de votre propre plateforme.
+2. **Chemins de fichiers Windows :** L'outil #05 tronque préventivement les noms d'images à 42 caractères pour garantir que le chemin absolu total reste toujours inférieur à 260 caractères sous Windows.
+3. **Isolement de l'environnement :** Il est fortement conseillé de toujours utiliser l'environnement virtuel `.venv` configuré par `install.bat`.
+
+---
+
+## 🔗 10. Liens vers les Documents Publics Utiles
+
+* 📦 [**Guide d'Installation Détaillé (`INSTALL.md`)**](./INSTALL.md) : Détail des procédures manuelles et dépannage avancé.
+* 🤖 [**Prompt d'Installation pour Agent IA (`PROMPT_INSTALLATION_AGENT.md`)**](./PROMPT_INSTALLATION_AGENT.md) : Procédure autonome à copier-coller dans votre agent.
+* 📋 [**Configuration MCP Standard (`mcp_config.json`)**](./mcp_config.json) : Fichier de déclaration prêt à importer dans votre IDE.
+* 📖 [**Guide d'Intégration MCP & Agents (`docs/GUIDE_INTEGRATION_MCP_ET_AGENTS.md`)**](./docs/GUIDE_INTEGRATION_MCP_ET_AGENTS.md) : Architecture de communication.
+* 🏛️ [**Démonstrations d'Architecture (`docs/DEMONSTRATIONS_ARCHITECTURE_MCP_HYBRIDE.md`)**](./docs/DEMONSTRATIONS_ARCHITECTURE_MCP_HYBRIDE.md) : Scénarios réels de bout en bout.
+* ⚖️ [**Licence Libre (`LICENSE`)**](./LICENSE) : Licence MIT.

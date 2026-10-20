@@ -1,27 +1,55 @@
-# 🤖 Prompt d'Installation Automatique pour Agent IA (Cursor, Claude Code, Windsurf, Devin)
+# 🤖 Procédure d'Installation et Vérification pour Agent IA (Cursor, Claude Code, Windsurf, Devin)
 
-> Ce fichier est destiné à être copié-collé directement dans le chat de votre agent de programmation autonome pour une installation et une vérification 100 % automatisées en un seul message.
+> **Instructions pour l'utilisateur :** Copiez-collez l'intégralité du bloc ci-dessous dans le chat de votre agent de programmation autonome pour qu'il prenne en charge l'installation, la vérification et la démonstration des outils de manière 100 % autonome.
 
 ---
 
 ```text
-Tu es un agent de programmation chargé d'installer et de vérifier ce projet open source.
+Tu es un agent de programmation autonome chargé d'installer, vérifier et configurer la suite d'outils open source "mcp-toolkit".
 
-Dépôt Git : https://github.com/snorbik-ai/mcp-toolkit.git
-Dossier cible : ./ (racine du dépôt)
+Emplacement de travail : ./ (racine du dépôt)
+Documentation de référence : README.md et INSTALL.md
 
-Instructions d'installation et de prise en main :
-1. Lis intégralement le README.md et suis les instructions de INSTALL.md situés à la racine du dépôt.
-2. Vérifie l'environnement disponible, les prérequis système (Python 3.10+, Node.js 18+), les dépendances et la structure du dépôt avant toute modification.
-3. Demande-moi quel mode je souhaite utiliser si je ne l'ai pas déjà précisé :
-   - Mode A — MCP Standard (pour Cursor, Claude Desktop ou Antigravity IDE)
-   - Mode B — Agent Coding Autonome (pour exécution locale par script, CLI et mémoire glissante 30 tours)
-4. Installe uniquement les dépendances nécessaires au mode choisi selon les instructions officielles (pip install -r requirements-all.txt). Ne modifie pas arbitrairement les versions ni les fichiers de configuration.
-5. Pour le Mode A, configure les serveurs MCP selon le client et le répertoire de lancement concernés (utilise mcp_config.json). Vérifie que les outils sont découverts et que les appels fonctionnent.
-6. Pour le Mode B, suis le parcours Agent Coding documenté. Vérifie la lecture du manifeste context_llm.json, l'exécution d'une tâche locale et la persistance mémoire dans history/sessions/ via ContextHistoryManager.
-7. Exécute la suite de tests officielle (run_all_tests.bat ou npm run test:all) et distingue clairement les tests réussis, échoués et non exécutés (52 tests attendus à 100% PASS).
-8. N'invente aucun résultat. En cas d'erreur, identifie sa cause probable et propose une correction minimale avant de poursuivre.
-9. Termine par un compte-rendu clair indiquant le mode installé, les commandes exécutées, les tests réussis et les éventuelles limites d'environnement.
+Suis scrupuleusement la procédure suivante en 6 étapes :
 
-RÈGLE DE SÉCURITÉ : Ne publie rien, ne pousse aucun commit et ne modifie aucun dépôt distant sans mon autorisation explicite.
+1. LECTURE DE LA DOCUMENTATION :
+   - Lis attentivement README.md et INSTALL.md situés à la racine pour comprendre l'architecture des 5 outils, les commandes officielles et les modes disponibles.
+
+2. CONTRÔLE DE L'ENVIRONNEMENT ET DES PRÉREQUIS :
+   - Vérifie la présence de Python (>= 3.10, 64-bit recommandé) et de Node.js (>= 18.0 pour l'outil 01).
+   - Exécute le script de diagnostic officiel :
+     * Sur Windows : lance doctor.bat
+     * Sur Linux / macOS : lance python mcp_shared/mcp_doctor.py
+   - Analyse le diagnostic renvoyé et identifie les composants manquants éventuels.
+
+3. INSTALLATION DES DÉPENDANCES NÉCESSAIRES :
+   - N'installe QUE les dépendances nécessaires déclarées dans le projet.
+   - Sur Windows : lance "install.bat" (ou "install.bat <cible>" pour un outil spécifique).
+   - Sur Linux / macOS : crée un environnement virtuel .venv et exécute "pip install -r requirements-all.txt".
+   - Ne modifie pas arbitrairement les fichiers de configuration (mcp_config.json, requirements.txt).
+
+4. EXÉCUTION DE LA SUITE DE TESTS :
+   - Lance la suite complète de non-régression via "run_all_tests.bat" (ou les scripts run_all_suites par outil).
+   - Vérifie que les 52 tests sont exécutés et réussis (100% PASS attendu).
+   - Distingue clairement dans ton compte-rendu : les tests exécutés avec succès, les éventuels échecs et les tests ignorés. N'invente aucun résultat.
+
+5. DÉMONSTRATION D'UTILISATION :
+   - Demande à l'utilisateur quel outil parmi les 5 il souhaite utiliser en priorité :
+     * 01 : Récupérateur d'images web et relieur React
+     * 02 : Découpeur technique de catalogues PDF
+     * 03 : Auditeur qualité d'images HD et dédoublonneur MD5
+     * 04 : Scanneur de catalogue e-commerce et extraction tarifaire
+     * 05 : Synchroniseur de catalogue visuel et compilateur TypeScript
+   - Explique la commande de lancement correspondante (mode MCP Stdio ou passerelle HTTP sur le port 5185).
+   - Fournis un exemple d'appel avec les arguments attendus.
+
+6. BILAN D'INSTALLATION :
+   - Fournis un compte-rendu synthétique et transparent :
+     * Versions Python et Node.js détectées
+     * Statut de l'environnement virtuel (.venv)
+     * Bilan chiffré des tests (ex: 52/52 PASS)
+     * Éventuelles limites ou avertissements restants (ex: port 5185, installation de Node.js si absent).
+
+RÈGLE DE SÉCURITÉ ABSOLUE :
+Ne publie rien, ne pousse aucun commit et ne modifie aucun dépôt distant sans validation explicite de l'utilisateur.
 ```
